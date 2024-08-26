@@ -1,12 +1,12 @@
-import "./App.css";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { db } from "./firebase";
 
-export default function App() {
-    return (
-        <>
-            <div id="main_content">
-                <Outlet />
-            </div>
-        </>
-    );
-}
+const App = () => {
+    useEffect(() => {
+        console.log(db);
+    });
+
+    return <div></div>;
+};
+
+export default App;
