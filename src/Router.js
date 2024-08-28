@@ -5,6 +5,8 @@ import App from "./App";
 
 const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
 const TestPage = React.lazy(() => import("./pages/TestPage"));
+const LoginPage = React.lazy(() => import("./pages/LoginPage"));
+const SignupPage = React.lazy(() => import("./pages/SignupPage"));
 
 export default function Router() {
     return (
@@ -14,6 +16,8 @@ export default function Router() {
                     <Route path="/" element={<App />}>
                         <Route index element={<WelcomePage />} />
                         <Route path="/move" element={<TestPage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signup" element={<SignupPage />} />
                     </Route>
                 </Routes>
             </Suspense>
