@@ -9,7 +9,6 @@ export default function SignupPage() {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [nickname, setNickname] = useState("");
-    const [birthdate, setBirthdate] = useState("");
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -27,7 +26,6 @@ export default function SignupPage() {
                 email: user.email,
                 name: name,
                 nickname: nickname,
-                birthdate: birthdate,
                 uid: user.uid,
             });
 
@@ -67,13 +65,6 @@ export default function SignupPage() {
                     placeholder="닉네임"
                     value={nickname}
                     onChange={(e) => setNickname(e.target.value)}
-                    required
-                />
-                <input
-                    type="date"
-                    placeholder="생일"
-                    value={birthdate}
-                    onChange={(e) => setBirthdate(e.target.value)}
                     required
                 />
                 <button type="submit">회원가입</button>
