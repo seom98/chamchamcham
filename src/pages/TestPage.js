@@ -1,5 +1,5 @@
 import { db, auth } from "../firebase";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import Loading from "../components/Loading";
 import React from "react";
@@ -10,9 +10,9 @@ export default function TestPage() {
     const navigate = useNavigate(); // 페이지 이동 훅
     const [test, setTest] = useState(null); // 초기 상태를 null로 설정
     const [loading, setLoading] = useState(true); // 로딩 상태 관리
-    const [uid, setUid] = useState(auth.currentUser.uid);
+    const uid = auth.currentUser.uid;
 
-    async function getTest() {
+    const getTest = useCallback(async () => {
         try {
             const docRef = doc(db, "users", uid);
             const docSnap = await getDoc(docRef);
@@ -27,11 +27,11 @@ export default function TestPage() {
         } finally {
             setLoading(false); // 데이터가 로드되었으므로 로딩 상태를 false로 설정
         }
-    }
+    }, [uid]); // Add `uid` to the dependencies array
 
     useEffect(() => {
         getTest();
-    }, []);
+    }, [getTest]);
 
     const handleLogout = async () => {
         try {
