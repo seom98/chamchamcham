@@ -10,10 +10,11 @@ export default function TestPage() {
     const navigate = useNavigate(); // 페이지 이동 훅
     const [test, setTest] = useState(null); // 초기 상태를 null로 설정
     const [loading, setLoading] = useState(true); // 로딩 상태 관리
+    const [uid, setUid] = useState(auth.currentUser.uid);
 
     async function getTest() {
         try {
-            const docRef = doc(db, "test", "t2");
+            const docRef = doc(db, "users", uid);
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
@@ -44,7 +45,11 @@ export default function TestPage() {
 
     return (
         <>
-            {loading ? <Loading /> : test && <div>{test.name}</div>}
+            {loading ? (
+                <Loading />
+            ) : (
+                test && <div>님 닉네임은 {test.nickname} 임</div>
+            )}
             <button onClick={handleLogout}>로그아웃</button>
         </>
     );

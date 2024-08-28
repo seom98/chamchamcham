@@ -1,21 +1,37 @@
-// src/pages/SignupPage.js
-
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
 
 export default function SignupPage() {
-    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [nickname, setNickname] = useState("");
+    const [birthdate, setBirthdate] = useState("");
 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            // Firebase Authentication을 통해 사용자 등록
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+            const user = userCredential.user;
+
+            // Firestore에 사용자 데이터 저장
+            await setDoc(doc(db, "users", user.uid), {
+                email: user.email,
+                name: name,
+                nickname: nickname,
+                birthdate: birthdate,
+                uid: user.uid,
+            });
+
             alert("회원가입 성공");
-            navigate("/login");
         } catch (error) {
             alert("회원가입 실패: " + error.message);
         }
@@ -37,6 +53,27 @@ export default function SignupPage() {
                     placeholder="비밀번호"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
+                    placeholder="이름"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
+                    placeholder="닉네임"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value)}
+                    required
+                />
+                <input
+                    type="date"
+                    placeholder="생일"
+                    value={birthdate}
+                    onChange={(e) => setBirthdate(e.target.value)}
                     required
                 />
                 <button type="submit">회원가입</button>
