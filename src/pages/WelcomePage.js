@@ -1,7 +1,34 @@
+import { db } from "../firebase";
+import { useEffect, useState } from "react";
+// firestore의 메서드 import
+import { doc, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+
 export default function WelcomePage() {
+    const navigate = useNavigate();
+    const [test, setTest] = useState();
+    // async - await로 데이터 fetch 대기
+    async function getTest() {
+        // document에 대한 참조 생성
+        const docRef = doc(db, "test", "t2");
+        // 참조에 대한 Snapshot 쿼리
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            setTest(docSnap.data());
+        } else {
+        }
+    }
+    // 최초 마운트 시에 getTest import
+    useEffect(() => {
+        getTest();
+    }, []);
     return (
-        <>
-            <div>야호</div>
-        </>
+        <div>
+            {test !== undefined && <div>{test.name}</div>}
+            <button onClick={() => navigate("move")}>
+                이거 누르면 화면 바뀜
+            </button>
+        </div>
     );
 }
