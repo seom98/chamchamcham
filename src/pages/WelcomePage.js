@@ -33,7 +33,7 @@ export default function WelcomePage() {
     return (
         <div>
             {loading ? <Loading /> : test && <div>{test.name}</div>}
-            <button onClick={() => navigate("move")}>
+            <button onClick={() => navigate("/move")}>
                 이거 누르면 화면 바뀜
             </button>
         </div>
