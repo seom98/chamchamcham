@@ -1,7 +1,9 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import WelcomePage from "./pages/WelcomePage";
-import TestPage from "./pages/TestPage";
 import App from "./App";
+
+const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
+const TestPage = React.lazy(() => import("./pages/TestPage"));
 
 export default function Router() {
     return (

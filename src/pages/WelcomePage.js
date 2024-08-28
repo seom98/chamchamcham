@@ -1,31 +1,38 @@
 import { db } from "../firebase";
 import { useEffect, useState } from "react";
-// firestore의 메서드 import
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
-    const [test, setTest] = useState();
-    // async - await로 데이터 fetch 대기
-    async function getTest() {
-        // document에 대한 참조 생성
-        const docRef = doc(db, "test", "t2");
-        // 참조에 대한 Snapshot 쿼리
-        const docSnap = await getDoc(docRef);
+    const [test, setTest] = useState(null); // 초기 상태를 null로 설정
+    const [loading, setLoading] = useState(true); // 로딩 상태 관리
 
-        if (docSnap.exists()) {
-            setTest(docSnap.data());
-        } else {
+    async function getTest() {
+        try {
+            const docRef = doc(db, "test", "t2");
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setTest(docSnap.data());
+            } else {
+                console.log("No such document!");
+            }
+        } catch (error) {
+            console.error("Error fetching document: ", error);
+        } finally {
+            setLoading(false); // 데이터가 로드되었으므로 로딩 상태를 false로 설정
         }
     }
-    // 최초 마운트 시에 getTest import
+
     useEffect(() => {
         getTest();
     }, []);
+
     return (
         <div>
-            {test !== undefined && <div>{test.name}</div>}
+            {loading ? <Loading /> : test && <div>{test.name}</div>}
             <button onClick={() => navigate("move")}>
                 이거 누르면 화면 바뀜
             </button>
