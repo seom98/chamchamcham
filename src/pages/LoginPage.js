@@ -9,17 +9,27 @@ export default function LoginPage() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true);
             await signInWithEmailAndPassword(auth, email, password);
-            alert("로그인 성공");
             navigate("/move");
         } catch (error) {
             alert("로그인 실패: " + error.message);
+        } finally {
+            setLoading(false);
         }
     };
+    if (loading) {
+        return (
+            <div>
+                <div>로그인 하는중!!! 좀만기달~~</div>
+            </div>
+        );
+    }
 
     return (
         <div>

@@ -3,16 +3,20 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [nickname, setNickname] = useState("");
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true);
             // Firebase Authentication을 통해 사용자 등록
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
@@ -30,10 +34,22 @@ export default function SignupPage() {
             });
 
             alert("회원가입 성공");
+            navigate("/login");
         } catch (error) {
             alert("회원가입 실패: " + error.message);
+        } finally {
+            setLoading(false);
         }
     };
+    if (loading) {
+        return (
+            <div>
+                <div>회원가입 하는중!!! 좀만기달~~</div>
+                <div>아 경고안달았는데 비번 6자리 이상 적어야함.</div>
+                <div>이메일 형식도 지켜야함!!</div>
+            </div>
+        );
+    }
 
     return (
         <div>

@@ -1,7 +1,6 @@
 import { db, auth } from "../firebase";
 import { useCallback, useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import Loading from "../components/Loading";
 import React from "react";
 import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 훅
 import { signOut, onAuthStateChanged } from "firebase/auth"; // onAuthStateChanged 추가
@@ -55,13 +54,31 @@ export default function TestPage() {
     };
 
     return (
-        <>
+        <div
+            style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: "0.5rem",
+                margin: "1rem",
+            }}
+        >
+            <h1>환영쓰~</h1>
             {loading ? (
-                <Loading />
+                <div>
+                    잠만요 서버 느린점 양해 부탁. <br></br>님 정보 불러오는중임
+                </div>
             ) : (
-                test && <div>님 닉네임은 {test.nickname} 임</div>
+                test && (
+                    <>
+                        <div>오 {test.nickname}~~ 현재까지</div>
+                        <h2>{test.success ? test.success : 0} 원</h2>
+                        <div>절약함!!!!</div>
+                    </>
+                )
             )}
             <button onClick={handleLogout}>로그아웃</button>
-        </>
+        </div>
     );
 }
