@@ -1,9 +1,9 @@
-import { db, auth } from "../firebase";
-import { useCallback, useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 훅
-import { signOut, onAuthStateChanged } from "firebase/auth"; // onAuthStateChanged 추가
+import { db, auth } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import s from "./TestPage.module.css";
 
 export default function TestPage() {
     const navigate = useNavigate(); // 페이지 이동 훅
@@ -61,6 +61,13 @@ export default function TestPage() {
             console.error("로그아웃 실패:", error.message);
         }
     };
+    if (loading) {
+        return (
+            <div>
+                잠만요 서버 느린점 양해 부탁. <br></br>님 정보 불러오는중임
+            </div>
+        );
+    }
 
     return (
         <div
@@ -73,12 +80,13 @@ export default function TestPage() {
                 margin: "1rem",
             }}
         >
-            <h1>환영쓰~</h1>
-            {loading ? (
+            <div className={s.flex}>
+                <div>{test.nickname} </div>
                 <div>
-                    잠만요 서버 느린점 양해 부탁. <br></br>님 정보 불러오는중임
+                    Lv.{test.level} &nbsp;&nbsp;|&nbsp;&nbsp; {test.point} P
                 </div>
-            ) : money === 0 ? (
+            </div>
+            {money === 0 ? (
                 <>
                     <div>
                         우선 {test.nickname}님의 과소비되는 목록부터적어줘{" "}
@@ -91,9 +99,15 @@ export default function TestPage() {
                 <>
                     <div>오 {test.nickname}~~ 현재까지</div>
                     <h2>
-                        {test.success ? test.success : 0}원 / {money}원
+                        {test.success}원 / {money}원
                     </h2>
                     <div>절약함!!!!</div>
+                    <br></br>
+                    <div>그리고</div>
+                    <h2>
+                        {money}원 / {money}원
+                    </h2>
+                    <div>땅에 내갖다버림</div>
                 </>
             )}
             <button onClick={handleLogout}>로그아웃</button>
