@@ -83,44 +83,54 @@ export default function PlanPage() {
     }
 
     return (
-        <div>
-            <h1>당신의 과소비목록을 적어보자!</h1>
-            <div>하루에 낭비되는 당신의 돈을 추적해보자</div>
-            <div className={s.main}>
-                {itemList.map((item, index) => (
-                    <div key={index} className={s.item}>
+        <div className={s.container}>
+            <button onClick={handleSubmit} className={s.submit}>
+                완료
+            </button>
+            <h1>과소비목록을 적어보자!</h1>
+            <div>하루에 낭비된다고 생각하는 항목을 적어보세요</div>
+            <button onClick={addItem} className={s.addItem}>
+                추가
+            </button>
+            {itemList
+                .slice()
+                .reverse()
+                .map((item, index) => (
+                    <div key={itemList.length - 1 - index} className={s.item}>
                         <div className={s.flex}>
                             <input
                                 type="text"
                                 value={item}
                                 onChange={(e) =>
-                                    handleItemNameChange(index, e.target.value)
+                                    handleItemNameChange(
+                                        itemList.length - 1 - index,
+                                        e.target.value
+                                    )
                                 }
                                 className={s.nameInput}
                             />
-                            <button onClick={() => deleteItem(index)}>
+                            <button
+                                onClick={() =>
+                                    deleteItem(itemList.length - 1 - index)
+                                }
+                            >
                                 삭제
                             </button>
                         </div>
                         <input
                             type="number"
-                            value={moneyList[index]}
+                            value={moneyList[itemList.length - 1 - index]}
                             onChange={(e) =>
-                                handleItemCostChange(index, e.target.value)
+                                handleItemCostChange(
+                                    itemList.length - 1 - index,
+                                    e.target.value
+                                )
                             }
                             className={s.costInput}
                         />
                         원
                     </div>
                 ))}
-            </div>
-
-            <button onClick={addItem} className={s.addItem}>
-                추가
-            </button>
-            <button onClick={handleSubmit} className={s.submit}>
-                완료
-            </button>
         </div>
     );
 }

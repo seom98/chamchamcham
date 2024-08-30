@@ -1,7 +1,12 @@
+.container {
+    padding-bottom: 5rem;
+    padding-top: 1rem;
+    text-align: center;
+}
+
 .item {
     width: calc(100vw - 3rem);
     background-color: var(--main7);
-    border: solid 1px var(--main3);
     margin: 1rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
@@ -21,10 +26,10 @@
 }
 
 .submit {
-    position: fixed;
     margin: 1rem;
     padding: 1rem;
     font-size: 1rem;
+    position: fixed;
     bottom: 0.5rem;
     left: 0.5rem;
     right: 0.5rem;
