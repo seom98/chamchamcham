@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
 import { doc, updateDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth"; // onAuthStateChanged 추가
+import { onAuthStateChanged } from "firebase/auth";
 import s from "./PlanPage.module.css";
+import Text from "../components/Text";
 
 export default function PlanPage() {
     const navigate = useNavigate();
-    const [itemList, setItemList] = useState(["ex)간식"]); // 아이템 리스트
-    const [moneyList, setMoneyList] = useState([3000]); // 금액 리스트
+    const [itemList, setItemList] = useState([""]); // 아이템 리스트
+    const [moneyList, setMoneyList] = useState([""]); // 금액 리스트
     const [loading, setLoading] = useState(false); // 로딩 상태 관리
     const [uid, setUid] = useState(null); // UID를 저장할 상태 추가
 
     // 아이템과 금액을 리스트에 추가하는 함수
     const addItem = () => {
-        setItemList([...itemList, "새로운항목"]);
-        setMoneyList([...moneyList, 0]);
+        setItemList([...itemList, ""]);
+        setMoneyList([...moneyList, ""]);
     };
 
     // 리스트에서 아이템을 삭제하는 함수
@@ -52,8 +53,19 @@ export default function PlanPage() {
         // 컴포넌트 언마운트 시 리스너 정리
         return () => unsubscribe();
     }, [navigate]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (
+            !(
+                itemList.every((item) => item !== "") &&
+                moneyList.every((money) => money !== "" && !isNaN(money))
+            )
+        ) {
+            alert("다 채웠는지 확인하세요~");
+            return; // 모든 필드가 채워지지 않았다면 종료
+        }
+
         try {
             setLoading(true);
 
@@ -70,6 +82,7 @@ export default function PlanPage() {
             setLoading(false);
         }
     };
+
     if (loading) {
         return (
             <div>
@@ -80,53 +93,77 @@ export default function PlanPage() {
 
     return (
         <div className={s.container}>
-            <button onClick={handleSubmit} className={s.submit}>
-                완료
-            </button>
-            <h1>과소비목록을 적어보자!</h1>
-            <div>하루에 낭비된다고 생각하는 항목을 적어보세요</div>
-            <button onClick={addItem} className={s.addItem}>
-                추가
-            </button>
-            {itemList
-                .slice()
-                .reverse()
-                .map((item, index) => (
-                    <div key={itemList.length - 1 - index} className={s.item}>
-                        <div className={s.flex}>
-                            <input
-                                type="text"
-                                value={item}
-                                onChange={(e) =>
-                                    handleItemNameChange(
-                                        itemList.length - 1 - index,
-                                        e.target.value
-                                    )
-                                }
-                                className={s.nameInput}
-                            />
-                            <button
-                                onClick={() =>
-                                    deleteItem(itemList.length - 1 - index)
-                                }
-                            >
-                                삭제
-                            </button>
+            <Text text={"과소비목록을 적어보자!"} type="big" />
+            <Text
+                text="하루에 낭비된다고 생각하는 항목을 적어보세요"
+                type="small"
+                grey
+                name={"small"}
+            />
+            <Text
+                text="그리고 지금은 수정안되니까 마지막에 신중하게 완료하세요"
+                type="small"
+                grey
+                name={"small"}
+            />
+            <div onClick={addItem} className={s.addItem}>
+                항목 추가
+            </div>
+            <div className={s.items}>
+                {itemList
+                    .slice()
+                    .reverse()
+                    .map((item, index) => (
+                        <div
+                            key={itemList.length - 1 - index}
+                            className={s.item}
+                        >
+                            <div className={s.itemTop}>
+                                <input
+                                    type="text"
+                                    placeholder="과소비되는 항목 ex) 간식"
+                                    value={item}
+                                    onChange={(e) =>
+                                        handleItemNameChange(
+                                            itemList.length - 1 - index,
+                                            e.target.value
+                                        )
+                                    }
+                                    className={s.nameInput}
+                                />
+                                <div
+                                    onClick={() =>
+                                        deleteItem(itemList.length - 1 - index)
+                                    }
+                                    className={s.deleteButton}
+                                >
+                                    삭제
+                                </div>
+                            </div>
+                            <div className={s.itemBottom}>
+                                <input
+                                    type="number"
+                                    pattern="[0-9]*"
+                                    inputmode="numeric"
+                                    placeholder="ex) 3000"
+                                    value={
+                                        moneyList[itemList.length - 1 - index]
+                                    }
+                                    onChange={(e) =>
+                                        handleItemCostChange(
+                                            itemList.length - 1 - index,
+                                            e.target.value
+                                        )
+                                    }
+                                    className={s.costInput}
+                                />
+                            </div>
                         </div>
-                        <input
-                            type="number"
-                            value={moneyList[itemList.length - 1 - index]}
-                            onChange={(e) =>
-                                handleItemCostChange(
-                                    itemList.length - 1 - index,
-                                    e.target.value
-                                )
-                            }
-                            className={s.costInput}
-                        />
-                        원
-                    </div>
-                ))}
+                    ))}
+            </div>
+            <div onClick={handleSubmit} className={s.submit}>
+                완료
+            </div>
         </div>
     );
 }
