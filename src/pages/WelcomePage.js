@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading"; // 로딩 컴포넌트 import
+import s from "./WelcomePage.module.css";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
@@ -26,15 +27,11 @@ export default function WelcomePage() {
     }
 
     return (
-        <div>
-            <div>참참참에 오신걸 환영ㅋ</div>
-            <div>어떤 사이트인지는 나중에 알려줌ㅋㅋ</div>
-            <button onClick={() => navigate("/signup")}>
-                대충 회원가입 화면가는 버튼
-            </button>
-            <button onClick={() => navigate("/login")}>
-                대충 로그인 화면가는 버튼
-            </button>
+        <div className={s.flexCenter}>
+            <h1>참참참</h1>
+            <div>참고 참고 참자!!</div>
+            <button onClick={() => navigate("/signup")}>회원가입</button>
+            <button onClick={() => navigate("/login")}>로그인</button>
         </div>
     );
 }

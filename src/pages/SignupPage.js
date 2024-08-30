@@ -5,17 +5,62 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 
 export default function SignupPage() {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [nickname, setNickname] = useState("");
-    const navigate = useNavigate();
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        confirmPassword: "",
+    });
     const [loading, setLoading] = useState(false);
+
+    // 이메일 형식을 실시간으로 검증
+    const handleEmailChange = (e) => {
+        const value = e.target.value;
+        setEmail(value);
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            email: !emailRegex.test(value)
+                ? "유효한 이메일 형식을 입력하세요."
+                : "",
+        }));
+    };
+
+    // 비밀번호 입력이 변경될 때마다 길이 검증
+    const handlePasswordChange = (e) => {
+        const value = e.target.value;
+        setPassword(value);
+
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            password:
+                value.length < 6
+                    ? "비밀번호는 최소 6자리 이상이어야 합니다."
+                    : "",
+        }));
+    };
+
+    // 비밀번호 확인 입력 필드가 변경될 때마다 비밀번호 일치 여부 확인
+    const handleConfirmPasswordChange = (e) => {
+        const value = e.target.value;
+
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            confirmPassword:
+                value !== password ? "비밀번호가 일치하지 않습니다." : "",
+        }));
+    };
 
     const handleSignup = async (e) => {
         e.preventDefault();
+
         try {
             setLoading(true);
-            // Firebase Authentication을 통해 사용자 등록
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
                 email,
@@ -23,7 +68,6 @@ export default function SignupPage() {
             );
             const user = userCredential.user;
 
-            // Firestore에 사용자 데이터 저장
             await setDoc(doc(db, "users", user.uid), {
                 failure: 0,
                 success: 0,
@@ -44,6 +88,7 @@ export default function SignupPage() {
             setLoading(false);
         }
     };
+
     if (loading) {
         return (
             <div>
@@ -57,30 +102,65 @@ export default function SignupPage() {
     return (
         <div>
             <h2>회원가입</h2>
-            <form onSubmit={handleSignup}>
-                <input
-                    type="email"
-                    placeholder="이메일"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="닉네임"
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
-                    required
-                />
-                <button type="submit">회원가입</button>
-            </form>
+            <div>
+                혹시 벌써 회원이세요?{" "}
+                <b onClick={() => navigate("/login")}>로그인하기</b>
+            </div>
+            <input
+                type="email"
+                placeholder="이메일"
+                value={email}
+                onChange={handleEmailChange}
+                required
+            />
+            <p
+                style={{
+                    color: "var(--red)",
+                    fontSize: "0.8rem",
+                    marginLeft: "1rem",
+                }}
+            >
+                {errors.email}
+            </p>
+            <input
+                type="password"
+                placeholder="비밀번호"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+            />
+            <p
+                style={{
+                    color: "var(--red)",
+                    fontSize: "0.8rem",
+                    marginLeft: "1rem",
+                }}
+            >
+                {errors.password}
+            </p>
+            <input
+                type="password"
+                placeholder="비밀번호 확인"
+                onChange={handleConfirmPasswordChange}
+                required
+            />
+            <p
+                style={{
+                    color: "var(--red)",
+                    fontSize: "0.8rem",
+                    marginLeft: "1rem",
+                }}
+            >
+                {errors.confirmPassword}
+            </p>
+            <input
+                type="text"
+                placeholder="닉네임"
+                value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
+                required
+            />
+            <button onClick={() => handleSignup}>회원가입</button>
         </div>
     );
 }

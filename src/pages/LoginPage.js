@@ -34,6 +34,10 @@ export default function LoginPage() {
     return (
         <div>
             <h2>로그인</h2>
+            <div>
+                혹시 아직 회원이 아니세요?
+                <b onClick={() => navigate("/signup")}>회원가입하기</b>
+            </div>
             <form onSubmit={handleLogin}>
                 <input
                     type="email"
