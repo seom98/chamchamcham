@@ -106,61 +106,63 @@ export default function SignupPage() {
                 혹시 벌써 회원이세요?{" "}
                 <b onClick={() => navigate("/login")}>로그인하기</b>
             </div>
-            <input
-                type="email"
-                placeholder="이메일"
-                value={email}
-                onChange={handleEmailChange}
-                required
-            />
-            <p
-                style={{
-                    color: "var(--red)",
-                    fontSize: "0.8rem",
-                    marginLeft: "1rem",
-                }}
-            >
-                {errors.email}
-            </p>
-            <input
-                type="password"
-                placeholder="비밀번호"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-            />
-            <p
-                style={{
-                    color: "var(--red)",
-                    fontSize: "0.8rem",
-                    marginLeft: "1rem",
-                }}
-            >
-                {errors.password}
-            </p>
-            <input
-                type="password"
-                placeholder="비밀번호 확인"
-                onChange={handleConfirmPasswordChange}
-                required
-            />
-            <p
-                style={{
-                    color: "var(--red)",
-                    fontSize: "0.8rem",
-                    marginLeft: "1rem",
-                }}
-            >
-                {errors.confirmPassword}
-            </p>
-            <input
-                type="text"
-                placeholder="닉네임"
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
-                required
-            />
-            <button onClick={() => handleSignup}>회원가입</button>
+            <form onSubmit={handleSignup}>
+                <input
+                    type="email"
+                    placeholder="이메일"
+                    value={email}
+                    onChange={handleEmailChange}
+                    required
+                />
+                <p
+                    style={{
+                        color: "var(--red)",
+                        fontSize: "0.8rem",
+                        marginLeft: "1rem",
+                    }}
+                >
+                    {errors.email}
+                </p>
+                <input
+                    type="password"
+                    placeholder="비밀번호"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    required
+                />
+                <p
+                    style={{
+                        color: "var(--red)",
+                        fontSize: "0.8rem",
+                        marginLeft: "1rem",
+                    }}
+                >
+                    {errors.password}
+                </p>
+                <input
+                    type="password"
+                    placeholder="비밀번호 확인"
+                    onChange={handleConfirmPasswordChange}
+                    required
+                />
+                <p
+                    style={{
+                        color: "var(--red)",
+                        fontSize: "0.8rem",
+                        marginLeft: "1rem",
+                    }}
+                >
+                    {errors.confirmPassword}
+                </p>
+                <input
+                    type="text"
+                    placeholder="닉네임"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value)}
+                    required
+                />
+                <button type="submit">회원가입</button>
+            </form>
         </div>
     );
 }
