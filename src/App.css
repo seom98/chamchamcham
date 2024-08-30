@@ -21,6 +21,29 @@
     --main2: linear-gradient(135deg, #8696ea 0%, #ea86aa 100%);
     --main3: linear-gradient(90deg, #8696ea 0%, #ea86aa 50%, #eace86 100%);
 }
+.dark {
+    --blue: #8696ea;
+    --purple: #ca95ff;
+    --pink: #ea86aa;
+    --red: #e96979;
+    --yellow: #eace86;
+    --white: #f7fafc;
+    --grey9: #f7fafc;
+    --grey8: #edf2f7;
+    --grey7: #e2e8f0;
+    --grey6: #cbd5e0;
+    --grey5: #a0aec0;
+    --grey4: #718096;
+    --grey3: #4a5568;
+    --grey2: #2d3748;
+    --grey1: #1a202c;
+    /*  */
+    --blur1: #ffffff33;
+    --blur2: #ffffff80;
+    --main1: linear-gradient(135deg, #ea86aa 50%, #eace86 100%);
+    --main2: linear-gradient(135deg, #8696ea 0%, #ea86aa 100%);
+    --main3: linear-gradient(90deg, #8696ea 0%, #ea86aa 50%, #eace86 100%);
+}
 
 @font-face {
     font-family: "TTHakgyoansimJiugaeR";
