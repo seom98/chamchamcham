@@ -32,7 +32,6 @@
             "sizes": "120x120",
             "type": "image/png"
         },
-
         {
             "src": "./icons/apple-touch-icon-144x144.png",
             "sizes": "144x144",
@@ -41,11 +40,6 @@
         {
             "src": "./icons/apple-touch-icon-152x152.png",
             "sizes": "152x152",
-            "type": "image/png"
-        },
-        {
-            "src": "./icons/favicon-512x512.png",
-            "sizes": "512x512",
             "type": "image/png"
         }
     ],
