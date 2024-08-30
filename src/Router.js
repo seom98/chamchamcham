@@ -7,6 +7,7 @@ const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
 const TestPage = React.lazy(() => import("./pages/TestPage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage"));
+const PlanPage = React.lazy(() => import("./pages/PlanPage"));
 
 export default function Router() {
     return (
@@ -18,6 +19,7 @@ export default function Router() {
                         <Route path="/move" element={<TestPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/signup" element={<SignupPage />} />
+                        <Route path="/plan" element={<PlanPage />} />
                     </Route>
                 </Routes>
             </Suspense>

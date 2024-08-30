@@ -1,0 +1,36 @@
+.item {
+    width: calc(100vw - 3rem);
+    background-color: var(--main7);
+    border: solid 1px var(--main3);
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addItem {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.submit {
+    position: fixed;
+    margin: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+}
+
+.main {
+    height: 75vh;
+    overflow: scroll;
+}

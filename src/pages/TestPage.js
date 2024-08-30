@@ -9,6 +9,7 @@ export default function TestPage() {
     const navigate = useNavigate(); // 페이지 이동 훅
     const [test, setTest] = useState(null); // 초기 상태를 null로 설정
     const [loading, setLoading] = useState(true); // 로딩 상태 관리
+    const [money, setMoney] = useState(0); // 로딩 상태 관리
 
     const getTest = useCallback(async (uid) => {
         try {
@@ -43,6 +44,14 @@ export default function TestPage() {
         return () => unsubscribe();
     }, [getTest, navigate]);
 
+    // test 상태가 업데이트될 때 money를 계산하는 useEffect
+    useEffect(() => {
+        if (test && test.moneyList) {
+            let m = test.moneyList.reduce((acc, curr) => acc + curr, 0);
+            setMoney(m);
+        }
+    }, [test]);
+
     const handleLogout = async () => {
         try {
             await signOut(auth);
@@ -69,14 +78,23 @@ export default function TestPage() {
                 <div>
                     잠만요 서버 느린점 양해 부탁. <br></br>님 정보 불러오는중임
                 </div>
+            ) : test.itemList == null ? (
+                <>
+                    <div>
+                        우선 {test.nickname}님의 과소비되는 목록부터적어줘{" "}
+                    </div>
+                    <button onClick={() => navigate("/plan")}>
+                        소비목록 적으러가기
+                    </button>
+                </>
             ) : (
-                test && (
-                    <>
-                        <div>오 {test.nickname}~~ 현재까지</div>
-                        <h2>{test.success ? test.success : 0} 원</h2>
-                        <div>절약함!!!!</div>
-                    </>
-                )
+                <>
+                    <div>오 {test.nickname}~~ 현재까지</div>
+                    <h2>
+                        {test.success ? test.success : 0}원 / {money}원
+                    </h2>
+                    <div>절약함!!!!</div>
+                </>
             )}
             <button onClick={handleLogout}>로그아웃</button>
         </div>

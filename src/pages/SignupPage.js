@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
-import { setDoc, doc } from "firebase/firestore";
-import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { db, auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
 
 export default function SignupPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
     const [nickname, setNickname] = useState("");
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -28,7 +26,6 @@ export default function SignupPage() {
             // Firestore에 사용자 데이터 저장
             await setDoc(doc(db, "users", user.uid), {
                 email: user.email,
-                name: name,
                 nickname: nickname,
                 uid: user.uid,
             });
@@ -67,13 +64,6 @@ export default function SignupPage() {
                     placeholder="비밀번호"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="이름"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
                     required
                 />
                 <input
