@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth"; // onAuthStateChanged 추가
 import s from "./PlanPage.module.css";
 
@@ -58,11 +58,7 @@ export default function PlanPage() {
             setLoading(true);
 
             // Firestore에 사용자 데이터 저장
-            await setDoc(doc(db, "users", uid), {
-                failure: 0,
-                success: 0,
-                point: 0,
-                level: 1,
+            await updateDoc(doc(db, "users", uid), {
                 itemList: itemList,
                 moneyList: moneyList,
             });

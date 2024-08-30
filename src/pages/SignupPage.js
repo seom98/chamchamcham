@@ -25,6 +25,12 @@ export default function SignupPage() {
 
             // Firestore에 사용자 데이터 저장
             await setDoc(doc(db, "users", user.uid), {
+                failure: 0,
+                success: 0,
+                point: 0,
+                level: 1,
+                itemList: [],
+                moneyList: [],
                 email: user.email,
                 nickname: nickname,
                 uid: user.uid,

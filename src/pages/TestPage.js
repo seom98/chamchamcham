@@ -78,7 +78,7 @@ export default function TestPage() {
                 <div>
                     잠만요 서버 느린점 양해 부탁. <br></br>님 정보 불러오는중임
                 </div>
-            ) : test.itemList == null ? (
+            ) : money === 0 ? (
                 <>
                     <div>
                         우선 {test.nickname}님의 과소비되는 목록부터적어줘{" "}
