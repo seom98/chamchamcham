@@ -33,7 +33,7 @@ export default function WelcomePage() {
             <div>참고 참고 참자!!</div>
             <button onClick={() => navigate("/signup")}>회원가입</button>
             <button onClick={() => navigate("/login")}>로그인</button>
-            <Text text={"version_0.1.1"} type="small" grey />
+            <Text text={"version_0.1.2"} type="small" grey />
             <Text
                 text={"환경설정하기"}
                 type="small"
