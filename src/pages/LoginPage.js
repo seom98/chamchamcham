@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 export default function LoginPage() {
     const navigate = useNavigate();
@@ -25,9 +26,9 @@ export default function LoginPage() {
     };
     if (loading) {
         return (
-            <div>
+            <Loading>
                 <div>로그인 하는중!!! 좀만기달~~</div>
-            </div>
+            </Loading>
         );
     }
 
