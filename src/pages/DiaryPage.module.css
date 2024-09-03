@@ -1,0 +1,74 @@
+.main {
+    padding-top: 4rem;
+    width: 100%;
+    padding-bottom: 6rem;
+}
+.week,
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.6rem;
+    margin: 1rem;
+}
+.week {
+    text-align: center;
+}
+
+/* 기본 날짜칸  */
+.date {
+    position: relative;
+    padding: 0.3rem 0.3rem 0.3rem;
+    font-size: x-small;
+    border-radius: 0.5rem;
+    height: 3.5rem;
+    background-color: #283055;
+    border: solid 2px var(--main2);
+    overflow: hidden;
+}
+
+.sunday {
+    color: var(--red);
+}
+
+.saturday {
+    color: var(--blue);
+}
+
+.today {
+    background-color: var(--grey3);
+    border: solid 2px var(--main2);
+    box-shadow: 0 0 10px 0 var(--main2);
+}
+.otherMonth {
+    color: #00000000;
+    background-color: #00000000;
+    border: none;
+    text-shadow: none;
+    z-index: -1;
+}
+.grayedOut {
+    background-color: var(--main1);
+    border: solid 2px var(--main2);
+}
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem 0;
+    font-size: x-large;
+}
+.icon_container {
+    width: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.number {
+    position: absolute;
+    z-index: 10;
+    top: 0.3rem;
+    left: 0.3rem;
+}
+.popup {
+    animation: eff 1.5s infinite;
+}

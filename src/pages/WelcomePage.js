@@ -24,7 +24,7 @@ export default function WelcomePage() {
     }, [navigate]);
 
     if (loading) {
-        return <Loading />; // 로딩 상태일 때 로딩 컴포넌트 표시
+        return <Loading>정보를 불러오는중</Loading>; // 로딩 상태일 때 로딩 컴포넌트 표시
     }
 
     return (
