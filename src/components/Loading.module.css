@@ -1,0 +1,19 @@
+.loadingContainer {
+    position: fixed;
+    top: 35%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loadingGif {
+    width: 7rem;
+}
+
+.loadingText {
+    color: var(--grey8);
+}
