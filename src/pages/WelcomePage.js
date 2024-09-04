@@ -38,7 +38,7 @@ export default function WelcomePage() {
         <>
             <PositionStart>
                 <Text12 margin={"0 1rem"} grey>
-                    version_0.1.9
+                    version_0.2.0
                 </Text12>
             </PositionStart>
             <PositionEnd>
