@@ -4,7 +4,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading"; // 로딩 컴포넌트 import
 import s from "./WelcomePage.module.css";
-import Text from "../components/Text";
+import Text from "../components/ui/atoms/Text";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
@@ -29,18 +29,11 @@ export default function WelcomePage() {
 
     return (
         <div className={s.flexCenter}>
+            <Text text={"version_0.1.3"} type="small" grey />
             <h1>참참참</h1>
             <div>참고 참고 참자!!</div>
             <button onClick={() => navigate("/signup")}>회원가입</button>
             <button onClick={() => navigate("/login")}>로그인</button>
-            <Text text={"version_0.1.3"} type="small" grey />
-            <Text
-                text={"환경설정하기"}
-                type="small"
-                blue
-                name={"small"}
-                onClick={() => navigate("/setting")}
-            />
         </div>
     );
 }

@@ -2,7 +2,7 @@ import s from "./SettingPage.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Text from "../components/Text";
+import Text from "../components/ui/atoms/Text";
 
 export default function SettingPage() {
     const [toggle, setToggle] = useState(false);

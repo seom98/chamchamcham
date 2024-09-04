@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, collection, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import s from "./PlanPage.module.css";
-import Text from "../components/Text";
+import Text from "../components/ui/atoms/Text";
 
 export default function PlanPage() {
     const navigate = useNavigate();
@@ -59,7 +59,7 @@ export default function PlanPage() {
         if (
             !(
                 itemList.every((item) => item !== "") &&
-                moneyList.every((money) => money !== "" && !isNaN(money))
+                moneyList.every((money) => money > 0 && !isNaN(money))
             )
         ) {
             alert("다 채웠는지 확인하세요~");
@@ -69,10 +69,28 @@ export default function PlanPage() {
         try {
             setLoading(true);
 
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
+            const day = String(today.getDate()).padStart(2, "0");
+            const formattedDate = `${year}-${month}-${day}`;
+
             // Firestore에 사용자 데이터 저장
             await updateDoc(doc(db, "users", uid), {
                 itemList: itemList,
                 moneyList: moneyList,
+            });
+
+            // Firestore에 서브컬렉션 생성 및 데이터 추가
+            const dateDocRef = doc(
+                collection(doc(db, "users", uid), "date"),
+                formattedDate
+            );
+            await setDoc(dateDocRef, {
+                itemList: itemList,
+                moneyList: moneyList,
+                success: 0,
+                failure: 0,
             });
 
             navigate("/move");
