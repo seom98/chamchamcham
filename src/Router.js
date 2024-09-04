@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Loading from "./components/Loading";
 import App from "./App";
+import ScrollToTop from "./components/ScrollToTop";
 
 const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
 const TestPage = React.lazy(() => import("./pages/TestPage"));
@@ -14,6 +15,7 @@ const DiaryPage = React.lazy(() => import("./pages/DiaryPage"));
 export default function Router() {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Suspense fallback={<Loading>정보를 불러오는중</Loading>}>
                 <Routes>
                     <Route path="/" element={<App />}>
