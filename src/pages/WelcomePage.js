@@ -29,7 +29,7 @@ export default function WelcomePage() {
 
     return (
         <div className={s.flexCenter}>
-            <Text text={"version_0.1.3"} type="small" grey />
+            <Text text={"version_0.1.4"} type="small" grey />
             <h1>참참참</h1>
             <div>참고 참고 참자!!</div>
             <button onClick={() => navigate("/signup")}>회원가입</button>
