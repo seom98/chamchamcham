@@ -1,4 +1,29 @@
 import styled, { css, keyframes } from "styled-components";
+import React, { useState } from "react";
+
+// 터치 효과를 위한 커스텀 훅 usePress
+const usePress = () => {
+    const [isPressed, setIsPressed] = useState(false);
+
+    const handleTouchStart = () => {
+        setIsPressed(true);
+    };
+
+    const handleTouchEnd = () => {
+        setIsPressed(false);
+    };
+
+    const handleTouchCancel = () => {
+        setIsPressed(false);
+    };
+
+    return {
+        isPressed,
+        handleTouchStart,
+        handleTouchEnd,
+        handleTouchCancel,
+    };
+};
 
 // 그라데이션 애니메이션 정의
 const gradient = keyframes`
@@ -10,20 +35,17 @@ const gradient = keyframes`
   }
 `;
 
-// 기본 텍스트 스타일을 위한 베이스 컴포넌트
+// 기본 버튼 스타일
 const BaseButton = styled.button`
     user-select: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    margin: ${(props) => props.margin || "0.5rem 2.5rem"};
-    padding: ${(props) => props.padding || "1rem 3.5rem"};
+    margin: 0.5rem 2.5rem;
+    padding: 1rem 3.5rem;
     border: none;
     font-size: 20px;
     letter-spacing: -0.05em;
-    width: calc(100vw - 5rem);
     border-radius: 3rem;
-    transition: 0.3s;
+    transition: transform 0.2s;
+    width: calc(100vw - 5rem);
     ${(props) =>
         props.bold &&
         css`
@@ -34,26 +56,56 @@ const BaseButton = styled.button`
         css`
             font-weight: 300;
         `};
-    &:hover {
-        scale: 0.9;
-    }
-    &:active {
-        scale: 1;
-    }
 `;
 
-// ButtonWhite 컴포넌트
-export const ButtonWhite = styled(BaseButton)`
+// 화이트 버튼 스타일
+const ButtonWhiteStyled = styled(BaseButton)`
     background-color: var(--grey1);
-    box-shadow: 0 2px 25px 0 var(--shadow1);
+    color: var(--black);
 `;
 
-// ButtonAwesome 컴포넌트
-export const ButtonAwesome = styled(BaseButton)`
-    color: var(--white);
+// 어썸 버튼 스타일
+const ButtonAwesomeStyled = styled(BaseButton)`
+    background-color: transparent;
     background-image: var(--awesome);
     background-size: 300% 100%;
-    background-position-x: 0%;
     animation: ${gradient} 2s linear infinite;
+    color: var(--white);
     box-shadow: 0 2px 25px 0 var(--shadow2);
 `;
+
+// 화이트 버튼 컴포넌트
+export const ButtonWhite = ({ children, ...props }) => {
+    const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
+        usePress();
+
+    return (
+        <ButtonWhiteStyled
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchCancel}
+            style={{ transform: isPressed ? "scale(0.95)" : "scale(1)" }}
+            {...props}
+        >
+            {children}
+        </ButtonWhiteStyled>
+    );
+};
+
+// 어썸 버튼 컴포넌트
+export const ButtonAwesome = ({ children, ...props }) => {
+    const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
+        usePress();
+
+    return (
+        <ButtonAwesomeStyled
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchCancel}
+            style={{ transform: isPressed ? "scale(0.95)" : "scale(1)" }}
+            {...props}
+        >
+            {children}
+        </ButtonAwesomeStyled>
+    );
+};
