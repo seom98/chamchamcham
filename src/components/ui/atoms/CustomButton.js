@@ -71,6 +71,7 @@ const BaseButton = styled.button`
 
 // 화이트 버튼 스타일
 const ButtonWhiteStyled = styled(BaseButton)`
+    box-shadow: 0 2px 25px 0 var(--shadow1);
     background-color: var(--grey1);
     color: var(--black);
 `;
