@@ -47,7 +47,7 @@ const BaseButton = styled.button`
     font-size: 20px;
     letter-spacing: -0.05em;
     border-radius: 3rem;
-    transition: transform 0.1s;
+    transition: transform 0.3s;
     border: none;
     outline: none;
     width: calc(100vw - 5rem);
