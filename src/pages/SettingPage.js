@@ -2,7 +2,6 @@ import s from "./SettingPage.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Text from "../components/ui/atoms/Text";
 
 export default function SettingPage() {
     const [toggle, setToggle] = useState(false);
@@ -26,7 +25,7 @@ export default function SettingPage() {
     };
     return (
         <div className={s.box}>
-            <Text text={"환경설정"} type="big" name="center" />
+            환경설정
             <div onClick={() => navigate(-1)}>뒤로 가기</div>
             <div className={s.setting}>
                 <div>다크모드</div>

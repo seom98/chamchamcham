@@ -4,7 +4,6 @@ import { db, auth } from "../firebase";
 import { doc, updateDoc, collection, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import s from "./PlanPage.module.css";
-import Text from "../components/ui/atoms/Text";
 
 export default function PlanPage() {
     const navigate = useNavigate();
@@ -111,19 +110,6 @@ export default function PlanPage() {
 
     return (
         <div className={s.container}>
-            <Text text={"과소비목록을 적어보자!"} type="big" />
-            <Text
-                text="하루에 낭비된다고 생각하는 항목을 적어보세요"
-                type="small"
-                grey
-                name={"small"}
-            />
-            <Text
-                text="그리고 지금은 수정안되니까 마지막에 신중하게 완료하세요"
-                type="small"
-                grey
-                name={"small"}
-            />
             <div onClick={addItem} className={s.addItem}>
                 항목 추가
             </div>
