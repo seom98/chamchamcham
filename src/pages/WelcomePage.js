@@ -8,7 +8,10 @@ import {
     ButtonAwesome,
     ButtonWhite,
 } from "../components/ui/atoms/CustomButton";
-import { PositionEnd } from "../components/ui/molecules/CustomPosition";
+import {
+    PositionEnd,
+    PositionStart,
+} from "../components/ui/molecules/CustomPosition";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
@@ -33,9 +36,11 @@ export default function WelcomePage() {
 
     return (
         <>
-            <Text12 margin={"1rem"} grey>
-                version_0.1.8
-            </Text12>
+            <PositionStart>
+                <Text12 margin={"0 1rem"} grey>
+                    version_0.1.9
+                </Text12>
+            </PositionStart>
             <PositionEnd>
                 <Text16 grey center light>
                     아무 것도 하지 않고
