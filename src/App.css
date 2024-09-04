@@ -17,9 +17,17 @@
     /*  */
     --blur1: #ffffff33;
     --blur2: #ffffff80;
-    --main1: linear-gradient(135deg, #ea86aa 50%, #eace86 100%);
-    --main2: linear-gradient(135deg, #8696ea 0%, #ea86aa 100%);
-    --main3: linear-gradient(90deg, #8696ea 0%, #ea86aa 50%, #eace86 100%);
+    --shadow1: #a0aec038;
+    --shadow2: #8697ea38;
+    --awesome: linear-gradient(
+        60deg,
+        #8696ea 0%,
+        #ca95ff 25%,
+        #ea86aa 48%,
+        #ea86aa 52%,
+        #ca95ff 75%,
+        #8696ea 100%
+    );
 }
 .dark {
     --blue: #8696ea;
@@ -40,35 +48,72 @@
     /*  */
     --blur1: #ffffff33;
     --blur2: #ffffff80;
-    --main1: linear-gradient(135deg, #ea86aa 50%, #eace86 100%);
-    --main2: linear-gradient(135deg, #8696ea 0%, #ea86aa 100%);
-    --main3: linear-gradient(90deg, #8696ea 0%, #ea86aa 50%, #eace86 100%);
+    --shadow1: #a0aec038;
+    --shadow2: #8697ea38;
+    --awesome: linear-gradient(
+        60deg,
+        #8696ea 0%,
+        #ca95ff 25%,
+        #ea86aa 48%,
+        #ea86aa 52%,
+        #ca95ff 75%,
+        #8696ea 100%
+    );
 }
 
 @font-face {
-    font-family: "TTHakgyoansimJiugaeR";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimJiugaeR.woff2")
-        format("woff2");
-    font-weight: normal;
+    font-family: "EsaManru";
+    font-weight: 300;
     font-style: normal;
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruLight.eot");
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruLight.eot?#iefix")
+            format("embedded-opentype"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruLight.woff2")
+            format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruLight.woff")
+            format("woff"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruLight.ttf")
+            format("truetype");
+    font-display: swap;
 }
+
 @font-face {
-    font-family: "GongGothicMedium";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff")
-        format("woff");
-    font-weight: normal;
+    font-family: "EsaManru";
+    font-weight: 500;
     font-style: normal;
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruMedium.eot");
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruMedium.eot?#iefix")
+            format("embedded-opentype"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruMedium.woff2")
+            format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruMedium.woff")
+            format("woff"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruMedium.ttf")
+            format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "EsaManru";
+    font-weight: 700;
+    font-style: normal;
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruBold.eot");
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruBold.eot?#iefix")
+            format("embedded-opentype"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruBold.woff2")
+            format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruBold.woff")
+            format("woff"),
+        url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruBold.ttf")
+            format("truetype");
+    font-display: swap;
 }
 /* 
   얇은 글씨 300
-  기본 글씨 400
+  기본 글씨 500
   굵은 글씨 700
    */
 
-:root {
-    --gmarket-sans: "GongGothicMedium";
-    /* --noto-sans: -apple-system, "Noto Sans KR", sans-serif; */
-}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -91,13 +136,13 @@ h4,
 h5,
 h6,
 button {
-    font-family: var(--gmarket-sans);
-    font-weight: 100;
+    font-family: "EsaManru";
+    font-weight: 400;
     margin: 0;
     padding: 0;
     color: var(--grey8);
 }
-button,
+
 input {
     background-color: var(--grey3);
     border: solid 1px var(--grey3);
@@ -112,10 +157,6 @@ input {
 input {
     width: calc(100vw - 5rem);
     outline: none;
-}
-
-button {
-    width: calc(100vw - 4rem);
 }
 
 input:focus {
