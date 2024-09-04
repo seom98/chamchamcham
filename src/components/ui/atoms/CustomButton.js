@@ -37,7 +37,12 @@ const gradient = keyframes`
 
 // 기본 버튼 스타일
 const BaseButton = styled.button`
+    /* 드래그 금지 */
     user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
     margin: 0.5rem 2.5rem;
     padding: 1rem 3.5rem;
     border: none;
@@ -45,6 +50,7 @@ const BaseButton = styled.button`
     letter-spacing: -0.05em;
     border-radius: 3rem;
     transition: transform 0.2s;
+    outline: none;
     width: calc(100vw - 5rem);
     ${(props) =>
         props.bold &&
@@ -56,6 +62,12 @@ const BaseButton = styled.button`
         css`
             font-weight: 300;
         `};
+    &:active {
+        background-color: transparent;
+    }
+    &:focus {
+        outline: none;
+    }
 `;
 
 // 화이트 버튼 스타일
