@@ -3,8 +3,12 @@ import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading"; // 로딩 컴포넌트 import
-import s from "./WelcomePage.module.css";
-import Text from "../components/ui/atoms/Text";
+import { Text12, Text16, Text36 } from "../components/ui/atoms/CuntomText";
+import {
+    ButtonAwesome,
+    ButtonWhite,
+} from "../components/ui/atoms/CustomButton";
+import { PositionEnd } from "../components/ui/molecules/CustomPosition";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
@@ -28,12 +32,27 @@ export default function WelcomePage() {
     }
 
     return (
-        <div className={s.flexCenter}>
-            <Text text={"version_0.1.4"} type="small" grey />
-            <h1>참참참</h1>
-            <div>참고 참고 참자!!</div>
-            <button onClick={() => navigate("/signup")}>회원가입</button>
-            <button onClick={() => navigate("/login")}>로그인</button>
-        </div>
+        <>
+            <Text12 margin={"1rem"} grey>
+                version_0.1.5
+            </Text12>
+            <PositionEnd>
+                <Text16 grey center>
+                    아무 것도 하지 않고
+                </Text16>
+                <Text16 grey center>
+                    돈을 버는 아주 쉬운 방법
+                </Text16>
+                <Text36 awesome margin={"1rem 1rem 15rem"} center>
+                    참고 참고 참기!!
+                </Text36>
+                <ButtonWhite onClick={() => navigate("/login")}>
+                    로그인
+                </ButtonWhite>
+                <ButtonAwesome onClick={() => navigate("/signup")}>
+                    회원가입
+                </ButtonAwesome>
+            </PositionEnd>
+        </>
     );
 }
