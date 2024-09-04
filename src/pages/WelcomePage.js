@@ -34,7 +34,7 @@ export default function WelcomePage() {
     return (
         <>
             <Text12 margin={"1rem"} grey>
-                version_0.1.7
+                version_0.1.8
             </Text12>
             <PositionEnd>
                 <Text16 grey center light>

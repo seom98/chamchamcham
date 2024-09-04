@@ -39,17 +39,16 @@ const gradient = keyframes`
 const BaseButton = styled.button`
     /* 드래그 금지 */
     user-select: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent; // 버튼클릭시 하이라이트 제거!!!
 
     margin: 0.5rem 2.5rem;
     padding: 1rem 3.5rem;
-    border: none;
     font-size: 20px;
     letter-spacing: -0.05em;
     border-radius: 3rem;
-    transition: transform 0.2s;
+    transition: transform 0.1s;
+    border: none;
     outline: none;
     width: calc(100vw - 5rem);
     ${(props) =>
@@ -63,7 +62,7 @@ const BaseButton = styled.button`
             font-weight: 300;
         `};
     &:active {
-        background-color: transparent;
+        outline: none;
     }
     &:focus {
         outline: none;
