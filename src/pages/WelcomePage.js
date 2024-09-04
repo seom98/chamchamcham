@@ -37,19 +37,19 @@ export default function WelcomePage() {
                 version_0.1.5
             </Text12>
             <PositionEnd>
-                <Text16 grey center>
+                <Text16 grey center light>
                     아무 것도 하지 않고
                 </Text16>
-                <Text16 grey center>
+                <Text16 grey center light>
                     돈을 버는 아주 쉬운 방법
                 </Text16>
                 <Text36 awesome margin={"1rem 1rem 15rem"} center>
-                    참고 참고 참기!!
+                    참고 참고 참기!
                 </Text36>
-                <ButtonWhite onClick={() => navigate("/login")}>
+                <ButtonWhite onClick={() => navigate("/login")} light>
                     로그인
                 </ButtonWhite>
-                <ButtonAwesome onClick={() => navigate("/signup")}>
+                <ButtonAwesome onClick={() => navigate("/signup")} light>
                     회원가입
                 </ButtonAwesome>
             </PositionEnd>
