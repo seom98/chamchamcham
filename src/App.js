@@ -1,13 +1,11 @@
 import "./App.css";
 import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
+import Container from "./components/templates/Container";
 
 export default function App() {
-    useEffect(() => {
-        const bgMode = window.localStorage.getItem("bgMode");
-        if (bgMode === "dark") {
-            document.getElementsByTagName("html")[0].classList.add("dark");
-        }
-    }, []);
-    return <Outlet />;
+    return (
+        <Container>
+            <Outlet />
+        </Container>
+    );
 }

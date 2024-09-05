@@ -2,7 +2,9 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Loading from "./components/Loading";
 import App from "./App";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./components/templates/ScrollToTop";
+import DarkModeCheck from "./components/templates/DarkModeCheck";
+import Title from "./components/ui/organisms/Title";
 
 const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
 const TestPage = React.lazy(() => import("./pages/TestPage"));
@@ -15,8 +17,15 @@ const DiaryPage = React.lazy(() => import("./pages/DiaryPage"));
 export default function Router() {
     return (
         <BrowserRouter>
+            <DarkModeCheck />
             <ScrollToTop />
-            <Suspense fallback={<Loading>정보를 불러오는중</Loading>}>
+            <Suspense
+                fallback={
+                    <Loading>
+                        <Title />
+                    </Loading>
+                }
+            >
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<WelcomePage />} />
