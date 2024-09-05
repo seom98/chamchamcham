@@ -43,7 +43,7 @@ export default function WelcomePage() {
     return (
         <Relative>
             <PositionStart>
-                <Text12 margin={"0 1rem"} grey>
+                <Text12 $margin={"0 1rem"} $grey>
                     version_0.2.1
                 </Text12>
             </PositionStart>

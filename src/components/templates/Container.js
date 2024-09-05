@@ -55,11 +55,11 @@ export default function Container({ children }) {
             <Main>{children}</Main>
             <Web className="Web">
                 <Text16>서비스는</Text16>
-                <Text16 margin={"0 0 1rem"}>
+                <Text16 $margin={"0 0 1rem"}>
                     모바일에 최적화되어있습니다.
                 </Text16>
                 <Img />
-                <Text16 margin={"1rem 0 0"}>QR코드를 찍어서</Text16>
+                <Text16 $margin={"1rem 0 0"}>QR코드를 찍어서</Text16>
                 <Text16>바로 서비스를 이용해보세요~!</Text16>
             </Web>
         </ContainerWrapper>

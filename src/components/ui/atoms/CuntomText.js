@@ -18,29 +18,29 @@ const commonStyles = css`
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
 
-    margin: ${(props) => props.margin || "0"};
+    margin: ${(props) => props.$margin || "0"};
     color: var(--grey8);
     letter-spacing: -0.05em;
     font-weight: 400;
     text-align: center;
 
     ${(props) =>
-        props.grey &&
+        props.$grey &&
         css`
             color: var(--grey5);
         `};
     ${(props) =>
-        props.red &&
+        props.$red &&
         css`
             color: var(--red);
         `};
     ${(props) =>
-        props.blue &&
+        props.$blue &&
         css`
             color: var(--blue);
         `};
     ${(props) =>
-        props.awesome &&
+        props.$awesome &&
         css`
             background-clip: text;
             -webkit-background-clip: text;
@@ -59,12 +59,12 @@ const commonStyles = css`
         `};
 
     ${(props) =>
-        props.bold &&
+        props.$bold &&
         css`
             font-weight: 700;
         `};
     ${(props) =>
-        props.light &&
+        props.$light &&
         css`
             font-weight: 300;
         `};
