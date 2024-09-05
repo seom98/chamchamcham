@@ -22,12 +22,8 @@ const commonStyles = css`
     color: var(--grey8);
     letter-spacing: -0.05em;
     font-weight: 400;
+    text-align: center;
 
-    ${(props) =>
-        props.center &&
-        css`
-            text-align: center;
-        `};
     ${(props) =>
         props.grey &&
         css`
@@ -75,7 +71,14 @@ const commonStyles = css`
 `;
 
 // 기본 텍스트 스타일을 위한 베이스 컴포넌트
-const BaseText = styled.div`
+const BaseText = styled.div.attrs((props) => ({
+    grey: undefined, // DOM으로 전달되지 않도록 함
+    red: undefined,
+    blue: undefined,
+    awesome: undefined,
+    bold: undefined,
+    light: undefined,
+}))`
     ${commonStyles}
 `;
 

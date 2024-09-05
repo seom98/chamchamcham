@@ -47,10 +47,10 @@ const BaseButton = styled.button`
     font-size: 20px;
     letter-spacing: -0.05em;
     border-radius: 3rem;
-    transition: transform 0.3s;
+    transition: 0.2s;
     border: none;
     outline: none;
-    width: calc(100vw - 5rem);
+    width: calc(100% - 5rem);
     ${(props) =>
         props.bold &&
         css`
@@ -73,7 +73,7 @@ const BaseButton = styled.button`
 const ButtonWhiteStyled = styled(BaseButton)`
     box-shadow: 0 2px 25px 0 var(--shadow1);
     background-color: var(--grey1);
-    color: var(--black);
+    color: var(--grey8);
 `;
 
 // 어썸 버튼 스타일
@@ -81,7 +81,7 @@ const ButtonAwesomeStyled = styled(BaseButton)`
     background-color: transparent;
     background-image: var(--awesome);
     background-size: 300% 100%;
-    animation: ${gradient} 2s linear infinite;
+    animation: ${gradient} 1500ms linear infinite;
     color: var(--white);
     box-shadow: 0 2px 25px 0 var(--shadow2);
 `;
@@ -96,7 +96,11 @@ export const ButtonWhite = ({ children, ...props }) => {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchCancel}
-            style={{ transform: isPressed ? "scale(0.95)" : "scale(1)" }}
+            style={{
+                backgroundColor: isPressed && "var(--grey4)",
+                boxShadow: isPressed && "0 2px 25px 0 var(--grey4)",
+                transform: isPressed && "scale(0.97)",
+            }}
             {...props}
         >
             {children}
@@ -114,7 +118,11 @@ export const ButtonAwesome = ({ children, ...props }) => {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchCancel}
-            style={{ transform: isPressed ? "scale(0.95)" : "scale(1)" }}
+            style={{
+                backgroundImage: isPressed && "var(--awesome2)",
+                boxShadow: isPressed && "0 2px 25px 0 var(--grey4)",
+                transform: isPressed && "scale(0.97)",
+            }}
             {...props}
         >
             {children}

@@ -3,7 +3,7 @@ import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading"; // 로딩 컴포넌트 import
-import { Text12, Text16, Text36 } from "../components/ui/atoms/CuntomText";
+import { Text12 } from "../components/ui/atoms/CuntomText";
 import {
     ButtonAwesome,
     ButtonWhite,
@@ -11,7 +11,9 @@ import {
 import {
     PositionEnd,
     PositionStart,
+    Relative,
 } from "../components/ui/molecules/CustomPosition";
+import Title from "../components/ui/organisms/Title";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
@@ -31,33 +33,31 @@ export default function WelcomePage() {
     }, [navigate]);
 
     if (loading) {
-        return <Loading>정보를 불러오는중</Loading>; // 로딩 상태일 때 로딩 컴포넌트 표시
+        return (
+            <Loading>
+                <Title />
+            </Loading>
+        ); // 로딩 상태일 때 로딩 컴포넌트 표시
     }
 
     return (
-        <>
+        <Relative>
             <PositionStart>
                 <Text12 margin={"0 1rem"} grey>
                     version_0.2.0
                 </Text12>
             </PositionStart>
             <PositionEnd>
-                <Text16 grey center light>
-                    아무 것도 하지 않고
-                </Text16>
-                <Text16 grey center light>
-                    돈을 버는 아주 쉬운 방법
-                </Text16>
-                <Text36 awesome margin={"1rem 1rem 15rem"} center>
-                    참고 참고 참기!
-                </Text36>
-                <ButtonWhite onClick={() => navigate("/login")} light>
+                <Title />
+                <ButtonWhite
+                    onClick={() => setTimeout(() => navigate("/login"), 200)}
+                >
                     로그인
                 </ButtonWhite>
-                <ButtonAwesome onClick={() => navigate("/signup")} light>
+                <ButtonAwesome onClick={() => navigate("/signup")}>
                     회원가입
                 </ButtonAwesome>
             </PositionEnd>
-        </>
+        </Relative>
     );
 }
