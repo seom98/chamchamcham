@@ -15,13 +15,7 @@ import {
     PositionEnd,
     Relative,
 } from "../components/ui/molecules/CustomPosition";
-import {
-    AtIcon,
-    Cancel01Icon,
-    EyeIcon,
-    ViewIcon,
-    ViewOffIcon,
-} from "hugeicons-react";
+import { AtIcon, Cancel01Icon, ViewIcon, ViewOffIcon } from "hugeicons-react";
 
 export default function LoginPage() {
     const navigate = useNavigate();
