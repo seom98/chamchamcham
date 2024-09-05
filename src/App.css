@@ -164,28 +164,3 @@ button {
     padding: 0;
     color: var(--grey8);
 }
-
-input {
-    background-color: var(--grey3);
-    border: solid 1px var(--grey3);
-    padding: 1rem 0.5rem;
-    border-radius: 0.5rem;
-    margin: 0.5rem;
-    cursor: pointer;
-    color: var(--grey8);
-    transition: ease-in-out 0.3s;
-    font-size: 1rem;
-}
-input {
-    width: calc(100vw - 5rem);
-    outline: none;
-}
-
-input:focus {
-    border: solid 1px var(--grey5);
-    background-color: var(--grey1);
-}
-
-input::placeholder {
-    color: var(--grey5);
-}
