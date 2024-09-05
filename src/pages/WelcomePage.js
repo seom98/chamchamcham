@@ -44,7 +44,7 @@ export default function WelcomePage() {
         <Relative>
             <PositionStart>
                 <Text12 margin={"0 1rem"} grey>
-                    version_0.2.0
+                    version_0.2.1
                 </Text12>
             </PositionStart>
             <PositionEnd>
