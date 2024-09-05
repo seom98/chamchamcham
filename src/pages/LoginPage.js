@@ -5,11 +5,29 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import { InputNormal, InputPassword } from "../components/ui/atoms/CustomInput";
+import Title from "../components/ui/organisms/Title";
+import { ButtonWhite } from "../components/ui/atoms/CustomButton";
+import { Text16 } from "../components/ui/atoms/CuntomText";
+import {
+    Flex,
+    FlexCenter,
+    PositionEnd,
+    Relative,
+} from "../components/ui/molecules/CustomPosition";
+import {
+    AtIcon,
+    Cancel01Icon,
+    EyeIcon,
+    ViewIcon,
+    ViewOffIcon,
+} from "hugeicons-react";
 
 export default function LoginPage() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const handleLogin = async (e) => {
@@ -33,29 +51,82 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
-            <h2>로그인</h2>
-            <div>
-                혹시 아직 회원이 아니세요?
-                <b onClick={() => navigate("/signup")}>회원가입하기</b>
-            </div>
+        <Relative>
             <form onSubmit={handleLogin}>
-                <input
-                    type="email"
-                    placeholder="이메일"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">로그인</button>
+                <FlexCenter>
+                    <Title margin="2rem" />
+                    <InputNormal
+                        type="email"
+                        placeholder="이메일"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    >
+                        <AtIcon
+                            size={24}
+                            color={email ? "var(--grey8)" : "var(--grey5)"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                        />
+                        <Cancel01Icon
+                            size={24}
+                            color={email ? "var(--grey8)" : "transparent"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                            onClick={() => setEmail("")}
+                        />
+                    </InputNormal>
+                    <InputPassword
+                        type={showPassword ? "text" : "password"}
+                        placeholder="비밀번호"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    >
+                        {showPassword ? (
+                            <ViewIcon
+                                size={24}
+                                color={
+                                    password ? "var(--grey8)" : "transparent"
+                                }
+                                variant={"stroke"}
+                                style={{ transition: "0.2s" }}
+                                onClick={() => setShowPassword(false)}
+                            />
+                        ) : (
+                            <ViewOffIcon
+                                size={24}
+                                color={
+                                    password ? "var(--grey8)" : "transparent"
+                                }
+                                variant={"stroke"}
+                                style={{ transition: "0.2s" }}
+                                onClick={() => setShowPassword(true)}
+                            />
+                        )}
+                        <Cancel01Icon
+                            size={24}
+                            color={password ? "var(--grey8)" : "transparent"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                            onClick={() => setPassword("")}
+                        />
+                    </InputPassword>
+                </FlexCenter>
+                <PositionEnd>
+                    <ButtonWhite type="submit" $margin={"0 2.5rem 1.2rem"}>
+                        로그인
+                    </ButtonWhite>
+                    <Flex>
+                        <Text16 $grey>
+                            아직 회원이 아니신가요?&nbsp;&nbsp;
+                        </Text16>
+                        <Text16 $blue onClick={() => navigate("/signup")}>
+                            회원가입하기
+                        </Text16>
+                    </Flex>
+                </PositionEnd>
             </form>
-        </div>
+        </Relative>
     );
 }

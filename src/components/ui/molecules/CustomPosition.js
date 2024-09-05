@@ -7,6 +7,8 @@ const BasePosition = styled.div`
 // PositionEnd 컴포넌트
 export const PositionEnd = styled(BasePosition)`
     bottom: 2.5rem;
+    left: 0;
+    right: 0;
 `;
 // PositionStart 컴포넌트
 export const PositionStart = styled(BasePosition)`
@@ -15,6 +17,17 @@ export const PositionStart = styled(BasePosition)`
 
 export const Relative = styled.div`
     position: relative;
-    width: 100vw;
     height: 100vh;
+`;
+
+export const Flex = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+export const FlexCenter = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 `;
