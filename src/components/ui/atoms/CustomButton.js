@@ -42,7 +42,7 @@ const BaseButton = styled.button`
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent; // 버튼클릭시 하이라이트 제거!!!
 
-    margin: 0.5rem 2.5rem;
+    margin: ${(props) => props.$margin || "0.5rem 2.5rem"};
     padding: 1rem 3.5rem;
     font-size: 20px;
     letter-spacing: -0.05em;

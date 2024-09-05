@@ -1,6 +1,6 @@
 import { Text16, Text36 } from "../atoms/CuntomText";
 
-export default function Title() {
+export default function Title({ margin = "15rem" }) {
     return (
         <div>
             <Text16 $grey $light>
@@ -9,7 +9,7 @@ export default function Title() {
             <Text16 $grey $light>
                 돈을 버는 아주 쉬운 방법
             </Text16>
-            <Text36 $awesome $margin={"1rem 1rem 15rem"}>
+            <Text36 $awesome $margin={`1rem 1rem ${margin}`}>
                 참고 참고 참기!
             </Text36>
         </div>
