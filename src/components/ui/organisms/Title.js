@@ -1,6 +1,7 @@
-import { Text16, Text36 } from "../atoms/CuntomText";
+import React from "react";
+import { Text16, Text36 } from "../atoms/CustomText";
 
-export default function Title({ margin = "15rem" }) {
+const Title = React.memo(({ margin = "15rem" }) => {
     return (
         <div>
             <Text16 $grey $light>
@@ -14,4 +15,6 @@ export default function Title({ margin = "15rem" }) {
             </Text36>
         </div>
     );
-}
+});
+
+export default Title;

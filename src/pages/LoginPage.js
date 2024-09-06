@@ -8,7 +8,7 @@ import Loading from "../components/Loading";
 import { InputNormal, InputPassword } from "../components/ui/atoms/CustomInput";
 import Title from "../components/ui/organisms/Title";
 import { ButtonWhite } from "../components/ui/atoms/CustomButton";
-import { Text16 } from "../components/ui/atoms/CuntomText";
+import { Text16 } from "../components/ui/atoms/CustomText";
 import {
     Flex,
     FlexCenter,

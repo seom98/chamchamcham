@@ -4,7 +4,6 @@ import Loading from "./components/Loading";
 import App from "./App";
 import ScrollToTop from "./components/templates/ScrollToTop";
 import DarkModeCheck from "./components/templates/DarkModeCheck";
-import Title from "./components/ui/organisms/Title";
 
 const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
 const TestPage = React.lazy(() => import("./pages/TestPage"));
@@ -19,13 +18,7 @@ export default function Router() {
         <BrowserRouter>
             <DarkModeCheck />
             <ScrollToTop />
-            <Suspense
-                fallback={
-                    <Loading>
-                        <Title />
-                    </Loading>
-                }
-            >
+            <Suspense fallback={<Loading>정보를 불러오는중</Loading>}>
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<WelcomePage />} />

@@ -1,6 +1,6 @@
 // Container.js
 import styled from "styled-components";
-import { Text16 } from "../ui/atoms/CuntomText";
+import { Text16 } from "../ui/atoms/CustomText";
 
 // 스타일드 컴포넌트 정의
 const ContainerWrapper = styled.div`

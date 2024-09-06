@@ -1,52 +1,23 @@
+// WelcomePage.js
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import Loading from "../components/Loading"; // 로딩 컴포넌트 import
-import { Text12 } from "../components/ui/atoms/CuntomText";
+import { useAuthRedirect } from "../components/hooks/useAuthRedirect"; // 커스텀 훅 불러오기
 import {
     ButtonAwesome,
     ButtonWhite,
 } from "../components/ui/atoms/CustomButton";
 import {
     PositionEnd,
-    PositionStart,
     Relative,
 } from "../components/ui/molecules/CustomPosition";
+import Version from "../components/pages/welcome/Version";
 import Title from "../components/ui/organisms/Title";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true); // 초기 로딩 상태 true
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                navigate("/move");
-            } else {
-                setLoading(false); // 로그인 확인 후 로딩 상태 false로 변경
-            }
-        });
-
-        // 컴포넌트 언마운트 시 리스너 정리
-        return () => unsubscribe();
-    }, [navigate]);
-
-    if (loading) {
-        return (
-            <Loading>
-                <Title />
-            </Loading>
-        ); // 로딩 상태일 때 로딩 컴포넌트 표시
-    }
-
-    return (
+    return useAuthRedirect(
         <Relative>
-            <PositionStart>
-                <Text12 $margin={"0 1rem"} $grey>
-                    version_0.2.2
-                </Text12>
-            </PositionStart>
+            <Version />
             <PositionEnd>
                 <Title />
                 <ButtonWhite
@@ -54,7 +25,9 @@ export default function WelcomePage() {
                 >
                     로그인
                 </ButtonWhite>
-                <ButtonAwesome onClick={() => navigate("/signup")}>
+                <ButtonAwesome
+                    onClick={() => setTimeout(() => navigate("/signup"), 200)}
+                >
                     회원가입
                 </ButtonAwesome>
             </PositionEnd>
