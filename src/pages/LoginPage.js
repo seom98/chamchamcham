@@ -1,10 +1,11 @@
 // src/pages/LoginPage.js
 
 import React, { useState } from "react";
+
+import { useAuthRedirect } from "../components/hooks/useAuthRedirect"; // 커스텀 훅 불러오기
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import Loading from "../components/Loading";
 import { InputNormal, InputPassword } from "../components/ui/atoms/CustomInput";
 import Title from "../components/ui/organisms/Title";
 import { ButtonWhite } from "../components/ui/atoms/CustomButton";
@@ -19,10 +20,11 @@ import { AtIcon, Cancel01Icon, ViewIcon, ViewOffIcon } from "hugeicons-react";
 
 export default function LoginPage() {
     const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -36,15 +38,8 @@ export default function LoginPage() {
             setLoading(false);
         }
     };
-    if (loading) {
-        return (
-            <Loading>
-                <div>로그인 하는중!!! 좀만기달~~</div>
-            </Loading>
-        );
-    }
 
-    return (
+    return useAuthRedirect(
         <Relative>
             <form onSubmit={handleLogin}>
                 <FlexCenter>
@@ -108,8 +103,12 @@ export default function LoginPage() {
                     </InputPassword>
                 </FlexCenter>
                 <PositionEnd>
-                    <ButtonWhite type="submit" $margin={"0 2.5rem 1.2rem"}>
-                        로그인
+                    <ButtonWhite
+                        type="submit"
+                        $margin={"0 2.5rem 1.2rem"}
+                        disabled={loading}
+                    >
+                        {loading ? "로그인 하는중..." : "로그인"}
                     </ButtonWhite>
                     <Flex>
                         <Text16 $grey>

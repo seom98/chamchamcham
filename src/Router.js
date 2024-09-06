@@ -18,7 +18,7 @@ export default function Router() {
         <BrowserRouter>
             <DarkModeCheck />
             <ScrollToTop />
-            <Suspense fallback={<Loading>정보를 불러오는중</Loading>}>
+            <Suspense fallback={<Loading>소비습관을 길러주는 참참참!</Loading>}>
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<WelcomePage />} />

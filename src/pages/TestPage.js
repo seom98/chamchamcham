@@ -19,11 +19,8 @@ export default function TestPage() {
 
             if (docSnap.exists()) {
                 setTest(docSnap.data());
-            } else {
-                console.log("No such document!");
             }
         } catch (error) {
-            console.error("Error fetching document: ", error);
         } finally {
             setLoading(false); // 데이터가 로드되었으므로 로딩 상태를 false로 설정
         }
@@ -36,7 +33,6 @@ export default function TestPage() {
                 getTest(user.uid);
             } else {
                 // 사용자가 인증되지 않은 경우
-                console.log("사용자가 인증되지 않았습니다.");
                 navigate("/login"); // 로그인 페이지로 리디렉션
             }
         });
@@ -56,11 +52,8 @@ export default function TestPage() {
     const handleLogout = async () => {
         try {
             await signOut(auth);
-            console.log("로그아웃 성공");
             navigate("/"); // 로그아웃 후 로그인 페이지로 리디렉션
-        } catch (error) {
-            console.error("로그아웃 실패:", error.message);
-        }
+        } catch (error) {}
     };
     if (loading) {
         return (

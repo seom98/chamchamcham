@@ -25,7 +25,7 @@ export const useAuthRedirect = (children) => {
 
     // 로딩 중일 때 로딩 컴포넌트 렌더링
     if (loading) {
-        return <Loading>정보를 불러오는중</Loading>;
+        return <Loading>소비습관을 길러주는 참참참!</Loading>;
     }
 
     // 로딩이 끝나면 children 렌더링
