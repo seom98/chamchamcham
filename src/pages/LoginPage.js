@@ -1,13 +1,9 @@
-// src/pages/LoginPage.js
-
-import React, { useState } from "react";
-
-import { useAuthRedirect } from "../components/hooks/useAuthRedirect"; // 커스텀 훅 불러오기
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+// 훅
+import { useAccount } from "../hooks/useAccount";
+// 스타일드 컴포넌트
 import { InputNormal, InputPassword } from "../components/ui/atoms/CustomInput";
-import Title from "../components/ui/organisms/Title";
 import { ButtonWhite } from "../components/ui/atoms/CustomButton";
 import { Text16 } from "../components/ui/atoms/CustomText";
 import {
@@ -16,32 +12,32 @@ import {
     PositionEnd,
     Relative,
 } from "../components/ui/molecules/CustomPosition";
+// 타이틀
+import Title from "../components/ui/organisms/Title";
+// 아이콘
 import { AtIcon, Cancel01Icon, ViewIcon, ViewOffIcon } from "hugeicons-react";
 
 export default function LoginPage() {
+    const {
+        email,
+        password,
+        showPassword,
+        loading,
+        setEmail,
+        setPassword,
+        setShowPassword,
+        login,
+    } = useAccount(); //로그인 커스텀 훅을 가져옴.
     const navigate = useNavigate();
-    const [showPassword, setShowPassword] = useState(false);
-    const [loading, setLoading] = useState(false);
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            setLoading(true);
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate("/move");
-        } catch (error) {
-            alert("로그인 실패: " + error.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    return useAuthRedirect(
+    return (
         <Relative>
-            <form onSubmit={handleLogin}>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    login();
+                }}
+            >
                 <FlexCenter>
                     <Title margin="2rem" />
                     <InputNormal

@@ -19,6 +19,7 @@ const commonStyles = css`
     -ms-user-select: none; /* Internet Explorer/Edge */
 
     margin: ${(props) => props.$margin || "0"};
+    height: ${(props) => props.$height || "auto"};
     color: var(--grey8);
     letter-spacing: -0.05em;
     font-weight: 400;

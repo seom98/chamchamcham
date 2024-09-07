@@ -1,11 +1,11 @@
 // hooks/useAuthRedirect.js
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import Loading from "../Loading";
+import Loading from "../components/Loading";
 
-// 로딩상태를 위한 커스텀 훅
+// 로딩상태와 화면이동을 위한 커스텀 훅
 export const useAuthRedirect = (children) => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true); // 로딩 상태

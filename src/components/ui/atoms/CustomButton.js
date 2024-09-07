@@ -97,8 +97,8 @@ export const ButtonWhite = ({ children, ...props }) => {
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchCancel}
             style={{
-                backgroundColor: isPressed && "var(--grey4)",
-                boxShadow: isPressed && "0 2px 25px 0 var(--grey4)",
+                backgroundColor: isPressed && "var(--grey3)",
+                boxShadow: isPressed && "0 2px 25px 0 var(--grey5)",
                 transform: isPressed && "scale(0.97)",
             }}
             {...props}
@@ -120,7 +120,7 @@ export const ButtonAwesome = ({ children, ...props }) => {
             onTouchCancel={handleTouchCancel}
             style={{
                 backgroundImage: isPressed && "var(--awesome2)",
-                boxShadow: isPressed && "0 2px 25px 0 var(--grey4)",
+                boxShadow: isPressed && "0 2px 25px 0 var(--grey5)",
                 transform: isPressed && "scale(0.97)",
             }}
             {...props}

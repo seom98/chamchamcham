@@ -1,6 +1,7 @@
-// WelcomePage.js
 import { useNavigate } from "react-router-dom";
-import { useAuthRedirect } from "../components/hooks/useAuthRedirect"; // 커스텀 훅 불러오기
+// 훅
+import { useAuthRedirect } from "../hooks/useAuthRedirect";
+// 스타일드 컴포넌트
 import {
     ButtonAwesome,
     ButtonWhite,
@@ -9,8 +10,10 @@ import {
     PositionEnd,
     Relative,
 } from "../components/ui/molecules/CustomPosition";
-import Version from "../components/pages/welcome/Version";
+// 타이틀
 import Title from "../components/ui/organisms/Title";
+// 컴포넌트
+import Version from "../components/pages/welcome/Version";
 
 export default function WelcomePage() {
     const navigate = useNavigate();

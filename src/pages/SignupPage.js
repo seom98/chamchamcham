@@ -1,168 +1,189 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { db, auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
+// 훅
+import { useAccount } from "../hooks/useAccount";
+import {
+    Flex,
+    FlexEnd,
+    PositionEnd,
+    Relative,
+} from "../components/ui/molecules/CustomPosition";
+import { ButtonAwesome } from "../components/ui/atoms/CustomButton";
+import { Text12, Text16 } from "../components/ui/atoms/CustomText";
+import Title from "../components/ui/organisms/Title";
+import { InputNormal, InputPassword } from "../components/ui/atoms/CustomInput";
+import { AtIcon, Cancel01Icon, ViewIcon, ViewOffIcon } from "hugeicons-react";
 
 export default function SignupPage() {
+    const {
+        email,
+        password,
+        confirmPassword,
+        loading,
+        nickname,
+        errors,
+        showPassword,
+        setEmail,
+        setShowPassword,
+        setPassword,
+        signup,
+        emailChange,
+        passwordChange,
+        confirmPasswordChange,
+        nicknameChange,
+    } = useAccount(); //로그인 커스텀 훅을 가져옴.
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [nickname, setNickname] = useState("");
-    const [errors, setErrors] = useState({
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
-    const [loading, setLoading] = useState(false);
-
-    // 이메일 형식을 실시간으로 검증
-    const handleEmailChange = (e) => {
-        const value = e.target.value;
-        setEmail(value);
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            email: !emailRegex.test(value)
-                ? "유효한 이메일 형식을 입력하세요."
-                : "",
-        }));
-    };
-
-    // 비밀번호 입력이 변경될 때마다 길이 검증
-    const handlePasswordChange = (e) => {
-        const value = e.target.value;
-        setPassword(value);
-
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            password:
-                value.length < 6
-                    ? "비밀번호는 최소 6자리 이상이어야 합니다."
-                    : "",
-        }));
-    };
-
-    // 비밀번호 확인 입력 필드가 변경될 때마다 비밀번호 일치 여부 확인
-    const handleConfirmPasswordChange = (e) => {
-        const value = e.target.value;
-
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            confirmPassword:
-                value !== password ? "비밀번호가 일치하지 않습니다." : "",
-        }));
-    };
-
-    const handleSignup = async (e) => {
-        e.preventDefault();
-
-        try {
-            setLoading(true);
-            const userCredential = await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-            const user = userCredential.user;
-
-            await setDoc(doc(db, "users", user.uid), {
-                failure: 0,
-                success: 0,
-                point: 0,
-                level: 1,
-                itemList: [],
-                moneyList: [],
-                email: user.email,
-                nickname: nickname,
-                uid: user.uid,
-            });
-
-            alert("회원가입 성공");
-            navigate("/login");
-        } catch (error) {
-            alert("회원가입 실패: " + error.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    if (loading) {
-        return (
-            <div>
-                <div>회원가입 하는중!!! 좀만기달~~</div>
-                <div>아 경고안달았는데 비번 6자리 이상 적어야함.</div>
-                <div>이메일 형식도 지켜야함!!</div>
-            </div>
-        );
-    }
-
     return (
-        <div>
-            <h2>회원가입</h2>
-            <div>
-                혹시 벌써 회원이세요?{" "}
-                <b onClick={() => navigate("/login")}>로그인하기</b>
-            </div>
-            <form onSubmit={handleSignup}>
-                <input
-                    type="email"
-                    placeholder="이메일"
-                    value={email}
-                    onChange={handleEmailChange}
-                    required
-                />
-                <p
-                    style={{
-                        color: "var(--red)",
-                        fontSize: "0.8rem",
-                        marginLeft: "1rem",
-                    }}
-                >
-                    {errors.email}
-                </p>
-                <input
-                    type="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    required
-                />
-                <p
-                    style={{
-                        color: "var(--red)",
-                        fontSize: "0.8rem",
-                        marginLeft: "1rem",
-                    }}
-                >
-                    {errors.password}
-                </p>
-                <input
-                    type="password"
-                    placeholder="비밀번호 확인"
-                    onChange={handleConfirmPasswordChange}
-                    required
-                />
-                <p
-                    style={{
-                        color: "var(--red)",
-                        fontSize: "0.8rem",
-                        marginLeft: "1rem",
-                    }}
-                >
-                    {errors.confirmPassword}
-                </p>
-                <input
-                    type="text"
-                    placeholder="닉네임"
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
-                    required
-                />
-                <button type="submit">회원가입</button>
+        <Relative>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    signup();
+                }}
+            >
+                <PositionEnd>
+                    <Title margin="2rem" />
+                    <InputNormal
+                        type="email"
+                        placeholder="이메일"
+                        value={email}
+                        onChange={emailChange}
+                        required
+                    >
+                        <AtIcon
+                            size={24}
+                            color={email ? "var(--grey8)" : "var(--grey5)"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                        />
+                        <Cancel01Icon
+                            size={24}
+                            color={email ? "var(--grey8)" : "transparent"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                            onClick={() => setEmail("")}
+                        />
+                    </InputNormal>
+                    <FlexEnd>
+                        <Text12 $red $height={"1rem"}>
+                            {errors.email}
+                        </Text12>
+                    </FlexEnd>
+                    <InputPassword
+                        type={showPassword ? "text" : "password"}
+                        placeholder="비밀번호"
+                        value={password}
+                        onChange={passwordChange}
+                        required
+                    >
+                        {showPassword ? (
+                            <ViewIcon
+                                size={24}
+                                color={
+                                    password ? "var(--grey8)" : "transparent"
+                                }
+                                variant={"stroke"}
+                                style={{ transition: "0.2s" }}
+                                onClick={() => setShowPassword(false)}
+                            />
+                        ) : (
+                            <ViewOffIcon
+                                size={24}
+                                color={
+                                    password ? "var(--grey8)" : "transparent"
+                                }
+                                variant={"stroke"}
+                                style={{ transition: "0.2s" }}
+                                onClick={() => setShowPassword(true)}
+                            />
+                        )}
+                        <Cancel01Icon
+                            size={24}
+                            color={password ? "var(--grey8)" : "transparent"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                            onClick={() => setPassword("")}
+                        />
+                    </InputPassword>
+                    <FlexEnd>
+                        <Text12 $red $height={"1rem"}>
+                            {errors.password}
+                        </Text12>
+                    </FlexEnd>
+                    <InputNormal
+                        type="password"
+                        placeholder="비밀번호 확인"
+                        value={confirmPassword}
+                        onChange={confirmPasswordChange}
+                        required
+                    >
+                        <AtIcon
+                            size={24}
+                            color={
+                                confirmPassword
+                                    ? "var(--grey8)"
+                                    : "var(--grey5)"
+                            }
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                        />
+                        <Cancel01Icon
+                            size={24}
+                            color={
+                                confirmPassword ? "var(--grey8)" : "transparent"
+                            }
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                            onClick={() => setEmail("")}
+                        />
+                    </InputNormal>
+                    <FlexEnd>
+                        <Text12 $red $height={"1rem"}>
+                            {errors.confirmPassword}
+                        </Text12>
+                    </FlexEnd>
+                    <InputNormal
+                        type="text"
+                        placeholder="닉네임"
+                        value={nickname}
+                        onChange={nicknameChange}
+                        required
+                    >
+                        <AtIcon
+                            size={24}
+                            color={nickname ? "var(--grey8)" : "var(--grey5)"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                        />
+                        <Cancel01Icon
+                            size={24}
+                            color={nickname ? "var(--grey8)" : "transparent"}
+                            variant={"stroke"}
+                            style={{ transition: "0.2s" }}
+                            onClick={() => setEmail("")}
+                        />
+                    </InputNormal>
+                    <FlexEnd>
+                        <Text12 $red $height={"1rem"} $margin={"0 0 1rem"}>
+                            {errors.nickname}
+                        </Text12>
+                    </FlexEnd>
+                    <ButtonAwesome
+                        type="submit"
+                        $margin={"0 2.5rem 1.2rem"}
+                        disabled={loading}
+                    >
+                        {loading ? "회원가입 하는중..." : "회원가입"}
+                    </ButtonAwesome>
+                    <Flex>
+                        <Text16 $grey>이미 회원이신가요?&nbsp;&nbsp;</Text16>
+                        <Text16 $blue onClick={() => navigate("/login")}>
+                            로그인하기
+                        </Text16>
+                    </Flex>
+                </PositionEnd>
             </form>
-        </div>
+        </Relative>
     );
 }

@@ -24,6 +24,11 @@ export const Flex = styled.div`
     display: flex;
     justify-content: center;
 `;
+export const FlexEnd = styled.div`
+    width: calc(100% - 5rem);
+    display: flex;
+    justify-content: flex-end;
+`;
 export const FlexCenter = styled.div`
     height: 100vh;
     display: flex;
