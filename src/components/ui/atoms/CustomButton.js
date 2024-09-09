@@ -1,29 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
-import React, { useState } from "react";
-
-// 터치 효과를 위한 커스텀 훅 usePress
-const usePress = () => {
-    const [isPressed, setIsPressed] = useState(false);
-
-    const handleTouchStart = () => {
-        setIsPressed(true);
-    };
-
-    const handleTouchEnd = () => {
-        setIsPressed(false);
-    };
-
-    const handleTouchCancel = () => {
-        setIsPressed(false);
-    };
-
-    return {
-        isPressed,
-        handleTouchStart,
-        handleTouchEnd,
-        handleTouchCancel,
-    };
-};
+import React from "react";
+import { usePress } from "../../../hooks/usePress";
 
 // 그라데이션 애니메이션 정의
 const gradient = keyframes`
