@@ -6,7 +6,7 @@ const Version = React.memo(() => {
     return (
         <PositionStart>
             <Text12 $margin={"0 1rem"} $grey>
-                Ver.0.2.4.2
+                Ver.0.2.4.3
             </Text12>
         </PositionStart>
     );

@@ -16,11 +16,11 @@ export default function TestPage() {
 
     useEffect(() => {
         // 사용자가 처음 방문한 경우에만 로직 실행
-        const hasVisitedBefore = localStorage.getItem("hasVisitedMove");
+        const hasVisitedBefore = sessionStorage.getItem("hasVisitedMove");
 
         if (!hasVisitedBefore) {
             // 방문 여부를 저장
-            localStorage.setItem("hasVisitedMove", "true");
+            sessionStorage.setItem("hasVisitedMove", "true");
             setIsInitialLoad(true); // 처음 도착했음을 설정
         }
     }, []);
