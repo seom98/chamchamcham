@@ -2,6 +2,7 @@ import s from "./SettingPage.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Relative } from "../components/ui/molecules/CustomPosition";
 
 export default function SettingPage() {
     const [toggle, setToggle] = useState(false);
@@ -24,20 +25,22 @@ export default function SettingPage() {
         }
     };
     return (
-        <div className={s.box}>
-            환경설정
-            <div onClick={() => navigate(-1)}>뒤로 가기</div>
-            <div className={s.setting}>
-                <div>다크모드</div>
-                <label className={s.switch}>
-                    <input
-                        type="checkbox"
-                        onClick={darkOnOff}
-                        checked={toggle}
-                    />
-                    <span className={classNames(s.slider, s.round)}></span>
-                </label>
+        <Relative>
+            <div className={s.box}>
+                환경설정
+                <div onClick={() => navigate(-1)}>뒤로 가기</div>
+                <div className={s.setting}>
+                    <div>다크모드</div>
+                    <label className={s.switch}>
+                        <input
+                            type="checkbox"
+                            onClick={darkOnOff}
+                            checked={toggle}
+                        />
+                        <span className={classNames(s.slider, s.round)}></span>
+                    </label>
+                </div>
             </div>
-        </div>
+        </Relative>
     );
 }

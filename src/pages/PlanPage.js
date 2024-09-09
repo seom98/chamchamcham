@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
 import { doc, updateDoc, collection, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import s from "./PlanPage.module.css";
+import { Relative } from "../components/ui/molecules/CustomPosition";
 
 export default function PlanPage() {
     const navigate = useNavigate();
@@ -109,65 +109,61 @@ export default function PlanPage() {
     }
 
     return (
-        <div className={s.container}>
-            <div onClick={addItem} className={s.addItem}>
-                항목 추가
-            </div>
-            <div className={s.items}>
-                {itemList
-                    .slice()
-                    .reverse()
-                    .map((item, index) => (
-                        <div
-                            key={itemList.length - 1 - index}
-                            className={s.item}
-                        >
-                            <div className={s.itemTop}>
-                                <input
-                                    type="text"
-                                    placeholder="과소비되는 항목 ex) 간식"
-                                    value={item}
-                                    onChange={(e) =>
-                                        handleItemNameChange(
-                                            itemList.length - 1 - index,
-                                            e.target.value
-                                        )
-                                    }
-                                    className={s.nameInput}
-                                />
-                                <div
-                                    onClick={() =>
-                                        deleteItem(itemList.length - 1 - index)
-                                    }
-                                    className={s.deleteButton}
-                                >
-                                    삭제
+        <Relative>
+            <div>
+                <div onClick={addItem}>항목 추가</div>
+                <div>
+                    {itemList
+                        .slice()
+                        .reverse()
+                        .map((item, index) => (
+                            <div key={itemList.length - 1 - index}>
+                                <div>
+                                    <input
+                                        type="text"
+                                        placeholder="과소비되는 항목 ex) 간식"
+                                        value={item}
+                                        onChange={(e) =>
+                                            handleItemNameChange(
+                                                itemList.length - 1 - index,
+                                                e.target.value
+                                            )
+                                        }
+                                    />
+                                    <div
+                                        onClick={() =>
+                                            deleteItem(
+                                                itemList.length - 1 - index
+                                            )
+                                        }
+                                    >
+                                        삭제
+                                    </div>
+                                </div>
+                                <div>
+                                    <input
+                                        type="number"
+                                        pattern="[0-9]*"
+                                        inputmode="numeric"
+                                        placeholder="ex) 3000"
+                                        value={
+                                            moneyList[
+                                                itemList.length - 1 - index
+                                            ]
+                                        }
+                                        onChange={(e) =>
+                                            handleItemCostChange(
+                                                itemList.length - 1 - index,
+                                                e.target.value
+                                            )
+                                        }
+                                    />
                                 </div>
                             </div>
-                            <div className={s.itemBottom}>
-                                <input
-                                    type="number"
-                                    pattern="[0-9]*"
-                                    inputmode="numeric"
-                                    placeholder="ex) 3000"
-                                    value={
-                                        moneyList[itemList.length - 1 - index]
-                                    }
-                                    onChange={(e) =>
-                                        handleItemCostChange(
-                                            itemList.length - 1 - index,
-                                            e.target.value
-                                        )
-                                    }
-                                    className={s.costInput}
-                                />
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                </div>
+                <div onClick={handleSubmit}>완료</div>
             </div>
-            <div onClick={handleSubmit} className={s.submit}>
-                완료
-            </div>
-        </div>
+        </Relative>
     );
 }

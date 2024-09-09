@@ -54,13 +54,11 @@ export default function SignupPage() {
                         <AtIcon
                             size={24}
                             color={email ? "var(--grey8)" : "var(--grey5)"}
-                            variant={"stroke"}
                             style={{ transition: "0.2s" }}
                         />
                         <Cancel01Icon
                             size={24}
                             color={email ? "var(--grey8)" : "transparent"}
-                            variant={"stroke"}
                             style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />
@@ -83,7 +81,6 @@ export default function SignupPage() {
                                 color={
                                     password ? "var(--grey8)" : "transparent"
                                 }
-                                variant={"stroke"}
                                 style={{ transition: "0.2s" }}
                                 onClick={() => setShowPassword(false)}
                             />
@@ -93,7 +90,6 @@ export default function SignupPage() {
                                 color={
                                     password ? "var(--grey8)" : "transparent"
                                 }
-                                variant={"stroke"}
                                 style={{ transition: "0.2s" }}
                                 onClick={() => setShowPassword(true)}
                             />
@@ -101,7 +97,6 @@ export default function SignupPage() {
                         <Cancel01Icon
                             size={24}
                             color={password ? "var(--grey8)" : "transparent"}
-                            variant={"stroke"}
                             style={{ transition: "0.2s" }}
                             onClick={() => setPassword("")}
                         />
@@ -125,7 +120,6 @@ export default function SignupPage() {
                                     ? "var(--grey8)"
                                     : "var(--grey5)"
                             }
-                            variant={"stroke"}
                             style={{ transition: "0.2s" }}
                         />
                         <Cancel01Icon
@@ -133,7 +127,6 @@ export default function SignupPage() {
                             color={
                                 confirmPassword ? "var(--grey8)" : "transparent"
                             }
-                            variant={"stroke"}
                             style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />
@@ -153,13 +146,11 @@ export default function SignupPage() {
                         <AtIcon
                             size={24}
                             color={nickname ? "var(--grey8)" : "var(--grey5)"}
-                            variant={"stroke"}
                             style={{ transition: "0.2s" }}
                         />
                         <Cancel01Icon
                             size={24}
                             color={nickname ? "var(--grey8)" : "transparent"}
-                            variant={"stroke"}
                             style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />

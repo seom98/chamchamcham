@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import s from "./TestPage.module.css";
 import Loading from "../components/Loading";
+import { Relative } from "../components/ui/molecules/CustomPosition";
 
 export default function TestPage() {
     const navigate = useNavigate(); // 페이지 이동 훅
@@ -55,58 +56,60 @@ export default function TestPage() {
             navigate("/"); // 로그아웃 후 로그인 페이지로 리디렉션
         } catch (error) {}
     };
-    if (loading) {
-        return (
-            <Loading>
-                잠만요 서버 느린점 양해 부탁. <br></br>님 정보 불러오는중임
-            </Loading>
-        );
-    }
 
     return (
-        <div
-            style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                gap: "0.5rem",
-                margin: "1rem",
-            }}
-        >
-            <div className={s.flex}>
-                <div>{test.nickname} </div>
-                <div>
-                    Lv.{test.level} &nbsp;&nbsp;|&nbsp;&nbsp; {test.point} P
-                </div>
-            </div>
-            <div className={s.text}>{money.toLocaleString()}원</div>
-            {money === 0 ? (
-                <>
-                    <div>
-                        우선 {test.nickname}님의 과소비되는 목록부터적어줘{" "}
-                    </div>
-                    <div onClick={() => navigate("/diary")}>달력</div>
-                    <button onClick={() => navigate("/plan")}>
-                        소비목록 적으러가기
-                    </button>
-                </>
+        <Relative>
+            {loading ? (
+                <Loading>
+                    잠만요 서버 느린점 양해 부탁. <br></br>님 정보 불러오는중임
+                </Loading>
             ) : (
-                <>
-                    <div>오 {test.nickname}~~ 현재까지</div>
-                    <h2>
-                        {test.success}원 / {money}원
-                    </h2>
-                    <div>절약함!!!!</div>
-                    <br></br>
-                    <div>그리고</div>
-                    <h2>
-                        {money}원 / {money}원
-                    </h2>
-                    <div>땅에 내갖다버림</div>
-                </>
+                <div
+                // style={{
+                //     display: "flex",
+                //     alignItems: "center",
+                //     justifyContent: "center",
+                //     flexDirection: "column",
+                //     gap: "0.5rem",
+                // }}
+                >
+                    <div className={s.flex}>
+                        <div>{test.nickname} </div>
+                        <div>
+                            Lv.{test.level} &nbsp;&nbsp;|&nbsp;&nbsp;{" "}
+                            {test.point} P
+                        </div>
+                    </div>
+                    <div className={s.text}>{money.toLocaleString()}원</div>
+                    {money === 0 ? (
+                        <>
+                            <div>
+                                우선 {test.nickname}님의 과소비되는
+                                목록부터적어줘{" "}
+                            </div>
+                            <div onClick={() => navigate("/diary")}>달력</div>
+                            <button onClick={() => navigate("/plan")}>
+                                소비목록 적으러가기
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <div>오 {test.nickname}~~ 현재까지</div>
+                            <h2>
+                                {test.success}원 / {money}원
+                            </h2>
+                            <div>절약함!!!!</div>
+                            <br></br>
+                            <div>그리고</div>
+                            <h2>
+                                {money}원 / {money}원
+                            </h2>
+                            <div>땅에 내갖다버림</div>
+                        </>
+                    )}
+                    <button onClick={handleLogout}>로그아웃</button>
+                </div>
             )}
-            <button onClick={handleLogout}>로그아웃</button>
-        </div>
+        </Relative>
     );
 }
