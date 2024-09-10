@@ -92,7 +92,7 @@ export default function PlanPage() {
                 failure: 0,
             });
 
-            navigate("/move");
+            navigate("/home");
         } catch (error) {
             alert("생성 실패: " + error.message);
         } finally {

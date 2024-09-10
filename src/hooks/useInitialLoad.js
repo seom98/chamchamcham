@@ -25,7 +25,7 @@ export function useInitialLoad() {
                 await navigateTo(route);
             }
 
-            navigate("/move");
+            navigate("/home");
             setIsInitialLoad(false);
         };
 

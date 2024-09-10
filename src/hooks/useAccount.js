@@ -29,7 +29,7 @@ export function useAccount() {
         try {
             setLoading(true);
             await signInWithEmailAndPassword(auth, email, password);
-            navigate("/move");
+            navigate("/home");
         } catch (error) {
             alert("로그인 실패: " + error.message);
         } finally {

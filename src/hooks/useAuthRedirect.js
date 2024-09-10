@@ -14,7 +14,7 @@ export const useAuthRedirect = (children) => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setLoading(true);
             if (user) {
-                navigate("/move"); // 로그인 상태면 /move로 이동
+                navigate("/home"); // 로그인 상태면 /home로 이동
             } else {
                 setLoading(false); // 로그인 상태가 아니면 로딩 해제
             }

@@ -69,7 +69,7 @@ const Nav = React.memo(() => {
     // 현재 경로에 따라 tap 상태를 업데이트
     useEffect(() => {
         const pathMap = {
-            "/move": 0,
+            "/home": 0,
             "/plan": 1,
             "/stat": 2,
             "/diary": 3,
@@ -94,7 +94,7 @@ const Nav = React.memo(() => {
                         <NavButton
                             onClick={() => {
                                 setTap(0);
-                                navigate("/move");
+                                navigate("/home");
                             }}
                         >
                             <Home02Icon size={30} color={"var(--grey8)"} />

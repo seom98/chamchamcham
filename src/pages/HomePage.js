@@ -7,7 +7,7 @@ import Loading from "../components/Loading";
 import { PosRela } from "../components/ui/molecules/CustomPosition";
 import { useInitialLoad } from "../hooks/useInitialLoad";
 
-export default function TestPage() {
+export default function HomePage() {
     const navigate = useNavigate(); // 페이지 이동 훅
     const [test, setTest] = useState(null); // 초기 상태를 null로 설정
     const [loading, setLoading] = useState(true); // 로딩 상태 관리
