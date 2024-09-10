@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-// 초기 랜더링을 미리 시켜주기 위한 커스텀 훅
+// 초기 랜더링을 미리 시켜주기 위한 함수
 export function useInitialLoad() {
     const navigate = useNavigate();
     const [isInitialLoad, setIsInitialLoad] = useState(false);

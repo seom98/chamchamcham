@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "../hooks/useAccount"; // 회원가입 커스텀 훅
+import { useAuthRedirect } from "../hooks/useAuthRedirect"; // 로그인 한 상태인경우 화면이동 커스텀 훅
 import {
     Flex,
     FlexE,
@@ -39,7 +40,7 @@ export default function SignupPage() {
     } = useAccount(); //로그인 커스텀 훅을 가져옴.
     const navigate = useNavigate();
 
-    return (
+    return useAuthRedirect(
         <PosRela>
             <form
                 onSubmit={(e) => {
