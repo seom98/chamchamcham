@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
 import { doc, updateDoc, collection, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { Relative } from "../components/ui/molecules/CustomPosition";
+import { PosRela } from "../components/ui/molecules/CustomPosition";
 
 export default function PlanPage() {
     const navigate = useNavigate();
@@ -109,7 +109,7 @@ export default function PlanPage() {
     }
 
     return (
-        <Relative>
+        <PosRela>
             <div>
                 <div onClick={addItem}>항목 추가</div>
                 <div>
@@ -164,6 +164,6 @@ export default function PlanPage() {
                 </div>
                 <div onClick={handleSubmit}>완료</div>
             </div>
-        </Relative>
+        </PosRela>
     );
 }

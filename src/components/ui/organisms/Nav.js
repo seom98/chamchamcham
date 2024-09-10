@@ -6,7 +6,7 @@ import {
     Home02Icon,
     Menu01Icon,
 } from "hugeicons-react";
-import { Flex, PositionEnd, Relative } from "../molecules/CustomPosition";
+import { Flex, PosEC, PosSti, PosRela } from "../molecules/CustomPosition";
 import { Text12 } from "../atoms/CustomText";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -19,6 +19,11 @@ const SelectBox = styled.div`
     transition: transform 0.3s ease-in-out;
     border-radius: 1rem;
     transform: translateY(-0.4rem) translateX(${(props) => props.translate});
+`;
+const BackBox = styled.div`
+    background: var(--bottom);
+    width: 100%;
+    height: 5.5rem;
 `;
 
 const IconBox = styled.div`
@@ -53,6 +58,7 @@ const NavButton = ({ children, ...props }) => {
     );
 };
 
+// 네비게이션 컴포넌트
 const Nav = React.memo(() => {
     const location = useLocation();
     const [tap, setTap] = useState(0);
@@ -73,61 +79,72 @@ const Nav = React.memo(() => {
     }, [location.pathname]);
 
     return (
-        <Relative $height={"0"}>
-            <PositionEnd>
-                <Relative $height="0" $zIndex="-1">
+        <PosSti>
+            <PosEC $bottom="4.5rem">
+                <PosRela $height="1rem" $zIndex="5">
+                    <BackBox></BackBox>
+                </PosRela>
+                <PosRela $height="0" $zIndex="6">
                     <Flex>
                         <SelectBox translate={taps[tap]} />
                     </Flex>
-                </Relative>
-                <Flex $gap="2.5rem">
-                    <NavButton
-                        onClick={() => {
-                            setTap(0);
-                            navigate("/move");
-                        }}
-                    >
-                        <Home02Icon size={30} color={"var(--grey8)"} />
-                        <Text12 $light>홈</Text12>
-                    </NavButton>
-                    <NavButton
-                        onClick={() => {
-                            setTap(1);
-                            navigate("/plan");
-                        }}
-                    >
-                        <AppleReminderIcon size={30} color={"var(--grey8)"} />
-                        <Text12 $light>목표</Text12>
-                    </NavButton>
-                    <NavButton
-                        onClick={() => {
-                            alert("서비스준비중입니다.");
-                        }}
-                    >
-                        <ChartBarLineIcon size={30} color={"var(--grey8)"} />
-                        <Text12 $light>통계</Text12>
-                    </NavButton>
-                    <NavButton
-                        onClick={() => {
-                            setTap(3);
-                            navigate("/diary");
-                        }}
-                    >
-                        <Calendar03Icon size={30} color={"var(--grey8)"} />
-                        <Text12 $light>달력</Text12>
-                    </NavButton>
-                    <NavButton
-                        onClick={() => {
-                            setTap(4);
-                            navigate("/setting");
-                        }}
-                    >
-                        <Menu01Icon size={30} color={"var(--grey8)"} />
-                        <Text12 $light>전체</Text12>
-                    </NavButton>
-                </Flex>
-            </PositionEnd>
-        </Relative>
+                </PosRela>
+                <PosRela $height="0rem" $zIndex="7">
+                    <Flex $gap="2.5rem">
+                        <NavButton
+                            onClick={() => {
+                                setTap(0);
+                                navigate("/move");
+                            }}
+                        >
+                            <Home02Icon size={30} color={"var(--grey8)"} />
+                            <Text12 $light>홈</Text12>
+                        </NavButton>
+                        <NavButton
+                            onClick={() => {
+                                setTap(1);
+                                navigate("/plan");
+                            }}
+                        >
+                            <AppleReminderIcon
+                                size={30}
+                                color={"var(--grey8)"}
+                            />
+                            <Text12 $light>목표</Text12>
+                        </NavButton>
+                        <NavButton
+                            onClick={() => {
+                                alert("서비스준비중입니다.");
+                            }}
+                        >
+                            <ChartBarLineIcon
+                                size={30}
+                                color={"var(--grey8)"}
+                            />
+                            <Text12 $light>통계</Text12>
+                        </NavButton>
+                        <NavButton
+                            onClick={() => {
+                                setTap(3);
+                                navigate("/diary");
+                            }}
+                        >
+                            <Calendar03Icon size={30} color={"var(--grey8)"} />
+                            <Text12 $light>달력</Text12>
+                        </NavButton>
+                        <NavButton
+                            onClick={() => {
+                                setTap(4);
+                                navigate("/setting");
+                            }}
+                        >
+                            <Menu01Icon size={30} color={"var(--grey8)"} />
+                            <Text12 $light>전체</Text12>
+                        </NavButton>
+                    </Flex>
+                </PosRela>
+            </PosEC>
+        </PosSti>
     );
 });
 

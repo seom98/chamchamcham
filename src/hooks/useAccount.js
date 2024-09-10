@@ -2,12 +2,13 @@ import { useState } from "react";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
+    signOut,
 } from "firebase/auth";
 import { db, auth } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
-// 로그인을 위한 커스텀 훅.
+// 로그인, 회원가입, 로그아웃을 위한 커스텀 훅
 export function useAccount() {
     const [email, setEmail] = useState(""); //이메일
     const [password, setPassword] = useState(""); // 비밀번호
@@ -20,9 +21,10 @@ export function useAccount() {
         password: "",
         confirmPassword: "",
         nickname: "",
-    });
+    }); // 각각에 대한 에러메시지
     const navigate = useNavigate();
 
+    // 로그인 함수
     const login = async () => {
         try {
             setLoading(true);
@@ -35,6 +37,7 @@ export function useAccount() {
         }
     };
 
+    // 회원가입 함수
     const signup = async () => {
         // 모든 오류 메시지가 빈 문자열인지 확인
         const isValid = Object.values(errors).every((error) => error === "");
@@ -72,6 +75,14 @@ export function useAccount() {
         } finally {
             setLoading(false);
         }
+    };
+
+    // 로그아웃 함수
+    const logout = async () => {
+        try {
+            await signOut(auth);
+            navigate("/"); // 로그아웃 후 로그인 페이지로 리디렉션
+        } catch (error) {}
     };
 
     // 이메일 형식 검증 함수
@@ -142,6 +153,7 @@ export function useAccount() {
         setConfirmPassword,
         login,
         signup,
+        logout,
         emailChange,
         passwordChange,
         confirmPasswordChange,

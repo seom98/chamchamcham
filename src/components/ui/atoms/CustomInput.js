@@ -1,30 +1,6 @@
 import styled from "styled-components";
-import React, { useState } from "react";
 import { SquareLockPasswordIcon } from "hugeicons-react";
-
-// 터치 효과를 위한 커스텀 훅 usePress
-const usePress = () => {
-    const [isPressed, setIsPressed] = useState(false);
-
-    const handleTouchStart = () => {
-        setIsPressed(true);
-    };
-
-    const handleTouchEnd = () => {
-        setIsPressed(false);
-    };
-
-    const handleTouchCancel = () => {
-        setIsPressed(false);
-    };
-
-    return {
-        isPressed,
-        handleTouchStart,
-        handleTouchEnd,
-        handleTouchCancel,
-    };
-};
+import { usePress } from "../../../hooks/usePress"; // 버튼을 누르고 있는지 확인하는 커스텀 훅
 
 // 기본 인풋 스타일
 const BaseInput = styled.input`
@@ -75,7 +51,7 @@ const AbsoluteLigthDiv = styled.div`
 `;
 
 // 화이트 버튼 컴포넌트
-export const InputNormal = ({ children, ...props }) => {
+export const IptNor = ({ children, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
         usePress();
 
@@ -95,7 +71,7 @@ export const InputNormal = ({ children, ...props }) => {
     );
 };
 // 화이트 버튼 컴포넌트
-export const InputPassword = ({ children, onChange, value, ...props }) => {
+export const IptPas = ({ children, onChange, value, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
         usePress();
     return (

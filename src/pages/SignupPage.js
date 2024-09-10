@@ -1,18 +1,23 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-// 훅
-import { useAccount } from "../hooks/useAccount";
+import { useAccount } from "../hooks/useAccount"; // 회원가입 커스텀 훅
 import {
     Flex,
-    FlexEnd,
-    PositionEnd,
-    Relative,
-} from "../components/ui/molecules/CustomPosition";
-import { ButtonAwesome } from "../components/ui/atoms/CustomButton";
-import { Text12, Text16 } from "../components/ui/atoms/CustomText";
-import Title from "../components/ui/organisms/Title";
-import { InputNormal, InputPassword } from "../components/ui/atoms/CustomInput";
-import { AtIcon, Cancel01Icon, ViewIcon, ViewOffIcon } from "hugeicons-react";
+    FlexE,
+    PosEC,
+    PosRela,
+} from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
+import { BtnAwe } from "../components/ui/atoms/CustomButton"; //버튼 컴포넌트
+import { Text12, Text16 } from "../components/ui/atoms/CustomText"; // 텍스트 컴포넌트
+import { IptNor, IptPas } from "../components/ui/atoms/CustomInput"; // 인풋 컴포넌트
+import Title from "../components/ui/organisms/Title"; // 타이틀 컴포넌트
+import {
+    AtIcon,
+    Cancel01Icon,
+    CheckmarkSquare01Icon,
+    UserSquareIcon,
+    ViewIcon,
+    ViewOffIcon,
+} from "hugeicons-react";
 
 export default function SignupPage() {
     const {
@@ -35,16 +40,16 @@ export default function SignupPage() {
     const navigate = useNavigate();
 
     return (
-        <Relative>
+        <PosRela>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
                     signup();
                 }}
             >
-                <PositionEnd>
+                <PosEC>
                     <Title margin="2rem" />
-                    <InputNormal
+                    <IptNor
                         type="email"
                         placeholder="이메일"
                         value={email}
@@ -62,13 +67,13 @@ export default function SignupPage() {
                             style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />
-                    </InputNormal>
-                    <FlexEnd>
+                    </IptNor>
+                    <FlexE>
                         <Text12 $red $height={"1rem"}>
                             {errors.email}
                         </Text12>
-                    </FlexEnd>
-                    <InputPassword
+                    </FlexE>
+                    <IptPas
                         type={showPassword ? "text" : "password"}
                         placeholder="비밀번호"
                         value={password}
@@ -100,20 +105,20 @@ export default function SignupPage() {
                             style={{ transition: "0.2s" }}
                             onClick={() => setPassword("")}
                         />
-                    </InputPassword>
-                    <FlexEnd>
+                    </IptPas>
+                    <FlexE>
                         <Text12 $red $height={"1rem"}>
                             {errors.password}
                         </Text12>
-                    </FlexEnd>
-                    <InputNormal
+                    </FlexE>
+                    <IptNor
                         type="password"
                         placeholder="비밀번호 확인"
                         value={confirmPassword}
                         onChange={confirmPasswordChange}
                         required
                     >
-                        <AtIcon
+                        <CheckmarkSquare01Icon
                             size={24}
                             color={
                                 confirmPassword
@@ -130,20 +135,20 @@ export default function SignupPage() {
                             style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />
-                    </InputNormal>
-                    <FlexEnd>
+                    </IptNor>
+                    <FlexE>
                         <Text12 $red $height={"1rem"}>
                             {errors.confirmPassword}
                         </Text12>
-                    </FlexEnd>
-                    <InputNormal
+                    </FlexE>
+                    <IptNor
                         type="text"
                         placeholder="닉네임"
                         value={nickname}
                         onChange={nicknameChange}
                         required
                     >
-                        <AtIcon
+                        <UserSquareIcon
                             size={24}
                             color={nickname ? "var(--grey8)" : "var(--grey5)"}
                             style={{ transition: "0.2s" }}
@@ -154,27 +159,27 @@ export default function SignupPage() {
                             style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />
-                    </InputNormal>
-                    <FlexEnd>
+                    </IptNor>
+                    <FlexE>
                         <Text12 $red $height={"1rem"} $margin={"0 0 1rem"}>
                             {errors.nickname}
                         </Text12>
-                    </FlexEnd>
-                    <ButtonAwesome
+                    </FlexE>
+                    <BtnAwe
                         type="submit"
                         $margin={"0 2.5rem 1.2rem"}
                         disabled={loading}
                     >
                         {loading ? "회원가입 하는중..." : "회원가입"}
-                    </ButtonAwesome>
+                    </BtnAwe>
                     <Flex>
                         <Text16 $grey>이미 회원이신가요?&nbsp;&nbsp;</Text16>
                         <Text16 $blue onClick={() => navigate("/login")}>
                             로그인하기
                         </Text16>
                     </Flex>
-                </PositionEnd>
+                </PosEC>
             </form>
-        </Relative>
+        </PosRela>
     );
 }

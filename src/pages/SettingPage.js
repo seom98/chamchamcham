@@ -2,9 +2,11 @@ import s from "./SettingPage.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Relative } from "../components/ui/molecules/CustomPosition";
+import { PosRela } from "../components/ui/molecules/CustomPosition";
+import { useAccount } from "../hooks/useAccount";
 
 export default function SettingPage() {
+    const { logout } = useAccount(); //로그인 커스텀 훅을 가져옴.
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function SettingPage() {
         }
     };
     return (
-        <Relative>
+        <PosRela>
             <div className={s.box}>
                 환경설정
                 <div onClick={() => navigate(-1)}>뒤로 가기</div>
@@ -40,7 +42,8 @@ export default function SettingPage() {
                         <span className={classNames(s.slider, s.round)}></span>
                     </label>
                 </div>
+                <button onClick={logout}>로그아웃</button>
             </div>
-        </Relative>
+        </PosRela>
     );
 }

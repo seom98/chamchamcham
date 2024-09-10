@@ -1,6 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import React from "react";
-import { usePress } from "../../../hooks/usePress";
+import { usePress } from "../../../hooks/usePress"; // 버튼을 누르고 있는지 확인하는 커스텀 훅
 
 // 그라데이션 애니메이션 정의
 const gradient = keyframes`
@@ -47,14 +46,14 @@ const BaseButton = styled.button`
 `;
 
 // 화이트 버튼 스타일
-const ButtonWhiteStyled = styled(BaseButton)`
+const BtnWhiStyled = styled(BaseButton)`
     box-shadow: 0 2px 25px 0 var(--shadow1);
     background-color: var(--grey1);
     color: var(--grey8);
 `;
 
 // 어썸 버튼 스타일
-const ButtonAwesomeStyled = styled(BaseButton)`
+const BtnAweStyled = styled(BaseButton)`
     background-color: transparent;
     background-image: var(--awesome);
     background-size: 300% 100%;
@@ -64,12 +63,12 @@ const ButtonAwesomeStyled = styled(BaseButton)`
 `;
 
 // 화이트 버튼 컴포넌트
-export const ButtonWhite = ({ children, ...props }) => {
+export const BtnWhi = ({ children, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
         usePress();
 
     return (
-        <ButtonWhiteStyled
+        <BtnWhiStyled
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchCancel}
@@ -81,17 +80,17 @@ export const ButtonWhite = ({ children, ...props }) => {
             {...props}
         >
             {children}
-        </ButtonWhiteStyled>
+        </BtnWhiStyled>
     );
 };
 
 // 어썸 버튼 컴포넌트
-export const ButtonAwesome = ({ children, ...props }) => {
+export const BtnAwe = ({ children, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
         usePress();
 
     return (
-        <ButtonAwesomeStyled
+        <BtnAweStyled
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchCancel}
@@ -103,6 +102,6 @@ export const ButtonAwesome = ({ children, ...props }) => {
             {...props}
         >
             {children}
-        </ButtonAwesomeStyled>
+        </BtnAweStyled>
     );
 };

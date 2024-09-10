@@ -1,6 +1,7 @@
 import React from "react";
 import { Text16, Text36 } from "../atoms/CustomText";
 
+// 타이틀 컴포넌트
 const Title = React.memo(({ margin = "15rem" }) => {
     return (
         <div>

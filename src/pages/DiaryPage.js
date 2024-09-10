@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./DiaryPage.module.css";
 import { useState } from "react";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "hugeicons-react";
-import { Relative } from "../components/ui/molecules/CustomPosition";
+import { PosRela } from "../components/ui/molecules/CustomPosition";
 
 export default function DiaryPage() {
     // const navigate = useNavigate();
@@ -50,7 +50,7 @@ export default function DiaryPage() {
     };
 
     return (
-        <Relative>
+        <PosRela>
             <div>
                 {year}년 {month + 1}월
             </div>
@@ -126,6 +126,6 @@ export default function DiaryPage() {
                     </div>
                 </div>
             </div>
-        </Relative>
+        </PosRela>
     );
 }

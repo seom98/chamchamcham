@@ -20,6 +20,12 @@
     --blur2: #ffffff80;
     --shadow1: #a0aec040;
     --shadow2: #8697ea80;
+    --bottom: linear-gradient(
+        0deg,
+        #edf2f7e4 60%,
+        #edf2f7b2 70%,
+        #edf2f700 100%
+    );
     --awesome: linear-gradient(
         60deg,
         #8696ea 0%,
@@ -62,6 +68,7 @@
     --blur2: #ffffff80;
     --shadow1: #a0aec040;
     --shadow2: #8697ea80;
+    --bottom: linear-gradient(0deg, #2d3748 0%, #2d3748 75%, #2d374800 100%);
     --awesome: linear-gradient(
         60deg,
         #8696ea 0%,

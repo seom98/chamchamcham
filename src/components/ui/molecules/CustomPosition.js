@@ -4,39 +4,61 @@ const BasePosition = styled.div`
     position: absolute;
 `;
 
-// PositionEnd 컴포넌트
-export const PositionEnd = styled(BasePosition)`
+export const PosSti = styled.div`
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+`;
+
+// 하단 가운데 위치
+export const PosEC = styled(BasePosition)`
     bottom: ${(props) => props.$bottom || "2.5rem"};
     left: 0;
     right: 0;
 `;
-// PositionStart 컴포넌트
-export const PositionStart = styled(BasePosition)`
+
+// 상단 왼쪽 위치
+export const PosSL = styled(BasePosition)`
     top: ${(props) => props.$top || "1rem"};
 `;
 
-export const Relative = styled.div`
+// 상단 오른쪽 위치
+export const PosSR = styled(BasePosition)`
+    top: ${(props) => props.$top || "1rem"};
+    right: 0;
+`;
+
+// 포지션 - relative
+export const PosRela = styled.div`
     position: relative;
     height: ${(props) => props.$height || "100vh"};
     z-index: ${(props) => props.$zIndex || "0"};
 `;
 
+// 디스플레이 - flex
 export const Flex = styled.div`
+    z-index: ${(props) => props.$zIndex || "0"};
     gap: ${(props) => props.$gap || "0"};
     display: flex;
     justify-content: center;
 `;
-export const FlexAround = styled.div`
+
+// space-around
+export const FlexA = styled.div`
     display: flex;
     justify-content: space-around;
     margin: 0 1.5rem;
 `;
-export const FlexEnd = styled.div`
-    width: calc(100% - 5rem);
+
+// 오른쪽으로 정렬
+export const FlexE = styled.div`
+    width: calc(100% - 3rem);
     display: flex;
     justify-content: flex-end;
 `;
-export const FlexCenter = styled.div`
+
+// 가로세로 가운데 정렬
+export const FlexCC = styled.div`
     height: 100vh;
     display: flex;
     justify-content: center;
