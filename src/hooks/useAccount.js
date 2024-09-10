@@ -81,8 +81,11 @@ export function useAccount() {
     const logout = async () => {
         try {
             await signOut(auth);
-            navigate("/"); // 로그아웃 후 로그인 페이지로 리디렉션
-        } catch (error) {}
+            sessionStorage.clear(); // 세션 스토리지에 있는 모든 데이터를 삭제
+            navigate("/"); // 로그아웃 후 메인 페이지로 리디렉션
+        } catch (error) {
+            console.error("Error during logout:", error);
+        }
     };
 
     // 이메일 형식 검증 함수
