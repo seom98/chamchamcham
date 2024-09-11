@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./DiaryPage.module.css";
+import styles from "./CalendarPage.module.css";
 import { useState } from "react";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "hugeicons-react";
 import { PosRela } from "../components/ui/molecules/CustomPosition";
 
-export default function DiaryPage() {
+export default function CalendarPage() {
     // const navigate = useNavigate();
     // 현재 날짜 가져오기 및 상태 설정
     const today = new Date();
@@ -61,7 +61,6 @@ export default function DiaryPage() {
                             <ArrowLeft01Icon
                                 size={48}
                                 color={"#000000"}
-                                variant={"stroke"}
                                 onClick={goToPrevMonth}
                             />
                         </div>
@@ -75,7 +74,6 @@ export default function DiaryPage() {
                                 <ArrowRight01Icon
                                     size={48}
                                     color={"#000000"}
-                                    variant={"stroke"}
                                     onClick={goToNextMonth}
                                 />
                             ) : (

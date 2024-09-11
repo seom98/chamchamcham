@@ -72,7 +72,7 @@ const Nav = React.memo(() => {
             "/home": 0,
             "/plan": 1,
             "/stat": 2,
-            "/diary": 3,
+            "/calendar": 3,
             "/setting": 4,
         };
         setTap(pathMap[location.pathname] || 0);
@@ -126,7 +126,7 @@ const Nav = React.memo(() => {
                         <NavButton
                             onClick={() => {
                                 setTap(3);
-                                navigate("/diary");
+                                navigate("/calendar");
                             }}
                         >
                             <Calendar03Icon size={30} color={"var(--grey8)"} />

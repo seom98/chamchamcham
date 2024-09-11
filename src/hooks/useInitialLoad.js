@@ -19,7 +19,7 @@ export function useInitialLoad() {
         if (!isInitialLoad) return;
 
         const preloadRoutes = async () => {
-            const routes = ["/plan", "/diary", "/setting"];
+            const routes = ["/plan", "/calendar", "/setting"];
 
             for (const route of routes) {
                 await navigateTo(route);
