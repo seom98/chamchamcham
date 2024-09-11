@@ -32,6 +32,8 @@ export default function SignupPage() {
         setEmail,
         setShowPassword,
         setPassword,
+        setConfirmPassword,
+        setNickname,
         signup,
         emailChange,
         passwordChange,
@@ -134,7 +136,7 @@ export default function SignupPage() {
                                 confirmPassword ? "var(--grey8)" : "transparent"
                             }
                             style={{ transition: "0.2s" }}
-                            onClick={() => setEmail("")}
+                            onClick={() => setConfirmPassword("")}
                         />
                     </IptNor>
                     <FlexE>
@@ -158,7 +160,7 @@ export default function SignupPage() {
                             size={24}
                             color={nickname ? "var(--grey8)" : "transparent"}
                             style={{ transition: "0.2s" }}
-                            onClick={() => setEmail("")}
+                            onClick={() => setNickname("")}
                         />
                     </IptNor>
                     <FlexE>

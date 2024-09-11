@@ -93,6 +93,7 @@ export const Flex = styled.div`
     gap: ${(props) => props.$gap || "0"};
     display: flex;
     justify-content: center;
+    align-items: ${(props) => props.$align || ""};
 `;
 
 // space-around
@@ -105,6 +106,7 @@ export const FlexA = styled.div`
 export const FlexB = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `;
 
 // 오른쪽으로 정렬
@@ -112,6 +114,8 @@ export const FlexE = styled.div`
     width: calc(100% - 3rem);
     display: flex;
     justify-content: flex-end;
+    gap: ${(props) => props.$gap || "0.5rem"};
+    align-items: center;
 `;
 
 // 가로세로 가운데 정렬
@@ -128,4 +132,5 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: auto;
 `;

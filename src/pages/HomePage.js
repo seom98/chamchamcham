@@ -9,7 +9,7 @@ import {
     PosTR,
 } from "../components/ui/molecules/CustomPosition";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useInitialLoad } from "../hooks/useInitialLoad";
 import UserHeader from "../components/ui/organisms/UserHeader";
 import { Box1 } from "../components/ui/atoms/CustomBox";
@@ -19,7 +19,7 @@ import Title from "../components/ui/organisms/Title"; // 타이틀 컴포넌트
 import { BtnNor } from "../components/ui/atoms/CustomButton";
 
 export default function HomePage() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const { userInfo, loading } = useGetUserInfo();
     useInitialLoad();
 
@@ -55,7 +55,9 @@ export default function HomePage() {
                                 <Text25 $margin={"0 0 3rem"}>
                                     모아보세요!
                                 </Text25>
-                                <BtnNor>
+                                <BtnNor
+                                    onClick={() => navigate("/plan/create")}
+                                >
                                     <FlexB>
                                         <Text20 $light>목표 만들기</Text20>
                                         <ArrowRight01Icon

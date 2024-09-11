@@ -6,12 +6,17 @@ import ScrollToTop from "./components/templates/ScrollToTop";
 import DarkModeCheck from "./components/templates/DarkModeCheck";
 
 const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
-const HomePage = React.lazy(() => import("./pages/HomePage"));
-const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage"));
+const LoginPage = React.lazy(() => import("./pages/LoginPage"));
+
+const HomePage = React.lazy(() => import("./pages/HomePage"));
+
 const PlanPage = React.lazy(() => import("./pages/PlanPage"));
-const SettingPage = React.lazy(() => import("./pages/SettingPage"));
+const PlanCreatePage = React.lazy(() => import("./pages/PlanCreatePage"));
+
 const CalendarPage = React.lazy(() => import("./pages/CalendarPage"));
+
+const SettingPage = React.lazy(() => import("./pages/SettingPage"));
 
 export default function Router() {
     return (
@@ -22,13 +27,18 @@ export default function Router() {
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<WelcomePage />} />
-                        <Route path="/login" element={<LoginPage />} />
-                        <Route path="/signup" element={<SignupPage />} />
+                        <Route path="signup" element={<SignupPage />} />
+                        <Route path="login" element={<LoginPage />} />
 
-                        <Route path="/home" element={<HomePage />} />
-                        <Route path="/plan" element={<PlanPage />} />
-                        <Route path="/setting" element={<SettingPage />} />
-                        <Route path="/calendar" element={<CalendarPage />} />
+                        <Route path="home" element={<HomePage />} />
+
+                        <Route path="plan">
+                            <Route index element={<PlanPage />} />
+                            <Route path="create" element={<PlanCreatePage />} />
+                        </Route>
+
+                        <Route path="setting" element={<SettingPage />} />
+                        <Route path="calendar" element={<CalendarPage />} />
                     </Route>
                 </Routes>
             </Suspense>

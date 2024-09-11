@@ -38,6 +38,7 @@ export default function SettingPage() {
                             type="checkbox"
                             onClick={darkOnOff}
                             checked={toggle}
+                            readOnly
                         />
                         <span className={classNames(s.slider, s.round)}></span>
                     </label>
