@@ -3,7 +3,7 @@ import { Text16, Text20 } from "../../ui/atoms/CustomText";
 import { PosSC } from "../../ui/molecules/CustomPosition";
 import styled from "styled-components";
 
-const FlexB = styled.div`
+const HeaderDisplay = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +36,7 @@ const Level = styled.div`
 const UserHeader = React.memo(({ userInfo }) => {
     return (
         <PosSC>
-            <FlexB>
+            <HeaderDisplay>
                 <Text20>{userInfo.nickname}</Text20>
                 <LevelWrapper>
                     <LevelBar $width={userInfo.point}></LevelBar>
@@ -44,7 +44,7 @@ const UserHeader = React.memo(({ userInfo }) => {
                         <Text16 $light>Lv. {userInfo.level}</Text16>
                     </Level>
                 </LevelWrapper>
-            </FlexB>
+            </HeaderDisplay>
         </PosSC>
     );
 });

@@ -62,6 +62,16 @@ const BtnAweStyled = styled(BaseButton)`
     box-shadow: 0 2px 25px 0 var(--shadow2);
 `;
 
+const BtnNorStyled = styled.div`
+    /* 드래그 금지 */
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent; // 버튼클릭시 하이라이트 제거!!!
+    border-radius: 1rem;
+    transition: 0.2s;
+    padding: 1rem;
+`;
+
 // 화이트 버튼 컴포넌트
 export const BtnWhi = ({ children, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
@@ -74,7 +84,7 @@ export const BtnWhi = ({ children, ...props }) => {
             onTouchCancel={handleTouchCancel}
             style={{
                 backgroundColor: isPressed && "var(--grey3)",
-                boxShadow: isPressed && "0 2px 25px 0 var(--grey5)",
+                boxShadow: isPressed && "0 2px 25px 0 var(--grey4)",
                 transform: isPressed && "scale(0.97)",
             }}
             {...props}
@@ -96,12 +106,32 @@ export const BtnAwe = ({ children, ...props }) => {
             onTouchCancel={handleTouchCancel}
             style={{
                 backgroundImage: isPressed && "var(--awesome2)",
-                boxShadow: isPressed && "0 2px 25px 0 var(--grey5)",
+                boxShadow: isPressed && "0 2px 25px 0 var(--grey4)",
                 transform: isPressed && "scale(0.97)",
             }}
             {...props}
         >
             {children}
         </BtnAweStyled>
+    );
+};
+// 노멀 버튼 컴포넌트
+export const BtnNor = ({ children, ...props }) => {
+    const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
+        usePress();
+
+    return (
+        <BtnNorStyled
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchCancel}
+            style={{
+                backgroundColor: isPressed && "var(--grey2)",
+                transform: isPressed && "scale(0.97)",
+            }}
+            {...props}
+        >
+            {children}
+        </BtnNorStyled>
     );
 };

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const BasePosition = styled.div`
     position: absolute;
@@ -8,6 +8,50 @@ export const PosSti = styled.div`
     position: sticky;
     width: 100%;
     bottom: 0;
+`;
+
+// 업다운 애니메이션 정의
+const updown = keyframes`
+  0% {
+    transform: translateY(0.5rem) rotateZ(5deg);
+  }
+  50% {
+    transform: translateY(0rem) rotateZ(-5deg);
+  }
+
+  100% {
+    transform: translateY(0.5rem) rotateZ(5deg);
+  }
+`;
+
+// 원하는 위치
+const PosAb = styled(BasePosition)`
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--blur3);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    animation: ${updown} ${(props) => props.$s || "1.5s"} ease-in-out infinite;
+`;
+
+export const PosTL = styled(PosAb)`
+    top: ${(props) => props.$top || "2.5rem"};
+    left: ${(props) => props.$left || "2.5rem"};
+`;
+export const PosTR = styled(PosAb)`
+    top: ${(props) => props.$top || "2.5rem"};
+    right: ${(props) => props.$right || "2.5rem"};
+`;
+export const PosBL = styled(PosAb)`
+    bottom: ${(props) => props.$bottom || "2.5rem"};
+    left: ${(props) => props.$left || "2.5rem"};
+`;
+export const PosBR = styled(PosAb)`
+    bottom: ${(props) => props.$bottom || "2.5rem"};
+    right: ${(props) => props.$right || "2.5rem"};
 `;
 
 // 하단 가운데 위치
@@ -56,6 +100,11 @@ export const FlexA = styled.div`
     display: flex;
     justify-content: space-around;
     margin: 0 1.5rem;
+`;
+// space-between
+export const FlexB = styled.div`
+    display: flex;
+    justify-content: space-between;
 `;
 
 // 오른쪽으로 정렬
