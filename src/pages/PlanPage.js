@@ -144,7 +144,7 @@ export default function PlanPage() {
                                     <input
                                         type="number"
                                         pattern="[0-9]*"
-                                        inputmode="numeric"
+                                        inputMode="numeric"
                                         placeholder="ex) 3000"
                                         value={
                                             moneyList[
