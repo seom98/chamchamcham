@@ -17,6 +17,14 @@ export const PosEC = styled(BasePosition)`
     right: 0;
 `;
 
+// 상단 가운데 위치
+export const PosSC = styled.div`
+    position: sticky;
+    top: ${(props) => props.$top || "0"};
+    left: 0;
+    right: 0;
+`;
+
 // 상단 왼쪽 위치
 export const PosSL = styled(BasePosition)`
     top: ${(props) => props.$top || "1rem"};
@@ -62,6 +70,13 @@ export const FlexCC = styled.div`
     height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
+
+export const Content = styled.div`
+    padding: 0rem 2.5rem 6rem;
+    display: flex;
     align-items: center;
     flex-direction: column;
 `;
