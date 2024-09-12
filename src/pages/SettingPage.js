@@ -73,7 +73,7 @@ export default function SettingPage() {
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
                 <>
-                    <Content $padding={"2rem 2.5rem 6rem"}>
+                    <Content $padding={"1.5rem 1.5rem 6rem"}>
                         <Box1>
                             <BtnNor>
                                 <FlexB $gap={"1rem"}>
@@ -169,9 +169,9 @@ export default function SettingPage() {
                             <BtnNor>
                                 <FlexB $gap={"1rem"}>
                                     <Text16>버전</Text16>
-                                    <Text16 $light $grey>
-                                        Ver.0.3.1
-                                    </Text16>
+                                    <Text12 $light $grey $margin={"0 0.5rem"}>
+                                        Ver.0.3.1.1
+                                    </Text12>
                                 </FlexB>
                             </BtnNor>
                         </Box1>
