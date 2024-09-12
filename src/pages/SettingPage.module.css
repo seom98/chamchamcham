@@ -1,7 +1,7 @@
 /* The switch - the box around the slider */
 .switch {
     position: relative;
-    bottom: 0.5rem;
+    bottom: 0rem;
     left: 0rem;
     display: inline-block;
     width: 60px;
@@ -41,7 +41,7 @@
 }
 
 input:checked + .slider {
-    background-color: var(--grey8);
+    background-color: var(--white);
 }
 
 input:checked + .slider:before {

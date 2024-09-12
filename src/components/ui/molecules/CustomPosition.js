@@ -7,6 +7,7 @@ const BasePosition = styled.div`
 export const PosSti = styled.div`
     position: sticky;
     width: 100%;
+    top: ${(props) => props.$top || ""};
     bottom: ${(props) => props.$bottom || "0"};
     left: 0;
     right: 0;
@@ -119,6 +120,7 @@ export const Flex = styled.div`
 export const FlexA = styled.div`
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin: 0 1.5rem;
 `;
 // space-between
@@ -126,6 +128,8 @@ export const FlexB = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: ${(props) => props.$gap || "0"};
+    margin: ${(props) => props.$margin || "0"};
 `;
 
 // 오른쪽으로 정렬
@@ -135,6 +139,14 @@ export const FlexE = styled.div`
     justify-content: flex-end;
     gap: ${(props) => props.$gap || "0.5rem"};
     align-items: center;
+`;
+// 왼쪽 정렬
+export const FlexS = styled.div`
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 `;
 
 // 가로세로 가운데 정렬

@@ -7,6 +7,7 @@ export const Box1 = styled.div`
     padding: 1rem;
     box-shadow: 0 2px 40px 0 var(--shadow1);
     position: relative;
+    margin: ${(props) => props.$margin || "0.5rem 0"};
 `;
 
 export const Box2 = styled.div`
