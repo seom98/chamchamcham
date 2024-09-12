@@ -3,7 +3,6 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import {
     Content,
-    FlexA,
     FlexB,
     FlexS,
     PosRela,
@@ -17,12 +16,7 @@ import {
     UserCircleIcon,
 } from "hugeicons-react";
 import Loading from "../components/Loading";
-import {
-    Text12,
-    Text16,
-    Text20,
-    Text25,
-} from "../components/ui/atoms/CustomText";
+import { Text12, Text16, Text25 } from "../components/ui/atoms/CustomText";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { BtnNor } from "../components/ui/atoms/CustomButton";
 import styled from "styled-components";
