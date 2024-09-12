@@ -7,13 +7,17 @@ const BasePosition = styled.div`
 export const PosSti = styled.div`
     position: sticky;
     width: 100%;
-    bottom: 0;
+    bottom: ${(props) => props.$bottom || "0"};
+    left: 0;
+    right: 0;
 
     // 모바일 환경일 경우
     @media (max-width: 650px) {
         position: fixed;
         width: 100%;
-        bottom: 0;
+        left: 0;
+        right: 0;
+        bottom: ${(props) => props.$bottom || "0"};
     }
 `;
 
@@ -126,7 +130,7 @@ export const FlexB = styled.div`
 
 // 오른쪽으로 정렬
 export const FlexE = styled.div`
-    width: calc(100% - 3rem);
+    width: ${(props) => props.$width || "calc(100% - 3rem)"};
     display: flex;
     justify-content: flex-end;
     gap: ${(props) => props.$gap || "0.5rem"};

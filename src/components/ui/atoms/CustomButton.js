@@ -129,14 +129,15 @@ export const BtnNor = ({ children, ...props }) => {
 export const BtnAdd = styled.button`
     font-size: 16px;
     letter-spacing: -0.05em;
-    border-radius: 2rem;
-    border: none;
+    border-radius: 1rem;
+    border: solid 1px var(--grey4);
     outline: none;
-    width: 4rem;
-    height: 4rem;
+    width: 9rem;
+    height: 3rem;
     padding: 0.5rem;
     background-color: ${(props) => props.$bgColor || "var(--blue)"};
-    box-shadow: 0 2px 25px 0 var(--shadow2);
+    color: ${(props) => props.$fontcolor || "var(--white)"};
+    box-shadow: 0 2px 25px 0 var(--shadow1);
     &:active {
         outline: none;
     }
