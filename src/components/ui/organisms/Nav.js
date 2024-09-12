@@ -16,7 +16,6 @@ const SelectBox = styled.div`
     background-color: var(--grey3);
     width: 4rem;
     height: 4rem;
-    transition: transform 0.3s ease-in-out;
     border-radius: 1rem;
     transform: translateY(-0.4rem) translateX(${(props) => props.translate});
 `;
@@ -32,13 +31,9 @@ const IconBox = styled.div`
     justify-content: flex-start;
     flex-direction: column;
     gap: 0.5rem;
-    transition: 0.3s ease-in-out;
-    /* 드래그 금지 */
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent; // 버튼클릭시 하이라이트 제거!!!
 `;
 
+// 클릭했을때 크기가 바뀌도록
 const NavButton = ({ children, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
         usePress();

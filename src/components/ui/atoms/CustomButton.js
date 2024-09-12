@@ -13,17 +13,11 @@ const gradient = keyframes`
 
 // 기본 버튼 스타일
 const BaseButton = styled.button`
-    /* 드래그 금지 */
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent; // 버튼클릭시 하이라이트 제거!!!
-
     margin: ${(props) => props.$margin || "0.5rem 2.5rem"};
     padding: 1rem 3.5rem;
     font-size: 20px;
     letter-spacing: -0.05em;
     border-radius: 3rem;
-    transition: 0.2s;
     border: none;
     outline: none;
     width: calc(100% - 5rem);
@@ -63,12 +57,7 @@ const BtnAweStyled = styled(BaseButton)`
 `;
 
 const BtnNorStyled = styled.div`
-    /* 드래그 금지 */
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent; // 버튼클릭시 하이라이트 제거!!!
     border-radius: 1rem;
-    transition: 0.2s;
     padding: 1rem;
 `;
 

@@ -62,12 +62,10 @@ export default function SignupPage() {
                         <AtIcon
                             size={24}
                             color={email ? "var(--grey8)" : "var(--grey5)"}
-                            style={{ transition: "0.2s" }}
                         />
                         <Cancel01Icon
                             size={24}
                             color={email ? "var(--grey8)" : "transparent"}
-                            style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />
                     </IptNor>
@@ -89,7 +87,6 @@ export default function SignupPage() {
                                 color={
                                     password ? "var(--grey8)" : "transparent"
                                 }
-                                style={{ transition: "0.2s" }}
                                 onClick={() => setShowPassword(false)}
                             />
                         ) : (
@@ -98,14 +95,12 @@ export default function SignupPage() {
                                 color={
                                     password ? "var(--grey8)" : "transparent"
                                 }
-                                style={{ transition: "0.2s" }}
                                 onClick={() => setShowPassword(true)}
                             />
                         )}
                         <Cancel01Icon
                             size={24}
                             color={password ? "var(--grey8)" : "transparent"}
-                            style={{ transition: "0.2s" }}
                             onClick={() => setPassword("")}
                         />
                     </IptPas>
@@ -128,14 +123,12 @@ export default function SignupPage() {
                                     ? "var(--grey8)"
                                     : "var(--grey5)"
                             }
-                            style={{ transition: "0.2s" }}
                         />
                         <Cancel01Icon
                             size={24}
                             color={
                                 confirmPassword ? "var(--grey8)" : "transparent"
                             }
-                            style={{ transition: "0.2s" }}
                             onClick={() => setConfirmPassword("")}
                         />
                     </IptNor>
@@ -154,12 +147,10 @@ export default function SignupPage() {
                         <UserSquareIcon
                             size={24}
                             color={nickname ? "var(--grey8)" : "var(--grey5)"}
-                            style={{ transition: "0.2s" }}
                         />
                         <Cancel01Icon
                             size={24}
                             color={nickname ? "var(--grey8)" : "transparent"}
-                            style={{ transition: "0.2s" }}
                             onClick={() => setNickname("")}
                         />
                     </IptNor>

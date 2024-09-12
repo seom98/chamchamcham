@@ -108,43 +108,46 @@ export default function PlanCreatePage() {
                 ))}
             </Content>
             <PosEC $bottom={"0"}>
-                <button onClick={addItem}>추가</button>
-                <IptNor
-                    type="text"
-                    placeholder="항목을 입력해주세요."
-                    value={itemName}
-                    onChange={(e) => setItemName(e.target.value)}
-                    required
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        addItem();
+                    }}
                 >
-                    <GeometricShapes01Icon
-                        size={24}
-                        color={itemName ? "var(--grey8)" : "var(--grey5)"}
-                        style={{ transition: "0.2s" }}
-                    />
-                    <Cancel01Icon
-                        size={24}
-                        color={itemName ? "var(--grey8)" : "transparent"}
-                        style={{ transition: "0.2s" }}
-                        onClick={() => setItemName("")}
-                    />
-                </IptNor>
-                <IptNor
-                    type="number"
-                    placeholder="얼마인가요?"
-                    inputMode="numeric"
-                    value={itemCost}
-                    onChange={(e) => setItemCost(e.target.value)}
-                    required
-                >
-                    <Text25 $grey={!itemCost}>₩</Text25>
-                    <Cancel01Icon
-                        size={24}
-                        color={itemCost ? "var(--grey8)" : "transparent"}
-                        variant={"stroke"}
-                        style={{ transition: "0.2s" }}
-                        onClick={() => setItemCost("")}
-                    />
-                </IptNor>
+                    <button type="submit">추가</button>
+                    <IptNor
+                        type="text"
+                        placeholder="항목을 입력해주세요."
+                        value={itemName}
+                        onChange={(e) => setItemName(e.target.value)}
+                        required
+                    >
+                        <GeometricShapes01Icon
+                            size={24}
+                            color={itemName ? "var(--grey8)" : "var(--grey5)"}
+                        />
+                        <Cancel01Icon
+                            size={24}
+                            color={itemName ? "var(--grey8)" : "transparent"}
+                            onClick={() => setItemName("")}
+                        />
+                    </IptNor>
+                    <IptNor
+                        type="number"
+                        placeholder="얼마인가요?"
+                        inputMode="numeric"
+                        value={itemCost}
+                        onChange={(e) => setItemCost(e.target.value)}
+                        required
+                    >
+                        <Text25 $grey={!itemCost}>₩</Text25>
+                        <Cancel01Icon
+                            size={24}
+                            color={itemCost ? "var(--grey8)" : "transparent"}
+                            onClick={() => setItemCost("")}
+                        />
+                    </IptNor>
+                </form>
             </PosEC>
         </PosRela>
     );

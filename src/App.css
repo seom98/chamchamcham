@@ -178,6 +178,13 @@
     margin: 0;
     padding: 0;
     transition: 0.2s ease-in-out;
+
+    /* 드래그 금지 */
+    user-select: none;
+    -webkit-user-select: none;
+
+    /* 클릭시 하이라이트 제거 */
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {

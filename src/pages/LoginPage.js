@@ -47,14 +47,10 @@ export default function LoginPage() {
                         <AtIcon
                             size={24}
                             color={email ? "var(--grey8)" : "var(--grey5)"}
-                            variant={"stroke"}
-                            style={{ transition: "0.2s" }}
                         />
                         <Cancel01Icon
                             size={24}
                             color={email ? "var(--grey8)" : "transparent"}
-                            variant={"stroke"}
-                            style={{ transition: "0.2s" }}
                             onClick={() => setEmail("")}
                         />
                     </IptNor>
@@ -71,8 +67,6 @@ export default function LoginPage() {
                                 color={
                                     password ? "var(--grey8)" : "transparent"
                                 }
-                                variant={"stroke"}
-                                style={{ transition: "0.2s" }}
                                 onClick={() => setShowPassword(false)}
                             />
                         ) : (
@@ -81,16 +75,12 @@ export default function LoginPage() {
                                 color={
                                     password ? "var(--grey8)" : "transparent"
                                 }
-                                variant={"stroke"}
-                                style={{ transition: "0.2s" }}
                                 onClick={() => setShowPassword(true)}
                             />
                         )}
                         <Cancel01Icon
                             size={24}
                             color={password ? "var(--grey8)" : "transparent"}
-                            variant={"stroke"}
-                            style={{ transition: "0.2s" }}
                             onClick={() => setPassword("")}
                         />
                     </IptPas>

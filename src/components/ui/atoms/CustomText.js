@@ -12,12 +12,6 @@ const gradient = keyframes`
 
 // 공통 스타일
 const commonStyles = css`
-    /* 드래그 금지 */
-    user-select: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-
     margin: ${(props) => props.$margin || "0"};
     height: ${(props) => props.$height || "auto"};
     color: var(--grey8);

@@ -11,7 +11,6 @@ const BaseInput = styled.input`
     padding: 1rem 3rem;
     border-radius: 0.5rem;
     letter-spacing: -0.05em;
-    transition: ease-in-out 0.2s;
     color: var(--grey8);
     cursor: pointer;
     outline: none;
@@ -91,8 +90,6 @@ export const IptPas = ({ children, onChange, value, ...props }) => {
                 <SquareLockPasswordIcon
                     size={24}
                     color={value ? "var(--grey8)" : "var(--grey5)"}
-                    variant={"stroke"}
-                    style={{ transition: "0.2s" }}
                 />
             </AbsoluteDiv>
             <AbsoluteLigthDiv>{children}</AbsoluteLigthDiv>

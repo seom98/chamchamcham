@@ -33,7 +33,6 @@ const PosAb = styled(BasePosition)`
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.2s;
     animation: ${updown} ${(props) => props.$s || "1.5s"} ease-in-out infinite;
 `;
 
