@@ -8,6 +8,13 @@ export const PosSti = styled.div`
     position: sticky;
     width: 100%;
     bottom: 0;
+
+    // 모바일 환경일 경우
+    @media (max-width: 650px) {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
 `;
 
 // 업다운 애니메이션 정의
@@ -66,6 +73,14 @@ export const PosSC = styled.div`
     top: ${(props) => props.$top || "0"};
     left: 0;
     right: 0;
+
+    // 모바일 환경일 경우
+    @media (max-width: 650px) {
+        position: fixed;
+        top: ${(props) => props.$top || "0"};
+        left: 0;
+        right: 0;
+    }
 `;
 
 // 상단 왼쪽 위치
@@ -127,7 +142,7 @@ export const FlexCC = styled.div`
 `;
 
 export const Content = styled.div`
-    padding: 0rem 2.5rem 6rem;
+    padding: 4rem 2.5rem 6rem;
     display: flex;
     align-items: center;
     flex-direction: column;

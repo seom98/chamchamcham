@@ -17,8 +17,8 @@ import {
     Flex,
     FlexB,
     FlexE,
-    PosEC,
     PosRela,
+    PosSti,
 } from "../components/ui/molecules/CustomPosition";
 import PlanHeader from "../components/ui/organisms/PlanHeader";
 import { useState } from "react";
@@ -107,7 +107,7 @@ export default function PlanCreatePage() {
                     </Box2>
                 ))}
             </Content>
-            <PosEC $bottom={"0"}>
+            <PosSti>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -148,7 +148,7 @@ export default function PlanCreatePage() {
                         />
                     </IptNor>
                 </form>
-            </PosEC>
+            </PosSti>
         </PosRela>
     );
 }
