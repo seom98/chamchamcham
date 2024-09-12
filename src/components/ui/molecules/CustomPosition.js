@@ -73,6 +73,7 @@ export const PosSC = styled.div`
     top: ${(props) => props.$top || "0"};
     left: 0;
     right: 0;
+    z-index: 7;
 
     // 모바일 환경일 경우
     @media (max-width: 650px) {
@@ -142,9 +143,9 @@ export const FlexCC = styled.div`
 `;
 
 export const Content = styled.div`
-    padding: 4rem 2.5rem 6rem;
+    padding: ${(props) => props.$padding || "4rem 2.5rem 6rem"};
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow: auto;
+    overflow-y: auto;
 `;

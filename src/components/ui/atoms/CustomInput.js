@@ -15,7 +15,7 @@ const BaseInput = styled.input`
     cursor: pointer;
     outline: none;
     box-shadow: 0 2px 25px 0 var(--shadow1);
-    width: ${(props) => props.$width || "calc(100% - 5rem)"};
+    width: calc(100% - 5rem);
 
     &:focus {
         border: solid 1px var(--grey8);

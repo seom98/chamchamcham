@@ -21,12 +21,7 @@
     --blur3: #e2e8f080;
     --shadow1: #a0aec040;
     --shadow2: #8697ea80;
-    --bottom: linear-gradient(
-        0deg,
-        #edf2f7e4 60%,
-        #edf2f7b2 70%,
-        #edf2f700 100%
-    );
+    --bottom: linear-gradient(0deg, #edf2f7 60%, #edf2f7b2 70%, #edf2f700 100%);
     --top: linear-gradient(
         180deg,
         #edf2f7e4 60%,

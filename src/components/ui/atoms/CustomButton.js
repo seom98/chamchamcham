@@ -124,3 +124,23 @@ export const BtnNor = ({ children, ...props }) => {
         </BtnNorStyled>
     );
 };
+
+// 추가 버튼 스타일
+export const BtnAdd = styled.button`
+    font-size: 16px;
+    letter-spacing: -0.05em;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    width: 4rem;
+    height: 4rem;
+    padding: 0.5rem;
+    background-color: ${(props) => props.$bgColor || "var(--blue)"};
+    box-shadow: 0 2px 25px 0 var(--shadow2);
+    &:active {
+        outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+`;

@@ -5,6 +5,10 @@ import styled from "styled-components";
 import { ArrowLeft01Icon } from "hugeicons-react";
 import { useNavigate } from "react-router-dom";
 
+import { db } from "../../../firebase";
+import { doc, updateDoc } from "firebase/firestore";
+import { useGetUserInfo } from "../../../hooks/useGetUserInfo";
+
 const HeaderDisplay = styled.div`
     display: flex;
     justify-content: space-between;
@@ -28,8 +32,35 @@ const BtnOk = styled.div`
     margin-right: 1rem;
 `;
 // Plan페이지에서 쓸 헤더 컴포넌트
-export default function PlanHeader() {
+export default function PlanHeader({ itemList, moneyList, setLoading }) {
     const navigate = useNavigate();
+
+    const { userInfo } = useGetUserInfo();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            setLoading(true);
+            // Firestore에 사용자 데이터 저장
+            await updateDoc(doc(db, "users", userInfo.uid), {
+                itemList: itemList,
+                moneyList: moneyList,
+            });
+
+            const userData = sessionStorage.getItem("userInfo");
+            let user = JSON.parse(userData);
+            user.itemList = itemList;
+            user.moneyList = moneyList;
+            sessionStorage.setItem("userInfo", JSON.stringify(user));
+
+            navigate("/home");
+        } catch (error) {
+            alert("생성 실패: " + error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <PosSC>
             <HeaderDisplay>
@@ -42,7 +73,7 @@ export default function PlanHeader() {
                     <Text16 $light>뒤로</Text16>
                 </BtnBack>
                 <Text20 $light>목표 설정하기</Text20>
-                <BtnOk>
+                <BtnOk onClick={handleSubmit}>
                     <Text16 $light $blue>
                         완료
                     </Text16>

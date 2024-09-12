@@ -11,6 +11,7 @@ import { Text12 } from "../atoms/CustomText";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { usePress } from "../../../hooks/usePress";
+import { BackBox } from "../atoms/CustomBox";
 
 const SelectBox = styled.div`
     background-color: var(--grey3);
@@ -18,11 +19,6 @@ const SelectBox = styled.div`
     height: 4rem;
     border-radius: 1rem;
     transform: translateY(-0.4rem) translateX(${(props) => props.translate});
-`;
-const BackBox = styled.div`
-    background: var(--bottom);
-    width: 100%;
-    height: 5.5rem;
 `;
 
 const IconBox = styled.div`

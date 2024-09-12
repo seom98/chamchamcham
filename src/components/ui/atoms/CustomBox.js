@@ -17,3 +17,9 @@ export const Box2 = styled.div`
     width: ${(props) => props.$width || "calc(100% - 2rem)"};
     position: relative;
 `;
+
+export const BackBox = styled.div`
+    background: var(--bottom);
+    width: 100%;
+    height: ${(props) => props.$height || "5.5rem"};
+`;
