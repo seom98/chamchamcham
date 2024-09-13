@@ -118,10 +118,11 @@ export const Flex = styled.div`
 
 // space-around
 export const FlexA = styled.div`
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0 1.5rem;
+    margin: 1rem 0rem;
 `;
 // space-between
 export const FlexB = styled.div`
@@ -164,4 +165,12 @@ export const Content = styled.div`
     align-items: center;
     flex-direction: column;
     overflow-y: auto;
+`;
+
+export const CalendarFrame = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
 `;

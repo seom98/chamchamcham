@@ -1,12 +1,29 @@
 import React from "react";
-import styles from "./CalendarPage.module.css";
 import { useState } from "react";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "hugeicons-react";
-import { PosRela } from "../components/ui/molecules/CustomPosition";
+import {
+    CalendarFrame,
+    Content,
+    Flex,
+    FlexA,
+    PosRela,
+} from "../components/ui/molecules/CustomPosition";
+import {
+    Text12,
+    Text16,
+    Text20,
+    Text30,
+} from "../components/ui/atoms/CustomText";
+import { BtnDate } from "../components/ui/atoms/CustomButton";
+import Loading from "../components/Loading";
+import UserHeader from "../components/ui/organisms/UserHeader";
+import { useGetUserInfo } from "../hooks/useGetUserInfo";
+import { Cycle } from "../components/pages/Calendar/CalendarStyles";
 
 export default function CalendarPage() {
     // const navigate = useNavigate();
     // 현재 날짜 가져오기 및 상태 설정
+    const { userInfo, loading } = useGetUserInfo();
     const today = new Date();
     const [year, setYear] = useState(today.getFullYear());
     const [month, setMonth] = useState(today.getMonth());
@@ -51,79 +68,102 @@ export default function CalendarPage() {
 
     return (
         <PosRela>
-            <div>
-                {year}년 {month + 1}월
-            </div>
-            <div className={styles.main}>
-                <div>
-                    <div className={styles.navigation}>
-                        <div className={styles.icon_container}>
+            {loading ? (
+                <Loading>정보를 불러오는 중..</Loading>
+            ) : (
+                <>
+                    <UserHeader userInfo={userInfo} />
+                    <Content $padding={"4rem 1.5rem 10rem"}>
+                        <Flex $align={"baseline"} $gap={"0.3rem"}>
+                            <Text16>{month + 1}월 동안 </Text16>
+                            <Text30 $awesome $margin={"0 0 1rem"}>
+                                1,325,000
+                            </Text30>
+                            <Text20> 원 절약</Text20>
+                        </Flex>
+                        <FlexA>
                             <ArrowLeft01Icon
-                                size={48}
-                                color={"#000000"}
+                                size={24}
+                                color={"var(--grey8)"}
                                 onClick={goToPrevMonth}
                             />
-                        </div>
+                            <Text20>
+                                {year}년 {month + 1}월
+                            </Text20>
 
-                        <div>{`${month + 1}월`}</div>
-                        <div className={styles.icon_container}>
-                            {!(
-                                year === today.getFullYear() &&
-                                month === today.getMonth()
-                            ) ? (
-                                <ArrowRight01Icon
-                                    size={48}
-                                    color={"#000000"}
-                                    onClick={goToNextMonth}
-                                />
-                            ) : (
-                                <div></div>
-                            )}
-                        </div>
-                    </div>
-                    <div className={styles.week}>
-                        <div className={styles.sunday}>일</div>
-                        <div>월</div>
-                        <div>화</div>
-                        <div>수</div>
-                        <div>목</div>
-                        <div>금</div>
-                        <div className={styles.saturday}>토</div>
-                    </div>
-                    <div className={styles.calendar}>
-                        {/* 달력 영역 */}
-                        {/* 날짜 요소 매핑 */}
-                        {dates.map((d, index) => {
-                            let className = styles.date;
-
-                            // 특별한 날짜에 따라 클래스 추가
-                            if (d.date.getDay() === 0)
-                                className += " " + styles.sunday;
-                            if (d.date.getDay() === 6)
-                                className += " " + styles.saturday;
-
-                            if (!d.isInCurrentMonth)
-                                className += " " + styles.otherMonth;
-                            if (d.date > today)
-                                className += " " + styles.grayedOut;
-                            if (
-                                d.date.getFullYear() === today.getFullYear() &&
-                                d.date.getMonth() === today.getMonth() &&
-                                d.date.getDate() === today.getDate()
-                            )
-                                className += " " + styles.today;
-
-                            return (
-                                <div key={index} className={className}>
-                                    <div className={styles.number}>
-                                        {d.date.getDate()}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
+                            <ArrowRight01Icon
+                                size={24}
+                                color={
+                                    !(
+                                        year === today.getFullYear() &&
+                                        month === today.getMonth()
+                                    )
+                                        ? "var(--grey8)"
+                                        : "var(--grey2)"
+                                }
+                                onClick={goToNextMonth}
+                            />
+                        </FlexA>
+                        <CalendarFrame>
+                            <Text16 $red $light>
+                                일
+                            </Text16>
+                            <Text16 $light>월</Text16>
+                            <Text16 $light>화</Text16>
+                            <Text16 $light>수</Text16>
+                            <Text16 $light>목</Text16>
+                            <Text16 $light>금</Text16>
+                            <Text16 $blue $light>
+                                토
+                            </Text16>
+                        </CalendarFrame>
+                        <CalendarFrame>
+                            {dates.map((d, index) => {
+                                return (
+                                    <Flex key={index}>
+                                        <BtnDate
+                                            $today={
+                                                d.date.getFullYear() ===
+                                                    today.getFullYear() &&
+                                                d.date.getMonth() ===
+                                                    today.getMonth() &&
+                                                d.date.getDate() ===
+                                                    today.getDate()
+                                            }
+                                            $null={!d.isInCurrentMonth}
+                                            $after={
+                                                d.date.getMonth() ===
+                                                    today.getMonth() &&
+                                                d.date.getDate() >
+                                                    today.getDate()
+                                            }
+                                            $blue={d.date.getDate() === 3}
+                                            $yellow={d.date.getDate() === 5}
+                                            $red={d.date.getDate() === 7}
+                                        >
+                                            {d.date.getDate()}
+                                        </BtnDate>
+                                    </Flex>
+                                );
+                            })}
+                        </CalendarFrame>
+                        <Flex $gap={"3rem"}>
+                            <Flex $gap={"1rem"}>
+                                <Cycle $blue />
+                                <Text12 $light>성공</Text12>
+                            </Flex>
+                            <Flex $gap={"1rem"}>
+                                <Cycle $yellow />
+                                <Text12 $light>부분성공</Text12>
+                            </Flex>
+                            <Flex $gap={"1rem"}>
+                                <Cycle $red />
+                                <Text12 $light>실패</Text12>
+                            </Flex>
+                        </Flex>
+                    </Content>
+                </>
+            )}
         </PosRela>
     );
 }
