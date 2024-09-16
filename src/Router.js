@@ -15,6 +15,7 @@ const PlanPage = React.lazy(() => import("./pages/PlanPage"));
 const PlanCreatePage = React.lazy(() => import("./pages/PlanCreatePage"));
 
 const CalendarPage = React.lazy(() => import("./pages/CalendarPage"));
+const DatePage = React.lazy(() => import("./pages/DatePage"));
 
 const SettingPage = React.lazy(() => import("./pages/SettingPage"));
 
@@ -37,8 +38,12 @@ export default function Router() {
                             <Route path="create" element={<PlanCreatePage />} />
                         </Route>
 
+                        <Route path="calendar">
+                            <Route index element={<CalendarPage />} />
+                            <Route path=":date" element={<DatePage />} />
+                        </Route>
+
                         <Route path="setting" element={<SettingPage />} />
-                        <Route path="calendar" element={<CalendarPage />} />
                     </Route>
                 </Routes>
             </Suspense>

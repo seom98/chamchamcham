@@ -17,9 +17,6 @@ export const ContainerWrapper = styled.div`
 // 메인공간
 export const Main = styled.main`
     width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
 `;
 
 // 메인공간을 가득차도록 공간설정

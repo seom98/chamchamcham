@@ -187,7 +187,7 @@ export const BtnDate = styled.button`
     ${(props) =>
         props.$today &&
         css`
-            background-color: var(--grey3);
+            background-color: var(--grey1);
             box-shadow: 0 2px 25px 0 var(--shadow1);
         `};
     &:active {

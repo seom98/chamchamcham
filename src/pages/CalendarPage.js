@@ -19,9 +19,10 @@ import Loading from "../components/Loading";
 import UserHeader from "../components/ui/organisms/UserHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { Cycle } from "../components/pages/Calendar/CalendarStyles";
+import { useNavigate } from "react-router-dom";
 
 export default function CalendarPage() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // 현재 날짜 가져오기 및 상태 설정
     const { userInfo, loading } = useGetUserInfo();
     const today = new Date();
@@ -47,7 +48,9 @@ export default function CalendarPage() {
 
     // 이전 달로 이동하는 함수
     const goToPrevMonth = () => {
-        if (month === 0) {
+        if (month === 0 && year === 2024) {
+            alert("2024년 이전의 기록은 작성할수 없어요ㅠㅠ 죄송함미다..");
+        } else if (month === 0) {
             setYear(year - 1);
             setMonth(11);
         } else {
@@ -66,6 +69,15 @@ export default function CalendarPage() {
         }
     };
 
+    // 주소반환
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, "0"); // 월은 0부터 시작하므로 +1
+        const day = date.getDate().toString().padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+    }
+
     return (
         <PosRela>
             {loading ? (
@@ -79,7 +91,7 @@ export default function CalendarPage() {
                             <Text30 $awesome $margin={"0 0 1rem"}>
                                 1,325,000
                             </Text30>
-                            <Text20> 원 절약</Text20>
+                            <Text16> 원 절약</Text16>
                         </Flex>
                         <FlexA>
                             <ArrowLeft01Icon
@@ -122,6 +134,21 @@ export default function CalendarPage() {
                                 return (
                                     <Flex key={index}>
                                         <BtnDate
+                                            onClick={() => {
+                                                if (
+                                                    !(
+                                                        d.date.getMonth() ===
+                                                            today.getMonth() &&
+                                                        d.date.getDate() >
+                                                            today.getDate()
+                                                    ) &&
+                                                    d.isInCurrentMonth
+                                                ) {
+                                                    navigate(
+                                                        `${formatDate(d.date)}`
+                                                    );
+                                                }
+                                            }}
                                             $today={
                                                 d.date.getFullYear() ===
                                                     today.getFullYear() &&
