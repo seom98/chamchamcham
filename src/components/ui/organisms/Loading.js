@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import loadingLottie from "../assets/lottie/loading2.json";
+import loadingLottie from "../../../assets/lottie/loading2.json";
 import s from "./Loading.module.css";
 
 function Loading({ children }) {

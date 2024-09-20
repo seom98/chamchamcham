@@ -15,7 +15,7 @@ import {
     Text30,
 } from "../components/ui/atoms/CustomText";
 import { BtnDate } from "../components/ui/atoms/CustomButton";
-import Loading from "../components/Loading";
+import Loading from "../components/ui/organisms/Loading";
 import UserHeader from "../components/ui/organisms/UserHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { Cycle } from "../components/pages/Calendar/CalendarStyles";

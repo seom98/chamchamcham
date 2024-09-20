@@ -8,14 +8,13 @@ import {
 import { Text12, Text16, Text30 } from "../components/ui/atoms/CustomText";
 import DateHeader from "../components/ui/organisms/DateHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
-import Loading from "../components/Loading";
+import Loading from "../components/ui/organisms/Loading";
 import styled from "styled-components";
 
 const OverflowHidden = styled.div`
     overflow: hidden;
     width: 100vw;
     height: 25rem;
-    position: relative;
     background-color: var(--grey7);
 `;
 
@@ -23,7 +22,7 @@ const SliderContainer = styled.div`
     display: flex;
     width: 300vw; /* 100% * 3 슬라이드 */
     height: 100%;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
     transform: translateX(${(props) => props.$transX}vw);
 `;
 
@@ -54,6 +53,7 @@ export default function DatePage() {
     const [, month, day] = date.split("-").map((e) => +e);
 
     const [translateX, setTranslateX] = useState(-100); // 처음에 2번 슬라이드를 보여줌
+    const [x, setX] = useState(-100); // 처음에 2번 슬라이드를 보여줌
     const [startX, setStartX] = useState(0);
     const [endX, setEndX] = useState(0); // 드래그 종료 시점의 X 좌표
 
@@ -65,9 +65,11 @@ export default function DatePage() {
         const deltaX = endX - startX;
         const threshold = window.innerWidth * 0.05;
         if (deltaX > threshold && translateX < 0) {
-            setTranslateX(translateX + 100);
+            setTranslateX(x + 100);
+            setX(translateX + 100);
         } else if (deltaX < -threshold && translateX > -200) {
-            setTranslateX(translateX - 100);
+            setTranslateX(x - 100);
+            setX(translateX - 100);
         }
     };
 

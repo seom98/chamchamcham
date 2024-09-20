@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Loading from "./components/Loading";
+import Loading from "./components/ui/organisms/Loading";
 import App from "./App";
 import ScrollToTop from "./components/templates/ScrollToTop";
 import DarkModeCheck from "./components/templates/DarkModeCheck";

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import Loading from "../components/Loading";
+import Loading from "../components/ui/organisms/Loading";
 
 // 로딩상태와 화면이동을 위한 커스텀 훅
 export const useAuthRedirect = (children) => {

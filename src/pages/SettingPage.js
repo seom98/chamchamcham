@@ -15,7 +15,7 @@ import {
     Setting07Icon,
     UserCircleIcon,
 } from "hugeicons-react";
-import Loading from "../components/Loading";
+import Loading from "../components/ui/organisms/Loading";
 import { Text12, Text16, Text25 } from "../components/ui/atoms/CustomText";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { BtnNor } from "../components/ui/atoms/CustomButton";

@@ -24,7 +24,7 @@ import PlanHeader from "../components/ui/organisms/PlanHeader";
 import { useEffect, useState } from "react";
 import Explanation from "../components/pages/PlanCreate/Explanation";
 import { BtnAdd } from "../components/ui/atoms/CustomButton";
-import Loading from "../components/Loading";
+import Loading from "../components/ui/organisms/Loading";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 
 export default function PlanCreatePage() {

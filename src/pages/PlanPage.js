@@ -10,7 +10,7 @@ import {
 } from "../components/ui/molecules/CustomPosition";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import UserHeader from "../components/ui/organisms/UserHeader";
-import Loading from "../components/Loading";
+import Loading from "../components/ui/organisms/Loading";
 import { Text12, Text20, Text36 } from "../components/ui/atoms/CustomText";
 import { ArrowRight01Icon } from "hugeicons-react";
 import { Box1, Box2 } from "../components/ui/atoms/CustomBox";
