@@ -1,40 +1,23 @@
 import styled, { css, keyframes } from "styled-components";
 
-// 그라데이션 애니메이션 정의
 const gradient = keyframes`
-  from {
-    background-position-x: 0%;
-  }
-  to {
-    background-position-x: 150%;
-  }
+  0% { background-position-x: 0%; }
+  100% { background-position-x: 150%; }
 `;
 
-// 공통 스타일
-const commonStyles = css`
+const BaseText = styled.div`
     margin: ${(props) => props.$margin || "0"};
     height: ${(props) => props.$height || "auto"};
     color: var(--grey8);
     letter-spacing: -0.05em;
-    font-weight: 400;
+    font-weight: ${(props) => (props.$bold ? 700 : props.$light ? 300 : 400)};
     text-align: center;
 
-    ${(props) =>
-        props.$grey &&
-        css`
-            color: var(--grey5);
-        `};
-    ${(props) =>
-        props.$red &&
-        css`
-            color: var(--red);
-        `};
-    ${(props) =>
-        props.$blue &&
-        css`
-            color: var(--blue);
-        `};
-    ${(props) =>
+    ${(props) => props.$grey && `color: var(--grey5);`}
+    ${(props) => props.$red && `color: var(--red);`}
+  ${(props) => props.$blue && `color: var(--blue);`}
+
+  ${(props) =>
         props.$awesome &&
         css`
             background-clip: text;
@@ -51,47 +34,16 @@ const commonStyles = css`
             background-size: 300% 100%;
             background-position-x: 0%;
             animation: ${gradient} 2s linear infinite;
-        `};
-
-    ${(props) =>
-        props.$bold &&
-        css`
-            font-weight: 700;
-        `};
-    ${(props) =>
-        props.$light &&
-        css`
-            font-weight: 300;
-        `};
+        `}
 `;
 
-// 기본 텍스트 스타일을 위한 베이스 컴포넌트
-const BaseText = styled.div`
-    ${commonStyles}
+const createTextComponent = (size) => styled(BaseText)`
+    font-size: ${size}px;
 `;
 
-// Text12 컴포넌트
-export const Text12 = styled(BaseText)`
-    font-size: 12px;
-`;
-
-// Text16 컴포넌트
-export const Text16 = styled(BaseText)`
-    font-size: 16px;
-`;
-// Text20 컴포넌트
-export const Text20 = styled(BaseText)`
-    font-size: 20px;
-`;
-// Text25 컴포넌트
-export const Text25 = styled(BaseText)`
-    font-size: 25px;
-`;
-// Text30 컴포넌트
-export const Text30 = styled(BaseText)`
-    font-size: 30px;
-`;
-// Text36 컴포넌트
-export const Text36 = styled(BaseText)`
-    font-size: 36px;
-`;
+export const Text12 = createTextComponent(12);
+export const Text16 = createTextComponent(16);
+export const Text20 = createTextComponent(20);
+export const Text25 = createTextComponent(25);
+export const Text30 = createTextComponent(30);
+export const Text36 = createTextComponent(36);

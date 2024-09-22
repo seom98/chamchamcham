@@ -1,6 +1,6 @@
 import React from "react";
 import { Text16, Text20 } from "../../ui/atoms/CustomText";
-import { PosSC } from "../../ui/molecules/CustomPosition";
+import { PositionFixed } from "../../ui/molecules/CustomPosition";
 import styled from "styled-components";
 import { ArrowLeft01Icon } from "hugeicons-react";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +62,7 @@ export default function PlanHeader({ itemList, moneyList, setLoading }) {
     };
 
     return (
-        <PosSC>
+        <PositionFixed>
             <HeaderDisplay>
                 <BtnBack
                     onClick={() => {
@@ -79,6 +79,6 @@ export default function PlanHeader({ itemList, moneyList, setLoading }) {
                     </Text16>
                 </BtnOk>
             </HeaderDisplay>
-        </PosSC>
+        </PositionFixed>
     );
 }

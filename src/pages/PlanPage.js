@@ -1,12 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {
-    Content,
-    Flex,
-    FlexB,
-    FlexE,
-    PosRela,
-    PosSC,
-    PosSti,
+    PositionRelative,
+    PositionFixed,
 } from "../components/ui/molecules/CustomPosition";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import UserHeader from "../components/ui/organisms/UserHeader";
@@ -15,6 +10,12 @@ import { Text12, Text20, Text36 } from "../components/ui/atoms/CustomText";
 import { ArrowRight01Icon } from "hugeicons-react";
 import { Box1, Box2 } from "../components/ui/atoms/CustomBox";
 import { BtnAdd, BtnNor } from "../components/ui/atoms/CustomButton";
+import {
+    Content,
+    Flex,
+    FlexB,
+    FlexE,
+} from "../components/ui/molecules/CustomDisplay";
 
 export default function PlanPage() {
     const navigate = useNavigate();
@@ -43,14 +44,14 @@ export default function PlanPage() {
     }
 
     return (
-        <PosRela>
+        <PositionRelative>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
                 <>
                     <UserHeader userInfo={userInfo} />
                     {TotalCost(1) !== "0" && (
-                        <PosSC $top={"4rem"}>
+                        <PositionFixed $top={"4rem"}>
                             <Text12 $grey $light $margin={"1rem 0 0"}>
                                 아낄 수 있는 돈
                             </Text12>
@@ -62,7 +63,7 @@ export default function PlanPage() {
                             <Text12 $grey $light $margin={"0 0 1rem"}>
                                 이 돈 한달 아끼면 {TotalCost(30)} 원
                             </Text12>
-                        </PosSC>
+                        </PositionFixed>
                     )}
                     <Content
                         $padding={
@@ -132,7 +133,7 @@ export default function PlanPage() {
                         )}
                     </Content>
                     {TotalCost(1) !== "0" && (
-                        <PosSti $bottom={"7rem"}>
+                        <PositionFixed $bottom={"7rem"}>
                             <Flex>
                                 <BtnAdd
                                     onClick={() => navigate("/plan/create")}
@@ -140,10 +141,10 @@ export default function PlanPage() {
                                     수정
                                 </BtnAdd>
                             </Flex>
-                        </PosSti>
+                        </PositionFixed>
                     )}
                 </>
             )}
-        </PosRela>
+        </PositionRelative>
     );
 }

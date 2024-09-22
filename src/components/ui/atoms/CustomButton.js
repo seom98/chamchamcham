@@ -39,6 +39,79 @@ const BaseButton = styled.button`
     }
 `;
 
+// 추가 버튼 스타일
+export const BtnAdd = styled.button`
+    font-size: 16px;
+    letter-spacing: -0.05em;
+    border-radius: 1rem;
+    border: solid 1px var(--grey4);
+    outline: none;
+    width: 9rem;
+    height: 3rem;
+    padding: 0.5rem;
+    background-color: ${(props) => props.$bgColor || "var(--blue)"};
+    color: ${(props) => props.$fontcolor || "var(--white)"};
+    box-shadow: 0 2px 25px 0 var(--shadow1);
+    &:active {
+        outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+`;
+// 날짜 버튼 스타일
+export const BtnDate = styled.button`
+    font-size: 16px;
+    letter-spacing: -0.05em;
+    border-radius: 1rem;
+    outline: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    font-weight: 300;
+    background-color: transparent;
+    ${(props) =>
+        props.$blue &&
+        css`
+            background-color: var(--skyblue);
+            box-shadow: 0 2px 25px 0 var(--shadow1);
+        `};
+    ${(props) =>
+        props.$yellow &&
+        css`
+            background-color: var(--yellow);
+            box-shadow: 0 2px 25px 0 var(--shadow1);
+        `};
+    ${(props) =>
+        props.$red &&
+        css`
+            background-color: var(--pink);
+            box-shadow: 0 2px 25px 0 var(--shadow1);
+        `};
+    ${(props) =>
+        props.$after &&
+        css`
+            color: var(--grey5);
+        `};
+    ${(props) =>
+        props.$null &&
+        css`
+            color: #00000000;
+        `};
+    ${(props) =>
+        props.$today &&
+        css`
+            background-color: var(--grey1);
+            box-shadow: 0 2px 25px 0 var(--shadow1);
+        `};
+    &:active {
+        outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+`;
+
 // 화이트 버튼 스타일
 const BtnWhiStyled = styled(BaseButton)`
     box-shadow: 0 2px 25px 0 var(--shadow1);
@@ -124,76 +197,3 @@ export const BtnNor = ({ children, ...props }) => {
         </BtnNorStyled>
     );
 };
-
-// 추가 버튼 스타일
-export const BtnAdd = styled.button`
-    font-size: 16px;
-    letter-spacing: -0.05em;
-    border-radius: 1rem;
-    border: solid 1px var(--grey4);
-    outline: none;
-    width: 9rem;
-    height: 3rem;
-    padding: 0.5rem;
-    background-color: ${(props) => props.$bgColor || "var(--blue)"};
-    color: ${(props) => props.$fontcolor || "var(--white)"};
-    box-shadow: 0 2px 25px 0 var(--shadow1);
-    &:active {
-        outline: none;
-    }
-    &:focus {
-        outline: none;
-    }
-`;
-// 날짜 버튼 스타일
-export const BtnDate = styled.button`
-    font-size: 16px;
-    letter-spacing: -0.05em;
-    border-radius: 1rem;
-    outline: none;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: none;
-    font-weight: 300;
-    background-color: transparent;
-    ${(props) =>
-        props.$blue &&
-        css`
-            background-color: var(--skyblue);
-            box-shadow: 0 2px 25px 0 var(--shadow1);
-        `};
-    ${(props) =>
-        props.$yellow &&
-        css`
-            background-color: var(--yellow);
-            box-shadow: 0 2px 25px 0 var(--shadow1);
-        `};
-    ${(props) =>
-        props.$red &&
-        css`
-            background-color: var(--pink);
-            box-shadow: 0 2px 25px 0 var(--shadow1);
-        `};
-    ${(props) =>
-        props.$after &&
-        css`
-            color: var(--grey5);
-        `};
-    ${(props) =>
-        props.$null &&
-        css`
-            color: #00000000;
-        `};
-    ${(props) =>
-        props.$today &&
-        css`
-            background-color: var(--grey1);
-            box-shadow: 0 2px 25px 0 var(--shadow1);
-        `};
-    &:active {
-        outline: none;
-    }
-    &:focus {
-        outline: none;
-    }
-`;

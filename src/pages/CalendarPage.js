@@ -1,13 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "hugeicons-react";
-import {
-    CalendarFrame,
-    Content,
-    Flex,
-    FlexA,
-    PosRela,
-} from "../components/ui/molecules/CustomPosition";
+import { PositionRelative } from "../components/ui/molecules/CustomPosition";
 import {
     Text12,
     Text16,
@@ -20,6 +14,12 @@ import UserHeader from "../components/ui/organisms/UserHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { Cycle } from "../components/pages/Calendar/CalendarStyles";
 import { useNavigate } from "react-router-dom";
+import {
+    CalendarFrame,
+    Content,
+    Flex,
+    FlexA,
+} from "../components/ui/molecules/CustomDisplay";
 
 export default function CalendarPage() {
     const navigate = useNavigate();
@@ -79,7 +79,7 @@ export default function CalendarPage() {
     }
 
     return (
-        <PosRela>
+        <PositionRelative>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -191,6 +191,6 @@ export default function CalendarPage() {
                     </Content>
                 </>
             )}
-        </PosRela>
+        </PositionRelative>
     );
 }

@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import {
-    Content,
-    Flex,
-    PosRela,
-} from "../components/ui/molecules/CustomPosition";
+import { PositionRelative } from "../components/ui/molecules/CustomPosition";
 import { Text12, Text16, Text30 } from "../components/ui/atoms/CustomText";
 import DateHeader from "../components/ui/organisms/DateHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import Loading from "../components/ui/organisms/Loading";
 import styled from "styled-components";
+import { Content, Flex } from "../components/ui/molecules/CustomDisplay";
 
 const OverflowHidden = styled.div`
     overflow: hidden;
@@ -78,7 +75,7 @@ export default function DatePage() {
     };
 
     return (
-        <PosRela>
+        <PositionRelative>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -124,6 +121,6 @@ export default function DatePage() {
                     </OverflowHidden>
                 </>
             )}
-        </PosRela>
+        </PositionRelative>
     );
 }

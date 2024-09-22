@@ -1,6 +1,6 @@
 import React from "react";
 import { Text16, Text20 } from "../../ui/atoms/CustomText";
-import { PosSC } from "../../ui/molecules/CustomPosition";
+import { PositionFixed } from "../../ui/molecules/CustomPosition";
 import styled from "styled-components";
 
 const HeaderDisplay = styled.div`
@@ -35,7 +35,7 @@ const Level = styled.div`
 // 유저정보를 담는 헤더 컴포넌트
 const UserHeader = React.memo(({ userInfo }) => {
     return (
-        <PosSC>
+        <PositionFixed>
             <HeaderDisplay>
                 <Text20>{userInfo.nickname}</Text20>
                 <LevelWrapper>
@@ -45,7 +45,7 @@ const UserHeader = React.memo(({ userInfo }) => {
                     </Level>
                 </LevelWrapper>
             </HeaderDisplay>
-        </PosSC>
+        </PositionFixed>
     );
 });
 

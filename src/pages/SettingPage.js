@@ -1,12 +1,7 @@
 import s from "./SettingPage.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import {
-    Content,
-    FlexB,
-    FlexS,
-    PosRela,
-} from "../components/ui/molecules/CustomPosition";
+import { PositionRelative } from "../components/ui/molecules/CustomPosition";
 import { useAccount } from "../hooks/useAccount";
 import { Box1 } from "../components/ui/atoms/CustomBox";
 import {
@@ -20,6 +15,11 @@ import { Text12, Text16, Text25 } from "../components/ui/atoms/CustomText";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { BtnNor } from "../components/ui/atoms/CustomButton";
 import styled from "styled-components";
+import {
+    Content,
+    FlexB,
+    FlexS,
+} from "../components/ui/molecules/CustomDisplay";
 
 const LevelWrapper = styled.div`
     margin-top: 1rem;
@@ -68,7 +68,7 @@ export default function SettingPage() {
         }
     };
     return (
-        <PosRela>
+        <PositionRelative>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -189,6 +189,6 @@ export default function SettingPage() {
                     </Content>
                 </>
             )}
-        </PosRela>
+        </PositionRelative>
     );
 }

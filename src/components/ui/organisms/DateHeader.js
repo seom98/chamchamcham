@@ -1,5 +1,5 @@
 import { Text16, Text20 } from "../../ui/atoms/CustomText";
-import { PosSC } from "../../ui/molecules/CustomPosition";
+import { PositionFixed } from "../../ui/molecules/CustomPosition";
 import styled from "styled-components";
 import { ArrowLeft01Icon } from "hugeicons-react";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ const BtnOk = styled.div`
 export default function DateHeader({ month, day }) {
     const navigate = useNavigate();
     return (
-        <PosSC>
+        <PositionFixed>
             <HeaderDisplay>
                 <BtnBack
                     onClick={() => {
@@ -49,6 +49,6 @@ export default function DateHeader({ month, day }) {
                     </Text16>
                 </BtnOk>
             </HeaderDisplay>
-        </PosSC>
+        </PositionFixed>
     );
 }

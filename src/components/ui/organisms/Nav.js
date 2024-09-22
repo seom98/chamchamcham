@@ -6,12 +6,17 @@ import {
     Home02Icon,
     Menu01Icon,
 } from "hugeicons-react";
-import { Flex, PosEC, PosSti, PosRela } from "../molecules/CustomPosition";
+import {
+    PosEC,
+    PositionFixed,
+    PositionRelative,
+} from "../molecules/CustomPosition";
 import { Text12 } from "../atoms/CustomText";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { usePress } from "../../../hooks/usePress";
 import { BackBox } from "../atoms/CustomBox";
+import { Flex } from "../molecules/CustomDisplay";
 
 const SelectBox = styled.div`
     background-color: var(--grey3);
@@ -70,17 +75,17 @@ const Nav = React.memo(() => {
     }, [location.pathname]);
 
     return (
-        <PosSti>
+        <PositionFixed>
             <PosEC $bottom="4.5rem">
-                <PosRela $height="1rem" $zIndex="5">
+                <PositionRelative $height="1rem">
                     <BackBox></BackBox>
-                </PosRela>
-                <PosRela $height="0" $zIndex="6">
+                </PositionRelative>
+                <PositionRelative $height="0">
                     <Flex>
                         <SelectBox translate={taps[tap]} />
                     </Flex>
-                </PosRela>
-                <PosRela $height="0rem" $zIndex="7">
+                </PositionRelative>
+                <PositionRelative $height="0rem">
                     <Flex $gap="2.5rem">
                         <NavButton
                             onClick={() => {
@@ -133,9 +138,9 @@ const Nav = React.memo(() => {
                             <Text12 $light>전체</Text12>
                         </NavButton>
                     </Flex>
-                </PosRela>
+                </PositionRelative>
             </PosEC>
-        </PosSti>
+        </PositionFixed>
     );
 });
 

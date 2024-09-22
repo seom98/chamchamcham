@@ -2,10 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useAccount } from "../hooks/useAccount"; // 회원가입 커스텀 훅
 import { useAuthRedirect } from "../hooks/useAuthRedirect"; // 로그인 한 상태인경우 화면이동 커스텀 훅
 import {
-    Flex,
-    FlexE,
     PosEC,
-    PosRela,
+    PositionRelative,
 } from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
 import { BtnAwe } from "../components/ui/atoms/CustomButton"; //버튼 컴포넌트
 import { Text12, Text16 } from "../components/ui/atoms/CustomText"; // 텍스트 컴포넌트
@@ -19,6 +17,7 @@ import {
     ViewIcon,
     ViewOffIcon,
 } from "hugeicons-react";
+import { Flex, FlexE } from "../components/ui/molecules/CustomDisplay";
 
 export default function SignupPage() {
     const {
@@ -43,7 +42,7 @@ export default function SignupPage() {
     const navigate = useNavigate();
 
     return useAuthRedirect(
-        <PosRela>
+        <PositionRelative>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -174,6 +173,6 @@ export default function SignupPage() {
                     </Flex>
                 </PosEC>
             </form>
-        </PosRela>
+        </PositionRelative>
     );
 }

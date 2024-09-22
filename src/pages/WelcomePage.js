@@ -3,8 +3,7 @@ import { useAuthRedirect } from "../hooks/useAuthRedirect"; // 로그인 유지 
 import { BtnAwe, BtnWhi } from "../components/ui/atoms/CustomButton"; // 버튼 컴포넌트
 import {
     PosEC,
-    PosSR,
-    PosRela,
+    PositionRelative,
 } from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
 import { Text12 } from "../components/ui/atoms/CustomText"; // 텍스트 컴포넌트
 import Title from "../components/ui/organisms/Title"; // 타이틀 컴포넌트
@@ -14,11 +13,8 @@ export default function WelcomePage() {
     const navigate = useNavigate();
 
     return useAuthRedirect(
-        <PosRela>
+        <PositionRelative>
             <Version />
-            <PosSR>
-                <Text12 $margin={"0 1rem"}>참참참 소개</Text12>
-            </PosSR>
             <PosEC>
                 <Title />
                 <BtnWhi
@@ -32,6 +28,6 @@ export default function WelcomePage() {
                     회원가입
                 </BtnAwe>
             </PosEC>
-        </PosRela>
+        </PositionRelative>
     );
 }

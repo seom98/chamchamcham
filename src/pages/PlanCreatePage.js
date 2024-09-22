@@ -12,13 +12,8 @@ import {
     Text36,
 } from "../components/ui/atoms/CustomText";
 import {
-    Content,
-    Flex,
-    FlexB,
-    FlexCC,
-    FlexE,
-    PosRela,
-    PosSti,
+    PositionRelative,
+    PositionFixed,
 } from "../components/ui/molecules/CustomPosition";
 import PlanHeader from "../components/ui/organisms/PlanHeader";
 import { useEffect, useState } from "react";
@@ -26,6 +21,12 @@ import Explanation from "../components/pages/PlanCreate/Explanation";
 import { BtnAdd } from "../components/ui/atoms/CustomButton";
 import Loading from "../components/ui/organisms/Loading";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
+import {
+    Content,
+    Flex,
+    FlexCC,
+    FlexE,
+} from "../components/ui/molecules/CustomDisplay";
 
 export default function PlanCreatePage() {
     const { userInfo, loading } = useGetUserInfo();
@@ -61,7 +62,7 @@ export default function PlanCreatePage() {
 
     function CostItem({ item, index }) {
         return (
-            <FlexB $align={"center"}>
+            <Flex $align={"center"}>
                 <Text12 $light>{item}</Text12>
                 <FlexE $width={"50%"}>
                     <Text12>{(+moneyList[index]).toLocaleString()}원</Text12>
@@ -71,7 +72,7 @@ export default function PlanCreatePage() {
                         onClick={() => deleteItem(index)}
                     />
                 </FlexE>
-            </FlexB>
+            </Flex>
         );
     }
 
@@ -84,7 +85,7 @@ export default function PlanCreatePage() {
     }, [userInfo.moneyList]);
 
     return (
-        <PosRela>
+        <PositionRelative>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -94,7 +95,7 @@ export default function PlanCreatePage() {
                         moneyList={moneyList}
                         setLoading={setSubmitLoading}
                     />
-                    <PosRela>
+                    <PositionRelative>
                         <Content $padding={"4rem 2.5rem 16rem"}>
                             <Flex $align={"baseline"} $gap={"0.3rem"}>
                                 <Text20>총</Text20>
@@ -128,18 +129,18 @@ export default function PlanCreatePage() {
                                     </Box2>
                                 ))}
                         </Content>
-                    </PosRela>
-                    <PosSti $bottom={"1.5rem"}>
+                    </PositionRelative>
+                    <PositionFixed $bottom={"1.5rem"}>
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 addItem();
                             }}
                         >
-                            <PosRela $height="0.5rem" $zIndex="5">
+                            <PositionRelative $height="0.5rem">
                                 <BackBox $height={"14.5rem"}></BackBox>
-                            </PosRela>
-                            <PosRela $height="3.5rem" $zIndex="6">
+                            </PositionRelative>
+                            <PositionRelative $height="3.5rem">
                                 <Flex>
                                     <BtnAdd
                                         type="submit"
@@ -155,8 +156,8 @@ export default function PlanCreatePage() {
                                         추가
                                     </BtnAdd>
                                 </Flex>
-                            </PosRela>
-                            <PosRela $height="9rem" $zIndex="6">
+                            </PositionRelative>
+                            <PositionRelative $height="9rem">
                                 <IptNor
                                     type="text"
                                     placeholder="항목을 입력해주세요."
@@ -209,9 +210,9 @@ export default function PlanCreatePage() {
                                         onClick={() => setItemCost("")}
                                     />
                                 </IptNor>
-                            </PosRela>
+                            </PositionRelative>
                         </form>
-                    </PosSti>
+                    </PositionFixed>
                     {submitLoading && (
                         <FlexCC>
                             <Loading>목표를 생성하는중..</Loading>
@@ -219,6 +220,6 @@ export default function PlanCreatePage() {
                     )}
                 </>
             )}
-        </PosRela>
+        </PositionRelative>
     );
 }

@@ -1,10 +1,8 @@
 import React from "react";
 import Loading from "../components/ui/organisms/Loading";
 import {
-    Content,
-    FlexB,
     PosEC,
-    PosRela,
+    PositionRelative,
     PosTL,
     PosTR,
 } from "../components/ui/molecules/CustomPosition";
@@ -17,6 +15,7 @@ import { Text20, Text25 } from "../components/ui/atoms/CustomText";
 import { ArrowRight01Icon } from "hugeicons-react";
 import Title from "../components/ui/organisms/Title"; // 타이틀 컴포넌트
 import { BtnNor } from "../components/ui/atoms/CustomButton";
+import { Content, FlexB } from "../components/ui/molecules/CustomDisplay";
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -24,7 +23,7 @@ export default function HomePage() {
     useInitialLoad();
 
     return (
-        <PosRela>
+        <PositionRelative>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -71,6 +70,6 @@ export default function HomePage() {
                     </PosEC>
                 </>
             )}
-        </PosRela>
+        </PositionRelative>
     );
 }

@@ -1,10 +1,11 @@
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import { SquareLockPasswordIcon } from "hugeicons-react";
-import { usePress } from "../../../hooks/usePress"; // 버튼을 누르고 있는지 확인하는 커스텀 훅
+import { usePress } from "../../../hooks/usePress";
 
 // 기본 인풋 스타일
 const BaseInput = styled.input`
-    background-color: var(--grey3);
+    background-color: var(--grey1);
     border: solid 1px var(--grey5);
     font-size: 1rem;
     margin: 0.5rem 2.5rem;
@@ -16,10 +17,10 @@ const BaseInput = styled.input`
     outline: none;
     box-shadow: 0 2px 25px 0 var(--shadow1);
     width: calc(100% - 5rem);
+    transition: transform 0.2s ease-in-out;
 
     &:focus {
         border: solid 1px var(--grey8);
-        background-color: var(--grey1);
     }
     &::placeholder {
         color: var(--grey5);
@@ -40,7 +41,8 @@ const AbsoluteDiv = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-const AbsoluteLigthDiv = styled.div`
+
+const AbsoluteLightDiv = styled.div`
     position: absolute;
     top: 1.35rem;
     height: 0;
@@ -49,50 +51,62 @@ const AbsoluteLigthDiv = styled.div`
     gap: 0.5rem;
 `;
 
-// 화이트 버튼 컴포넌트
-export const IptNor = ({ children, ...props }) => {
+const pressedStyle = { transform: "scale(0.97)" };
+const normalStyle = { transform: "scale(1)" };
+
+export const IptNor = React.memo(({ children, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
         usePress();
+
+    const touchHandlers = useMemo(
+        () => ({
+            onTouchStart: handleTouchStart,
+            onTouchEnd: handleTouchEnd,
+            onTouchCancel: handleTouchCancel,
+        }),
+        [handleTouchStart, handleTouchEnd, handleTouchCancel]
+    );
 
     return (
         <BaseDiv>
             <BaseInput
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
-                onTouchCancel={handleTouchCancel}
-                style={{
-                    transform: isPressed ? "scale(0.97)" : "scale(1)",
-                }}
+                {...touchHandlers}
+                style={isPressed ? pressedStyle : normalStyle}
                 {...props}
             />
             <AbsoluteDiv>{children}</AbsoluteDiv>
         </BaseDiv>
     );
-};
-// 화이트 버튼 컴포넌트
-export const IptPas = ({ children, onChange, value, ...props }) => {
+});
+
+export const IptPas = React.memo(({ children, onChange, value, ...props }) => {
     const { isPressed, handleTouchStart, handleTouchEnd, handleTouchCancel } =
         usePress();
+
+    const touchHandlers = useMemo(
+        () => ({
+            onTouchStart: handleTouchStart,
+            onTouchEnd: handleTouchEnd,
+            onTouchCancel: handleTouchCancel,
+        }),
+        [handleTouchStart, handleTouchEnd, handleTouchCancel]
+    );
+
+    const iconColor = value ? "var(--grey8)" : "var(--grey5)";
+
     return (
         <BaseDiv>
             <BaseInput
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
-                onTouchCancel={handleTouchCancel}
+                {...touchHandlers}
                 value={value}
-                onChange={onChange} // onChange 이벤트로 글자 입력 감지
-                style={{
-                    transform: isPressed ? "scale(0.97)" : "scale(1)",
-                }}
+                onChange={onChange}
+                style={isPressed ? pressedStyle : normalStyle}
                 {...props}
             />
             <AbsoluteDiv>
-                <SquareLockPasswordIcon
-                    size={24}
-                    color={value ? "var(--grey8)" : "var(--grey5)"}
-                />
+                <SquareLockPasswordIcon size={24} color={iconColor} />
             </AbsoluteDiv>
-            <AbsoluteLigthDiv>{children}</AbsoluteLigthDiv>
+            <AbsoluteLightDiv>{children}</AbsoluteLightDiv>
         </BaseDiv>
     );
-};
+});
