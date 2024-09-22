@@ -5,7 +5,6 @@ import {
     PosEC,
     PositionRelative,
 } from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
-import { Text12 } from "../components/ui/atoms/CustomText"; // 텍스트 컴포넌트
 import Title from "../components/ui/organisms/Title"; // 타이틀 컴포넌트
 import Version from "../components/pages/welcome/Version"; // 버전 컴포넌트
 
