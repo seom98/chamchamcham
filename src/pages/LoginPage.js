@@ -2,10 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "../hooks/useAccount"; // 로그인 커스텀 훅
 import { useAuthRedirect } from "../hooks/useAuthRedirect"; // 로그인 한 상태인경우 화면이동 커스텀 훅
-import {
-    PosEC,
-    PositionRelative,
-} from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
+import { PosEC } from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
 import { IptNor, IptPas } from "../components/ui/atoms/CustomInput"; // 인풋 컴포넌트
 import { BtnWhi } from "../components/ui/atoms/CustomButton"; //버튼 컴포넌트
 import { Text16 } from "../components/ui/atoms/CustomText"; // 텍스트 컴포넌트
@@ -27,7 +24,7 @@ export default function LoginPage() {
     const navigate = useNavigate();
 
     return useAuthRedirect(
-        <PositionRelative>
+        <>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -102,6 +99,6 @@ export default function LoginPage() {
                     </Flex>
                 </PosEC>
             </form>
-        </PositionRelative>
+        </>
     );
 }

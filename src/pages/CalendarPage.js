@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "hugeicons-react";
-import { PositionRelative } from "../components/ui/molecules/CustomPosition";
 import {
     Text12,
     Text16,
@@ -79,7 +78,7 @@ export default function CalendarPage() {
     }
 
     return (
-        <PositionRelative>
+        <>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -191,6 +190,6 @@ export default function CalendarPage() {
                     </Content>
                 </>
             )}
-        </PositionRelative>
+        </>
     );
 }

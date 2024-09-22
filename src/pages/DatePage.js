@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import { PositionRelative } from "../components/ui/molecules/CustomPosition";
+import {} from "../components/ui/molecules/CustomPosition";
 import { Text12, Text16, Text30 } from "../components/ui/atoms/CustomText";
 import DateHeader from "../components/ui/organisms/DateHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
@@ -75,7 +75,7 @@ export default function DatePage() {
     };
 
     return (
-        <PositionRelative>
+        <>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -121,6 +121,6 @@ export default function DatePage() {
                     </OverflowHidden>
                 </>
             )}
-        </PositionRelative>
+        </>
     );
 }

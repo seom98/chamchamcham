@@ -1,7 +1,6 @@
 import s from "./SettingPage.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { PositionRelative } from "../components/ui/molecules/CustomPosition";
 import { useAccount } from "../hooks/useAccount";
 import { Box1 } from "../components/ui/atoms/CustomBox";
 import {
@@ -68,7 +67,7 @@ export default function SettingPage() {
         }
     };
     return (
-        <PositionRelative>
+        <>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -189,6 +188,6 @@ export default function SettingPage() {
                     </Content>
                 </>
             )}
-        </PositionRelative>
+        </>
     );
 }

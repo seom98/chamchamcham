@@ -29,6 +29,7 @@ export const FlexB = styled.div`
 // 오른쪽으로 정렬
 export const FlexE = styled.div`
     width: ${(props) => props.$width || "calc(100% - 3rem)"};
+    gap: 0.5rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;

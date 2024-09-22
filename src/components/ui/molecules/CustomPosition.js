@@ -22,19 +22,6 @@ export const PositionFixed = styled.div`
     z-index: 7;
 `;
 
-// 업다운 애니메이션 정의
-const updown = keyframes`
-  0% {
-    transform: translateY(0.5rem) rotateZ(5deg);
-  }
-  50% {
-    transform: translateY(0rem) rotateZ(-5deg);
-  }
-
-  100% {
-    transform: translateY(0.5rem) rotateZ(5deg);
-  }
-`;
 // 하단 가운데 위치
 export const PosEC = styled(BasePosition)`
     bottom: ${(props) => props.$bottom || "2.5rem"};
@@ -51,6 +38,20 @@ export const PosSL = styled(BasePosition)`
 export const PosSR = styled(BasePosition)`
     top: ${(props) => props.$top || "1rem"};
     right: 0;
+`;
+
+// 업다운 애니메이션 정의
+const updown = keyframes`
+  0% {
+    transform: translateY(0.5rem) rotateZ(5deg);
+  }
+  50% {
+    transform: translateY(0rem) rotateZ(-5deg);
+  }
+
+  100% {
+    transform: translateY(0.5rem) rotateZ(5deg);
+  }
 `;
 
 // 원하는 위치

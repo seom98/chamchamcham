@@ -1,8 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {
-    PositionRelative,
-    PositionFixed,
-} from "../components/ui/molecules/CustomPosition";
+import { PositionFixed } from "../components/ui/molecules/CustomPosition";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import UserHeader from "../components/ui/organisms/UserHeader";
 import Loading from "../components/ui/organisms/Loading";
@@ -44,7 +41,7 @@ export default function PlanPage() {
     }
 
     return (
-        <PositionRelative>
+        <>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -145,6 +142,6 @@ export default function PlanPage() {
                     )}
                 </>
             )}
-        </PositionRelative>
+        </>
     );
 }

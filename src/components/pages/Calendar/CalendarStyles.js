@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 
-//
 export const Cycle = styled.div`
     height: 1rem;
     width: 1rem;

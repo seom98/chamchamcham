@@ -24,6 +24,7 @@ import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import {
     Content,
     Flex,
+    FlexB,
     FlexCC,
     FlexE,
 } from "../components/ui/molecules/CustomDisplay";
@@ -62,7 +63,7 @@ export default function PlanCreatePage() {
 
     function CostItem({ item, index }) {
         return (
-            <Flex $align={"center"}>
+            <FlexB $align={"center"}>
                 <Text12 $light>{item}</Text12>
                 <FlexE $width={"50%"}>
                     <Text12>{(+moneyList[index]).toLocaleString()}원</Text12>
@@ -72,7 +73,7 @@ export default function PlanCreatePage() {
                         onClick={() => deleteItem(index)}
                     />
                 </FlexE>
-            </Flex>
+            </FlexB>
         );
     }
 
@@ -85,7 +86,7 @@ export default function PlanCreatePage() {
     }, [userInfo.moneyList]);
 
     return (
-        <PositionRelative>
+        <>
             {loading ? (
                 <Loading>정보를 불러오는 중..</Loading>
             ) : (
@@ -220,6 +221,6 @@ export default function PlanCreatePage() {
                     )}
                 </>
             )}
-        </PositionRelative>
+        </>
     );
 }
