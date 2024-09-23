@@ -18,7 +18,7 @@ export default function PlanPage() {
     const navigate = useNavigate();
     const { userInfo, loading } = useGetUserInfo();
 
-    function CostItem({ item, index }) {
+    const CostItem = ({ item, index }) => {
         return (
             <FlexB $align={"center"} onClick={() => {}}>
                 <Text12 $light>{item}</Text12>
@@ -30,15 +30,15 @@ export default function PlanPage() {
                 </FlexE>
             </FlexB>
         );
-    }
+    };
 
-    function TotalCost(number) {
+    const TotalCost = (number) => {
         let totalCost = 0;
         for (let i of userInfo.moneyList) {
             totalCost += +i;
         }
         return (totalCost * number).toLocaleString();
-    }
+    };
 
     return (
         <>

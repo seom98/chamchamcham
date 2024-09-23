@@ -61,7 +61,7 @@ export default function PlanCreatePage() {
         setMoneyList(newMoneyList);
     };
 
-    function CostItem({ item, index }) {
+    const CostItem = ({ item, index }) => {
         return (
             <FlexB $align={"center"}>
                 <Text12 $light>{item}</Text12>
@@ -75,7 +75,7 @@ export default function PlanCreatePage() {
                 </FlexE>
             </FlexB>
         );
-    }
+    };
 
     useEffect(() => {
         let tcost = 0;
