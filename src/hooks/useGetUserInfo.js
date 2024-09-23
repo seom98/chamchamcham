@@ -5,7 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
 // 사용자 정보를 가져오는 커스텀 훅
-export function useGetUserInfo() {
+export const useGetUserInfo = () => {
     const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState(() => {
         // 초기 상태로 세션 스토리지에 저장된 사용자 정보를 설정
@@ -49,4 +49,4 @@ export function useGetUserInfo() {
     }, [getUserInfo, navigate, userInfo]);
 
     return { userInfo, loading };
-}
+};

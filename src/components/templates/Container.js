@@ -1,6 +1,6 @@
 import { Text16 } from "../ui/atoms/CustomText"; // 텍스트 컴포넌트
 import Nav from "../ui/organisms/Nav"; // 네비게이션 바 컴포넌트
-import useShowNavBar from "../../hooks/useShowNavBar"; // 네이게이션이 위치할 곳인지 판단하는 커스텀 훅
+import { useShowNavBar } from "../../hooks/useShowNavBar"; // 네이게이션이 위치할 곳인지 판단하는 커스텀 훅
 import styled from "styled-components";
 import { PositionRelative } from "../ui/molecules/CustomPosition";
 
@@ -42,7 +42,7 @@ const QRcode = styled.div`
     height: 15vw;
 `;
 
-export default function Container({ children }) {
+const Container = ({ children }) => {
     const showNavBar = useShowNavBar();
 
     return (
@@ -62,4 +62,6 @@ export default function Container({ children }) {
             </IfWeb>
         </>
     );
-}
+};
+
+export default Container;

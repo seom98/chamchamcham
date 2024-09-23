@@ -26,7 +26,7 @@ const INITIAL_USER_DATA = {
 };
 
 // 로그인, 회원가입, 로그아웃을 위한 커스텀 훅
-export function useAccount() {
+export const useAccount = () => {
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -181,4 +181,4 @@ export function useAccount() {
         handleClearInput,
         InputIcon,
     };
-}
+};

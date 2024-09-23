@@ -27,7 +27,7 @@ const BtnOk = styled.div`
     margin-right: 1rem;
 `;
 // Date페이지에서 쓸 헤더 컴포넌트
-export default function DateHeader({ month, day }) {
+const DateHeader = ({ month, day }) => {
     const navigate = useNavigate();
     return (
         <PositionFixed>
@@ -51,4 +51,6 @@ export default function DateHeader({ month, day }) {
             </HeaderDisplay>
         </PositionFixed>
     );
-}
+};
+
+export default DateHeader;

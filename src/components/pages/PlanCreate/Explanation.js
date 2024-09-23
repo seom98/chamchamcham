@@ -2,7 +2,7 @@ import { Box1, Box2 } from "../../ui/atoms/CustomBox";
 import { Text12, Text16 } from "../../ui/atoms/CustomText";
 import { FlexB } from "../../ui/molecules/CustomDisplay";
 
-export default function Explanation() {
+const Explanation = () => {
     return (
         <Box1>
             <Text16 $margin={"1rem 0 0"}>하루에 낭비된다고 생각하는</Text16>
@@ -22,4 +22,5 @@ export default function Explanation() {
             </Box2>
         </Box1>
     );
-}
+};
+export default Explanation;

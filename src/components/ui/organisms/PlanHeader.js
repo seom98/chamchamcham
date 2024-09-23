@@ -32,7 +32,7 @@ const BtnOk = styled.div`
     margin-right: 1rem;
 `;
 // Plan페이지에서 쓸 헤더 컴포넌트
-export default function PlanHeader({ itemList, moneyList, setLoading }) {
+const PlanHeader = ({ itemList, moneyList, setLoading }) => {
     const navigate = useNavigate();
 
     const { userInfo } = useGetUserInfo();
@@ -81,4 +81,5 @@ export default function PlanHeader({ itemList, moneyList, setLoading }) {
             </HeaderDisplay>
         </PositionFixed>
     );
-}
+};
+export default PlanHeader;
