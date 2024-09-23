@@ -48,22 +48,26 @@ export function useAccount() {
             let error = "";
             switch (name) {
                 case "email":
-                    error = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-                        ? ERROR_MESSAGES.EMAIL
-                        : "";
+                    error =
+                        value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+                            ? ERROR_MESSAGES.EMAIL
+                            : "";
                     break;
                 case "password":
-                    error = value.length < 6 ? ERROR_MESSAGES.PASSWORD : "";
+                    error =
+                        value && value.length < 6
+                            ? ERROR_MESSAGES.PASSWORD
+                            : "";
                     break;
                 case "confirmPassword":
                     error =
-                        value !== formData.password
+                        value && value !== formData.password
                             ? ERROR_MESSAGES.CONFIRM_PASSWORD
                             : "";
                     break;
                 case "nickname":
                     error =
-                        value.length < 1 || value.length > 10
+                        value && (value.length < 1 || value.length > 10)
                             ? ERROR_MESSAGES.NICKNAME
                             : "";
                     break;
@@ -84,6 +88,7 @@ export function useAccount() {
         [validateField]
     );
 
+    //
     const handleError = useCallback((error, action) => {
         console.error(`Error during ${action}:`, error);
         alert(`${action} 실패: ${error.message}`);
@@ -147,6 +152,22 @@ export function useAccount() {
         }
     }, [navigate, handleError]);
 
+    // 입력 필드를 초기화하는 함수
+    const handleClearInput = (fieldName) => {
+        handleChange({ target: { name: fieldName, value: "" } });
+    };
+
+    // 입력 필드 아이콘을 위한 재사용 가능한 컴포넌트
+    const InputIcon = ({ value, icon: Icon, onClick, isGrey }) => (
+        <Icon
+            size={24}
+            color={
+                value ? "var(--grey8)" : isGrey ? "var(--grey5)" : "transparent"
+            }
+            onClick={onClick}
+        />
+    );
+
     return {
         formData,
         errors,
@@ -157,5 +178,7 @@ export function useAccount() {
         handleLogin,
         handleSignup,
         handleLogout,
+        handleClearInput,
+        InputIcon,
     };
 }

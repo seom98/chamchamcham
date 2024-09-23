@@ -10,15 +10,6 @@ import Title from "../components/ui/organisms/Title";
 import { AtIcon, Cancel01Icon, ViewIcon, ViewOffIcon } from "hugeicons-react";
 import { Flex, FlexE } from "../components/ui/molecules/CustomDisplay";
 
-// 입력 필드 아이콘을 위한 재사용 가능한 컴포넌트
-const InputIcon = ({ value, icon: Icon, onClick }) => (
-    <Icon
-        size={24}
-        color={value ? "var(--grey8)" : "var(--grey5)"}
-        onClick={onClick}
-    />
-);
-
 export default function LoginPage() {
     // useAccount 훅에서 필요한 상태와 함수들을 가져옴
     const {
@@ -29,13 +20,10 @@ export default function LoginPage() {
         setShowPassword,
         handleChange,
         handleLogin,
+        handleClearInput,
+        InputIcon,
     } = useAccount();
     const navigate = useNavigate();
-
-    // 입력 필드를 초기화하는 함수
-    const handleClearInput = (fieldName) => {
-        handleChange({ target: { name: fieldName, value: "" } });
-    };
 
     // 폼의 유효성을 검사하는 메모이제이션된 값
     const isFormValid = useMemo(
@@ -66,7 +54,11 @@ export default function LoginPage() {
                     onChange={handleChange}
                     required
                 >
-                    <InputIcon value={formData.email} icon={AtIcon} />
+                    <InputIcon
+                        value={formData.email}
+                        icon={AtIcon}
+                        isGrey={true}
+                    />
                     <InputIcon
                         value={formData.email}
                         icon={Cancel01Icon}
