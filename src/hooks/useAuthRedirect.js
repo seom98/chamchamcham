@@ -6,25 +6,34 @@ import { onAuthStateChanged } from "firebase/auth";
 import Loading from "../components/ui/organisms/Loading";
 
 // 로딩상태와 화면이동을 위한 커스텀 훅
-export const useAuthRedirect = (children) => {
+export const useAuthRedirect = (children, redirectPath = "/home") => {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true); // 로딩 상태
+    const [authState, setAuthState] = useState({
+        loading: true,
+        user: null,
+    });
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setLoading(true);
-            if (user) {
-                navigate("/home"); // 로그인 상태면 /home로 이동
-            } else {
-                setLoading(false); // 로그인 상태가 아니면 로딩 해제
+        const unsubscribe = onAuthStateChanged(
+            auth,
+            (user) => {
+                if (user) {
+                    navigate(redirectPath); // 로그인 상태면 /home로 이동
+                } else {
+                    setAuthState({ loading: false, user: null }); // 로그인 상태가 아니면 로딩 해제
+                }
+            },
+            (error) => {
+                console.error("Auth state change error:", error);
+                setAuthState({ loading: false, user: null });
             }
-        });
+        );
 
         return () => unsubscribe(); // 컴포넌트 언마운트 시 리스너 정리
-    }, [navigate]);
+    }, [navigate, redirectPath]);
 
     // 로딩 중일 때 로딩 컴포넌트 렌더링
-    if (loading) {
+    if (authState.loading) {
         return <Loading>소비습관을 길러주는 참참참!</Loading>;
     }
 

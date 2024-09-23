@@ -1,104 +1,131 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAccount } from "../hooks/useAccount"; // 로그인 커스텀 훅
-import { useAuthRedirect } from "../hooks/useAuthRedirect"; // 로그인 한 상태인경우 화면이동 커스텀 훅
-import { PosEC } from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
-import { IptNor, IptPas } from "../components/ui/atoms/CustomInput"; // 인풋 컴포넌트
-import { BtnWhi } from "../components/ui/atoms/CustomButton"; //버튼 컴포넌트
-import { Text16 } from "../components/ui/atoms/CustomText"; // 텍스트 컴포넌트
-import Title from "../components/ui/organisms/Title"; // 타이틀 컴포넌트
+import { useAccount } from "../hooks/useAccount";
+import { useAuthRedirect } from "../hooks/useAuthRedirect";
+import { PosEC } from "../components/ui/molecules/CustomPosition";
+import { IptNor, IptPas } from "../components/ui/atoms/CustomInput";
+import { BtnWhi } from "../components/ui/atoms/CustomButton";
+import { Text12, Text16 } from "../components/ui/atoms/CustomText";
+import Title from "../components/ui/organisms/Title";
 import { AtIcon, Cancel01Icon, ViewIcon, ViewOffIcon } from "hugeicons-react";
-import { Flex, FlexCC } from "../components/ui/molecules/CustomDisplay";
+import { Flex, FlexE } from "../components/ui/molecules/CustomDisplay";
+
+// 입력 필드 아이콘을 위한 재사용 가능한 컴포넌트
+const InputIcon = ({ value, icon: Icon, onClick }) => (
+    <Icon
+        size={24}
+        color={value ? "var(--grey8)" : "var(--grey5)"}
+        onClick={onClick}
+    />
+);
 
 export default function LoginPage() {
+    // useAccount 훅에서 필요한 상태와 함수들을 가져옴
     const {
-        email,
-        password,
+        formData,
+        errors,
         showPassword,
         loading,
-        setEmail,
-        setPassword,
         setShowPassword,
-        login,
-    } = useAccount(); //로그인 커스텀 훅을 가져옴.
+        handleChange,
+        handleLogin,
+    } = useAccount();
     const navigate = useNavigate();
 
+    // 입력 필드를 초기화하는 함수
+    const handleClearInput = (fieldName) => {
+        handleChange({ target: { name: fieldName, value: "" } });
+    };
+
+    // 폼의 유효성을 검사하는 메모이제이션된 값
+    const isFormValid = useMemo(
+        () =>
+            !errors.email &&
+            !errors.password &&
+            formData.email &&
+            formData.password,
+        [errors.email, errors.password, formData.email, formData.password]
+    );
+
+    // useAuthRedirect 훅을 사용하여 인증된 사용자를 리다이렉트
     return useAuthRedirect(
-        <>
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    login();
-                }}
-            >
-                <FlexCC>
-                    <Title margin="2rem" />
-                    <IptNor
-                        type="email"
-                        placeholder="이메일"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    >
-                        <AtIcon
-                            size={24}
-                            color={email ? "var(--grey8)" : "var(--grey5)"}
-                        />
-                        <Cancel01Icon
-                            size={24}
-                            color={email ? "var(--grey8)" : "transparent"}
-                            onClick={() => setEmail("")}
-                        />
-                    </IptNor>
-                    <IptPas
-                        type={showPassword ? "text" : "password"}
-                        placeholder="비밀번호"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    >
-                        {showPassword ? (
-                            <ViewIcon
-                                size={24}
-                                color={
-                                    password ? "var(--grey8)" : "transparent"
-                                }
-                                onClick={() => setShowPassword(false)}
-                            />
-                        ) : (
-                            <ViewOffIcon
-                                size={24}
-                                color={
-                                    password ? "var(--grey8)" : "transparent"
-                                }
-                                onClick={() => setShowPassword(true)}
-                            />
-                        )}
-                        <Cancel01Icon
-                            size={24}
-                            color={password ? "var(--grey8)" : "transparent"}
-                            onClick={() => setPassword("")}
-                        />
-                    </IptPas>
-                </FlexCC>
-                <PosEC>
-                    <BtnWhi
-                        type="submit"
-                        $margin={"0 2.5rem 1.2rem"}
-                        disabled={loading}
-                    >
-                        {loading ? "로그인 하는중..." : "로그인"}
-                    </BtnWhi>
-                    <Flex>
-                        <Text16 $grey>
-                            아직 회원이 아니신가요?&nbsp;&nbsp;
-                        </Text16>
-                        <Text16 $blue onClick={() => navigate("/signup")}>
-                            회원가입하기
-                        </Text16>
-                    </Flex>
-                </PosEC>
-            </form>
-        </>
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                if (isFormValid) handleLogin();
+            }}
+        >
+            <PosEC>
+                <Title margin="2rem" />
+                {/* 이메일 입력 필드 */}
+                <IptNor
+                    type="email"
+                    name="email"
+                    placeholder="이메일"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                >
+                    <InputIcon value={formData.email} icon={AtIcon} />
+                    <InputIcon
+                        value={formData.email}
+                        icon={Cancel01Icon}
+                        onClick={() => handleClearInput("email")}
+                    />
+                </IptNor>
+
+                {/* 이메일 에러 메시지 */}
+                <FlexE>
+                    <Text12 $red $height={"1rem"}>
+                        {errors.email}
+                    </Text12>
+                </FlexE>
+
+                {/* 비밀번호 입력 필드 */}
+                <IptPas
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="비밀번호"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                >
+                    <InputIcon
+                        value={formData.password}
+                        icon={showPassword ? ViewIcon : ViewOffIcon}
+                        onClick={() => setShowPassword(!showPassword)}
+                    />
+                    <InputIcon
+                        value={formData.password}
+                        icon={Cancel01Icon}
+                        onClick={() => handleClearInput("password")}
+                    />
+                </IptPas>
+
+                {/* 비밀번호 에러 메시지 */}
+                <FlexE>
+                    <Text12 $red $height={"1rem"} $margin={"0 0 1rem"}>
+                        {errors.password}
+                    </Text12>
+                </FlexE>
+
+                {/* 로그인 버튼 */}
+                <BtnWhi
+                    type="submit"
+                    $margin={"0 2.5rem 1.2rem"}
+                    disabled={loading || !isFormValid}
+                >
+                    {loading ? "로그인 하는중..." : "로그인"}
+                </BtnWhi>
+
+                {/* 회원가입 링크 */}
+                <Flex>
+                    <Text16 $grey>아직 회원이 아니신가요?&nbsp;&nbsp;</Text16>
+                    <Text16 $blue onClick={() => navigate("/signup")}>
+                        회원가입하기
+                    </Text16>
+                </Flex>
+            </PosEC>
+        </form>
     );
 }

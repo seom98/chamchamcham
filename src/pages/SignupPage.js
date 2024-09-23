@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useAccount } from "../hooks/useAccount"; // 회원가입 커스텀 훅
-import { useAuthRedirect } from "../hooks/useAuthRedirect"; // 로그인 한 상태인경우 화면이동 커스텀 훅
-import { PosEC } from "../components/ui/molecules/CustomPosition"; // 포지션 컴포넌트
-import { BtnAwe } from "../components/ui/atoms/CustomButton"; //버튼 컴포넌트
-import { Text12, Text16 } from "../components/ui/atoms/CustomText"; // 텍스트 컴포넌트
-import { IptNor, IptPas } from "../components/ui/atoms/CustomInput"; // 인풋 컴포넌트
-import Title from "../components/ui/organisms/Title"; // 타이틀 컴포넌트
+import { useAccount } from "../hooks/useAccount";
+import { useAuthRedirect } from "../hooks/useAuthRedirect";
+import { PosEC } from "../components/ui/molecules/CustomPosition";
+import { BtnAwe } from "../components/ui/atoms/CustomButton";
+import { Text12, Text16 } from "../components/ui/atoms/CustomText";
+import { IptNor, IptPas } from "../components/ui/atoms/CustomInput";
+import Title from "../components/ui/organisms/Title";
 import {
     AtIcon,
     Cancel01Icon,
@@ -18,24 +18,14 @@ import { Flex, FlexE } from "../components/ui/molecules/CustomDisplay";
 
 export default function SignupPage() {
     const {
-        email,
-        password,
-        confirmPassword,
-        loading,
-        nickname,
+        formData,
         errors,
         showPassword,
-        setEmail,
+        loading,
         setShowPassword,
-        setPassword,
-        setConfirmPassword,
-        setNickname,
-        signup,
-        emailChange,
-        passwordChange,
-        confirmPasswordChange,
-        nicknameChange,
-    } = useAccount(); //로그인 커스텀 훅을 가져옴.
+        handleChange,
+        handleSignup,
+    } = useAccount();
     const navigate = useNavigate();
 
     return useAuthRedirect(
@@ -43,26 +33,35 @@ export default function SignupPage() {
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    signup();
+                    handleSignup();
                 }}
             >
                 <PosEC>
                     <Title margin="2rem" />
                     <IptNor
                         type="email"
+                        name="email"
                         placeholder="이메일"
-                        value={email}
-                        onChange={emailChange}
+                        value={formData.email}
+                        onChange={handleChange}
                         required
                     >
                         <AtIcon
                             size={24}
-                            color={email ? "var(--grey8)" : "var(--grey5)"}
+                            color={
+                                formData.email ? "var(--grey8)" : "var(--grey5)"
+                            }
                         />
                         <Cancel01Icon
                             size={24}
-                            color={email ? "var(--grey8)" : "transparent"}
-                            onClick={() => setEmail("")}
+                            color={
+                                formData.email ? "var(--grey8)" : "transparent"
+                            }
+                            onClick={() =>
+                                handleChange({
+                                    target: { name: "email", value: "" },
+                                })
+                            }
                         />
                     </IptNor>
                     <FlexE>
@@ -72,16 +71,19 @@ export default function SignupPage() {
                     </FlexE>
                     <IptPas
                         type={showPassword ? "text" : "password"}
+                        name="password"
                         placeholder="비밀번호"
-                        value={password}
-                        onChange={passwordChange}
+                        value={formData.password}
+                        onChange={handleChange}
                         required
                     >
                         {showPassword ? (
                             <ViewIcon
                                 size={24}
                                 color={
-                                    password ? "var(--grey8)" : "transparent"
+                                    formData.password
+                                        ? "var(--grey8)"
+                                        : "transparent"
                                 }
                                 onClick={() => setShowPassword(false)}
                             />
@@ -89,15 +91,25 @@ export default function SignupPage() {
                             <ViewOffIcon
                                 size={24}
                                 color={
-                                    password ? "var(--grey8)" : "transparent"
+                                    formData.password
+                                        ? "var(--grey8)"
+                                        : "transparent"
                                 }
                                 onClick={() => setShowPassword(true)}
                             />
                         )}
                         <Cancel01Icon
                             size={24}
-                            color={password ? "var(--grey8)" : "transparent"}
-                            onClick={() => setPassword("")}
+                            color={
+                                formData.password
+                                    ? "var(--grey8)"
+                                    : "transparent"
+                            }
+                            onClick={() =>
+                                handleChange({
+                                    target: { name: "password", value: "" },
+                                })
+                            }
                         />
                     </IptPas>
                     <FlexE>
@@ -107,15 +119,16 @@ export default function SignupPage() {
                     </FlexE>
                     <IptNor
                         type="password"
+                        name="confirmPassword"
                         placeholder="비밀번호 확인"
-                        value={confirmPassword}
-                        onChange={confirmPasswordChange}
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
                         required
                     >
                         <CheckmarkSquare01Icon
                             size={24}
                             color={
-                                confirmPassword
+                                formData.confirmPassword
                                     ? "var(--grey8)"
                                     : "var(--grey5)"
                             }
@@ -123,9 +136,18 @@ export default function SignupPage() {
                         <Cancel01Icon
                             size={24}
                             color={
-                                confirmPassword ? "var(--grey8)" : "transparent"
+                                formData.confirmPassword
+                                    ? "var(--grey8)"
+                                    : "transparent"
                             }
-                            onClick={() => setConfirmPassword("")}
+                            onClick={() =>
+                                handleChange({
+                                    target: {
+                                        name: "confirmPassword",
+                                        value: "",
+                                    },
+                                })
+                            }
                         />
                     </IptNor>
                     <FlexE>
@@ -135,19 +157,32 @@ export default function SignupPage() {
                     </FlexE>
                     <IptNor
                         type="text"
+                        name="nickname"
                         placeholder="닉네임"
-                        value={nickname}
-                        onChange={nicknameChange}
+                        value={formData.nickname}
+                        onChange={handleChange}
                         required
                     >
                         <UserSquareIcon
                             size={24}
-                            color={nickname ? "var(--grey8)" : "var(--grey5)"}
+                            color={
+                                formData.nickname
+                                    ? "var(--grey8)"
+                                    : "var(--grey5)"
+                            }
                         />
                         <Cancel01Icon
                             size={24}
-                            color={nickname ? "var(--grey8)" : "transparent"}
-                            onClick={() => setNickname("")}
+                            color={
+                                formData.nickname
+                                    ? "var(--grey8)"
+                                    : "transparent"
+                            }
+                            onClick={() =>
+                                handleChange({
+                                    target: { name: "nickname", value: "" },
+                                })
+                            }
                         />
                     </IptNor>
                     <FlexE>

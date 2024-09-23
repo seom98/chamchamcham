@@ -45,7 +45,7 @@ const Level = styled.div`
 `;
 
 export default function SettingPage() {
-    const { logout } = useAccount(); //로그인 커스텀 훅을 가져옴.
+    const { handleLogout } = useAccount(); //로그인 커스텀 훅을 가져옴.
     const { userInfo, loading } = useGetUserInfo();
     const [toggle, setToggle] = useState(false);
     const [toggle2, setToggle2] = useState(false);
@@ -175,7 +175,7 @@ export default function SettingPage() {
                             </BtnNor>
                         </Box1>
                         <Box1>
-                            <BtnNor onClick={logout}>
+                            <BtnNor onClick={handleLogout}>
                                 <FlexB $gap={"1rem"}>
                                     <Text16 $red>로그아웃</Text16>
                                     <Logout03Icon
