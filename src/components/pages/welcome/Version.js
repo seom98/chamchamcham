@@ -8,7 +8,7 @@ const Version = React.memo(() => {
         <>
             <PosSL>
                 <Text12 $margin={"0 1rem"} $grey>
-                    Ver.0.3.8
+                    Ver.0.3.9
                 </Text12>
             </PosSL>
             <PosSR>

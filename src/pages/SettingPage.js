@@ -169,7 +169,7 @@ export default function SettingPage() {
                                 <FlexB $gap={"1rem"}>
                                     <Text16>버전</Text16>
                                     <Text12 $light $grey $margin={"0 0.5rem"}>
-                                        Ver.0.3.8
+                                        Ver.0.3.9
                                     </Text12>
                                 </FlexB>
                             </BtnNor>
