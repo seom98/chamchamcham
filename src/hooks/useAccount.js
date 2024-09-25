@@ -134,7 +134,7 @@ export const useAccount = () => {
             });
 
             alert("회원가입 성공");
-            navigate("/handleLogin");
+            navigate("/login");
         } catch (error) {
             handleError(error, "회원가입");
         } finally {
