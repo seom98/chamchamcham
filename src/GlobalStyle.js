@@ -1,4 +1,7 @@
-:root {
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  :root {
     --skyblue: #7ed2e4;
     --blue: #8696ea;
     --purple: #ca95ff;
@@ -15,7 +18,6 @@
     --grey7: #4a5568;
     --grey8: #2d3748;
     --grey9: #1a202c;
-    /*  */
     --blur1: #ffffff33;
     --blur2: #ffffff80;
     --blur3: #e2e8f080;
@@ -53,8 +55,9 @@
         #6f83e6 100%
     );
     --qr: url("./assets/qrBlack.png");
-}
-.dark {
+  }
+
+  .dark {
     --skyblue: #7ed2e4;
     --blue: #8696ea;
     --purple: #ca95ff;
@@ -71,7 +74,6 @@
     --grey3: #4a5568;
     --grey2: #2d3748;
     --grey1: #1a202c;
-    /*  */
     --blur1: #ffffff33;
     --blur2: #ffffff80;
     --shadow1: #71809640;
@@ -113,9 +115,9 @@
         #6f83e6 100%
     );
     --qr: url("./assets/qrWhite.png");
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: "EsaManru";
     font-weight: 300;
     font-style: normal;
@@ -129,9 +131,9 @@
         url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruLight.ttf")
             format("truetype");
     font-display: swap;
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: "EsaManru";
     font-weight: 500;
     font-style: normal;
@@ -145,9 +147,9 @@
         url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruMedium.ttf")
             format("truetype");
     font-display: swap;
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: "EsaManru";
     font-weight: 700;
     font-style: normal;
@@ -161,45 +163,38 @@
         url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruBold.ttf")
             format("truetype");
     font-display: swap;
-}
-/* 
-  얇은 글씨 300
-  기본 글씨 500
-  굵은 글씨 700
-   */
+  }
 
-* {
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     transition: 0.2s ease-in-out;
-
-    /* 드래그 금지 */
     user-select: none;
     -webkit-user-select: none;
-
-    /* 클릭시 하이라이트 제거 */
     -webkit-tap-highlight-color: transparent;
-}
+  }
 
-html {
+  html {
     background-color: var(--grey2);
-}
-textarea,
-input,
-div,
-p,
-a,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button {
+  }
+
+  textarea,
+  input,
+  div,
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  button {
     font-family: "EsaManru";
     font-weight: 400;
     margin: 0;
     padding: 0;
     color: var(--grey8);
-}
+  }
+`;
