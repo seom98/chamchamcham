@@ -41,6 +41,8 @@ export default function SignupPage() {
             >
                 <PosEC>
                     <Title margin="2rem" />
+
+                    {/*이메일 입력 필드*/}
                     <IptNor
                         type="email"
                         name="email"
@@ -60,11 +62,14 @@ export default function SignupPage() {
                             onClick={() => handleClearInput("email")}
                         />
                     </IptNor>
+
+                    {/* 이메일 에러 메시지 */}
                     <FlexE>
                         <Text12 $red $height={"1rem"}>
                             {errors.email}
                         </Text12>
                     </FlexE>
+
                     {/* 비밀번호 입력 필드 */}
                     <IptPas
                         type={showPassword ? "text" : "password"}
@@ -141,11 +146,14 @@ export default function SignupPage() {
                             onClick={() => handleClearInput("nickname")}
                         />
                     </IptNor>
+
+                    {/* 닉네임 에러 메시지 */}
                     <FlexE>
                         <Text12 $red $height={"1rem"} $margin={"0 0 1rem"}>
                             {errors.nickname}
                         </Text12>
                     </FlexE>
+
                     <BtnAwe
                         type="submit"
                         $margin={"0 2.5rem 1.2rem"}
