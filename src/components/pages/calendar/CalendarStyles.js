@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 
+// 달력에서의 스타일
 export const Cycle = styled.div`
     height: 1rem;
     width: 1rem;

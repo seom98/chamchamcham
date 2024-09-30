@@ -4,6 +4,7 @@ import { BtnNor } from "../../ui/atoms/CustomButton";
 import { Text12, Text16 } from "../../ui/atoms/CustomText";
 import { FlexB } from "../../ui/atoms/CustomDisplay";
 
+// 앱정보에 관련된 박스
 const AppInformations = () => {
     return (
         <Box1>

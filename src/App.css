@@ -1,7 +1,4 @@
-import { createGlobalStyle } from "styled-components";
-
-export const GlobalStyle = createGlobalStyle`
-  :root {
+:root {
     --skyblue: #7ed2e4;
     --blue: #8696ea;
     --purple: #ca95ff;
@@ -55,9 +52,9 @@ export const GlobalStyle = createGlobalStyle`
         #6f83e6 100%
     );
     --qr: url("./assets/qrBlack.png");
-  }
+}
 
-  .dark {
+.dark {
     --skyblue: #7ed2e4;
     --blue: #8696ea;
     --purple: #ca95ff;
@@ -115,9 +112,9 @@ export const GlobalStyle = createGlobalStyle`
         #6f83e6 100%
     );
     --qr: url("./assets/qrWhite.png");
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: "EsaManru";
     font-weight: 300;
     font-style: normal;
@@ -131,9 +128,9 @@ export const GlobalStyle = createGlobalStyle`
         url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruLight.ttf")
             format("truetype");
     font-display: swap;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: "EsaManru";
     font-weight: 500;
     font-style: normal;
@@ -147,9 +144,9 @@ export const GlobalStyle = createGlobalStyle`
         url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruMedium.ttf")
             format("truetype");
     font-display: swap;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: "EsaManru";
     font-weight: 700;
     font-style: normal;
@@ -163,9 +160,9 @@ export const GlobalStyle = createGlobalStyle`
         url("https://cdn.jsdelivr.net/gh/webfontworld/gonggames/EsaManruBold.ttf")
             format("truetype");
     font-display: swap;
-  }
+}
 
-  * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -173,28 +170,27 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
-  }
+}
 
-  html {
+html {
     background-color: var(--grey2);
-  }
+}
 
-  textarea,
-  input,
-  div,
-  p,
-  a,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  button {
+textarea,
+input,
+div,
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
     font-family: "EsaManru";
     font-weight: 400;
     margin: 0;
     padding: 0;
     color: var(--grey8);
-  }
-`;
+}

@@ -6,6 +6,7 @@ import { BtnNor } from "../../ui/atoms/CustomButton";
 import { FlexB } from "../../ui/atoms/CustomDisplay";
 import { ArrowRight01Icon } from "hugeicons-react";
 
+// 목표설정박스
 const GoalSettingBox = () => {
     const navigate = useNavigate();
     return (

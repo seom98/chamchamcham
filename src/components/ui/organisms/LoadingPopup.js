@@ -14,11 +14,14 @@ const LoadingContainer = styled.div`
     align-items: center;
     gap: 1rem;
 `;
+const StyledLottie = styled(Lottie)`
+    width: 5rem;
+`;
 
 const LoadingPopup = ({ children }) => {
     return (
         <LoadingContainer>
-            <Lottie animationData={loadingLottie} width={"5rem"} />
+            <StyledLottie animationData={loadingLottie} />
             <Text16>{children}</Text16>
         </LoadingContainer>
     );

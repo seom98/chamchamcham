@@ -5,18 +5,23 @@ import App from "./App";
 import ScrollToTop from "./components/templates/ScrollToTop";
 import DarkModeCheck from "./components/templates/DarkModeCheck";
 
+// 로그인전
 const WelcomePage = React.lazy(() => import("./pages/WelcomePage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 
+// 홈페이지
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 
+// 목표페이지
 const PlanPage = React.lazy(() => import("./pages/PlanPage"));
 const PlanCreatePage = React.lazy(() => import("./pages/PlanCreatePage"));
 
+// 달력페이지
 const CalendarPage = React.lazy(() => import("./pages/CalendarPage"));
 const DatePage = React.lazy(() => import("./pages/DatePage"));
 
+// 설정페이지
 const SettingPage = React.lazy(() => import("./pages/SettingPage"));
 
 export default function Router() {
@@ -34,19 +39,15 @@ export default function Router() {
                         <Route index element={<WelcomePage />} />
                         <Route path="signup" element={<SignupPage />} />
                         <Route path="login" element={<LoginPage />} />
-
                         <Route path="home" element={<HomePage />} />
-
                         <Route path="plan">
                             <Route index element={<PlanPage />} />
                             <Route path="create" element={<PlanCreatePage />} />
                         </Route>
-
                         <Route path="calendar">
                             <Route index element={<CalendarPage />} />
                             <Route path=":date" element={<DatePage />} />
                         </Route>
-
                         <Route path="setting" element={<SettingPage />} />
                     </Route>
                 </Routes>

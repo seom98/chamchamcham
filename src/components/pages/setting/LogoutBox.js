@@ -5,6 +5,7 @@ import { Text16 } from "../../ui/atoms/CustomText";
 import { FlexB } from "../../ui/atoms/CustomDisplay";
 import { useAccount } from "../../../hooks/useAccount";
 
+// 로그아웃 박스
 const LogoutBox = () => {
     const { handleLogout } = useAccount(); //로그인 커스텀 훅을 가져옴.
     return (

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// 레벨에 해당하는 스타일
 export const LevelWrapper = styled.div`
     margin-top: 1rem;
     width: 100%;
