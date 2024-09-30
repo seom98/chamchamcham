@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import {} from "../components/ui/molecules/CustomPosition";
+import {} from "../components/ui/atoms/CustomPosition";
 import { Text12, Text16, Text30 } from "../components/ui/atoms/CustomText";
 import DateHeader from "../components/ui/organisms/DateHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
-import Loading from "../components/ui/organisms/Loading";
+import LoadingPopup from "../components/ui/organisms/LoadingPopup";
 import styled from "styled-components";
-import { Content, Flex } from "../components/ui/molecules/CustomDisplay";
+import { Content, Flex, FlexB } from "../components/ui/atoms/CustomDisplay";
+import { Box1 } from "../components/ui/atoms/CustomBox";
+import { ArrowLeft01Icon } from "hugeicons-react";
 
 const OverflowHidden = styled.div`
     overflow: hidden;
     width: 100vw;
     height: 25rem;
-    background-color: var(--grey7);
 `;
 
 const SliderContainer = styled.div`
@@ -46,7 +47,7 @@ const Input = styled.input`
 
 export default function DatePage() {
     const { date } = useParams();
-    const { loading } = useGetUserInfo();
+    const { userInfo, loading } = useGetUserInfo();
     const [, month, day] = date.split("-").map((e) => +e);
 
     const [translateX, setTranslateX] = useState(-100); // 처음에 2번 슬라이드를 보여줌
@@ -77,7 +78,7 @@ export default function DatePage() {
     return (
         <>
             {loading ? (
-                <Loading>정보를 불러오는 중..</Loading>
+                <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
                     <DateHeader day={day} month={month} />
@@ -105,8 +106,18 @@ export default function DatePage() {
                             </Slide>
 
                             {/* 2번 슬라이드: 드래그하라는 문구 */}
-                            <Slide style={{ backgroundColor: "lightblue" }}>
-                                왼쪽이나 오른쪽으로 드래그하세요
+                            <Slide>
+                                <Box1 $margin="0.5rem 1rem">
+                                    <Text16 $light>
+                                        {userInfo.itemList[0]}
+                                    </Text16>
+                                    <Text30>
+                                        {userInfo.moneyList[0]} 원? 0원?
+                                    </Text30>
+                                    <FlexB>
+                                        <ArrowLeft01Icon />
+                                    </FlexB>
+                                </Box1>
                             </Slide>
 
                             {/* 3번 슬라이드: 숫자 입력 및 버튼 */}

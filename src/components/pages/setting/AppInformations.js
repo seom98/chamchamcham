@@ -2,7 +2,7 @@ import { ArrowRight01Icon } from "hugeicons-react";
 import { Box1 } from "../../ui/atoms/CustomBox";
 import { BtnNor } from "../../ui/atoms/CustomButton";
 import { Text12, Text16 } from "../../ui/atoms/CustomText";
-import { FlexB } from "../../ui/molecules/CustomDisplay";
+import { FlexB } from "../../ui/atoms/CustomDisplay";
 
 const AppInformations = () => {
     return (

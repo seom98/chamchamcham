@@ -10,13 +10,13 @@ import {
     PosEC,
     PositionFixed,
     PositionRelative,
-} from "../molecules/CustomPosition";
+} from "../atoms/CustomPosition";
 import { Text12 } from "../atoms/CustomText";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { usePress } from "../../../hooks/usePress";
 import { BackBox } from "../atoms/CustomBox";
-import { Flex } from "../molecules/CustomDisplay";
+import { Flex } from "../atoms/CustomDisplay";
 
 const SelectBox = styled.div`
     background-color: var(--grey3);

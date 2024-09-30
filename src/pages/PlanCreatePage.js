@@ -14,12 +14,12 @@ import {
 import {
     PositionRelative,
     PositionFixed,
-} from "../components/ui/molecules/CustomPosition";
+} from "../components/ui/atoms/CustomPosition";
 import PlanHeader from "../components/ui/organisms/PlanHeader";
 import { useEffect, useState } from "react";
 import Explanation from "../components/pages/planCreate/Explanation";
 import { BtnAdd } from "../components/ui/atoms/CustomButton";
-import Loading from "../components/ui/organisms/Loading";
+import LoadingPopup from "../components/ui/organisms/LoadingPopup";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import {
     Content,
@@ -27,7 +27,7 @@ import {
     FlexB,
     FlexCC,
     FlexE,
-} from "../components/ui/molecules/CustomDisplay";
+} from "../components/ui/atoms/CustomDisplay";
 
 export default function PlanCreatePage() {
     const { userInfo, loading } = useGetUserInfo();
@@ -88,7 +88,7 @@ export default function PlanCreatePage() {
     return (
         <>
             {loading ? (
-                <Loading>정보를 불러오는 중..</Loading>
+                <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
                     <PlanHeader
@@ -216,7 +216,7 @@ export default function PlanCreatePage() {
                     </PositionFixed>
                     {submitLoading && (
                         <FlexCC>
-                            <Loading>목표를 생성하는중..</Loading>
+                            <LoadingPopup>목표를 생성하는중..</LoadingPopup>
                         </FlexCC>
                     )}
                 </>

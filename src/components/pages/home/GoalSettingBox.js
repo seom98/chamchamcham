@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Box1 } from "../../ui/atoms/CustomBox";
-import { PosTL, PosTR } from "../../ui/molecules/CustomPosition";
+import { PosTL, PosTR } from "../../ui/atoms/CustomPosition";
 import { Text20, Text25 } from "../../ui/atoms/CustomText";
 import { BtnNor } from "../../ui/atoms/CustomButton";
-import { FlexB } from "../../ui/molecules/CustomDisplay";
+import { FlexB } from "../../ui/atoms/CustomDisplay";
 import { ArrowRight01Icon } from "hugeicons-react";
 
 const GoalSettingBox = () => {

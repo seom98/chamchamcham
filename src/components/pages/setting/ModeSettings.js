@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box1 } from "../../ui/atoms/CustomBox";
-import { FlexB } from "../../ui/molecules/CustomDisplay";
+import { FlexB } from "../../ui/atoms/CustomDisplay";
 import { Text16 } from "../../ui/atoms/CustomText";
 import { SwitchLabel, Slider } from "./SwitchTogleStyles";
 

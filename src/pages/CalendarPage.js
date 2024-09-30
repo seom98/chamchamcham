@@ -8,7 +8,7 @@ import {
     Text30,
 } from "../components/ui/atoms/CustomText";
 import { BtnDate } from "../components/ui/atoms/CustomButton";
-import Loading from "../components/ui/organisms/Loading";
+import LoadingPopup from "../components/ui/organisms/LoadingPopup";
 import UserHeader from "../components/ui/organisms/UserHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { Cycle } from "../components/pages/calendar/CalendarStyles";
@@ -18,7 +18,7 @@ import {
     Content,
     Flex,
     FlexA,
-} from "../components/ui/molecules/CustomDisplay";
+} from "../components/ui/atoms/CustomDisplay";
 
 export default function CalendarPage() {
     const navigate = useNavigate();
@@ -80,7 +80,7 @@ export default function CalendarPage() {
     return (
         <>
             {loading ? (
-                <Loading>정보를 불러오는 중..</Loading>
+                <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
                     <UserHeader userInfo={userInfo} />

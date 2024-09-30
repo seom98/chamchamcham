@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { PositionFixed } from "../components/ui/molecules/CustomPosition";
+import { PositionFixed } from "../components/ui/atoms/CustomPosition";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import UserHeader from "../components/ui/organisms/UserHeader";
-import Loading from "../components/ui/organisms/Loading";
+import LoadingPopup from "../components/ui/organisms/LoadingPopup";
 import { Text12, Text20, Text36 } from "../components/ui/atoms/CustomText";
 import { ArrowRight01Icon } from "hugeicons-react";
 import { Box1, Box2 } from "../components/ui/atoms/CustomBox";
@@ -12,7 +12,7 @@ import {
     Flex,
     FlexB,
     FlexE,
-} from "../components/ui/molecules/CustomDisplay";
+} from "../components/ui/atoms/CustomDisplay";
 
 export default function PlanPage() {
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function PlanPage() {
     return (
         <>
             {loading ? (
-                <Loading>정보를 불러오는 중..</Loading>
+                <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
                     <UserHeader userInfo={userInfo} />

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Loading from "./components/ui/organisms/Loading";
+import LoadingPopup from "./components/ui/organisms/LoadingPopup";
 import App from "./App";
 import ScrollToTop from "./components/templates/ScrollToTop";
 import DarkModeCheck from "./components/templates/DarkModeCheck";
@@ -24,7 +24,11 @@ export default function Router() {
         <BrowserRouter>
             <DarkModeCheck />
             <ScrollToTop />
-            <Suspense fallback={<Loading>소비습관을 길러주는 참참참!</Loading>}>
+            <Suspense
+                fallback={
+                    <LoadingPopup>소비습관을 길러주는 참참참!</LoadingPopup>
+                }
+            >
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<WelcomePage />} />

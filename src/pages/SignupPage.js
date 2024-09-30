@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "../hooks/useAccount";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";
-import { PosEC } from "../components/ui/molecules/CustomPosition";
+import { PosEC } from "../components/ui/atoms/CustomPosition";
 import { BtnAwe } from "../components/ui/atoms/CustomButton";
 import { Text12, Text16 } from "../components/ui/atoms/CustomText";
 import { IptNor, IptPas } from "../components/ui/atoms/CustomInput";
@@ -14,7 +14,7 @@ import {
     ViewIcon,
     ViewOffIcon,
 } from "hugeicons-react";
-import { Flex, FlexE } from "../components/ui/molecules/CustomDisplay";
+import { Flex, FlexE } from "../components/ui/atoms/CustomDisplay";
 
 export default function SignupPage() {
     // useAccount 훅에서 필요한 상태와 함수들을 가져옴

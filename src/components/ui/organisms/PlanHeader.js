@@ -1,6 +1,6 @@
 import React from "react";
 import { Text16, Text20 } from "../../ui/atoms/CustomText";
-import { PositionFixed } from "../../ui/molecules/CustomPosition";
+import { PositionFixed } from "../../ui/atoms/CustomPosition";
 import styled from "styled-components";
 import { ArrowLeft01Icon } from "hugeicons-react";
 import { useNavigate } from "react-router-dom";

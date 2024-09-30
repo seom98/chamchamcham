@@ -1,7 +1,7 @@
 import { Setting07Icon, UserCircleIcon } from "hugeicons-react";
 import { Box1 } from "../../ui/atoms/CustomBox";
 import { BtnNor } from "../../ui/atoms/CustomButton";
-import { FlexB, FlexS } from "../../ui/molecules/CustomDisplay";
+import { FlexB, FlexS } from "../../ui/atoms/CustomDisplay";
 import { Text12, Text16, Text25 } from "../../ui/atoms/CustomText";
 import { Level, LevelBar, LevelWrapper } from "./LevelBarStyles";
 

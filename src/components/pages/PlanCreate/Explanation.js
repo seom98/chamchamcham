@@ -1,6 +1,6 @@
 import { Box1, Box2 } from "../../ui/atoms/CustomBox";
 import { Text12, Text16 } from "../../ui/atoms/CustomText";
-import { FlexB } from "../../ui/molecules/CustomDisplay";
+import { FlexB } from "../../ui/atoms/CustomDisplay";
 
 const Explanation = () => {
     return (

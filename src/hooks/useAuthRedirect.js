@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import Loading from "../components/ui/organisms/Loading";
+import LoadingPopup from "../components/ui/organisms/LoadingPopup";
 
 // 로딩상태와 화면이동을 위한 커스텀 훅
 export const useAuthRedirect = (children, redirectPath = "/home") => {
@@ -34,7 +34,7 @@ export const useAuthRedirect = (children, redirectPath = "/home") => {
 
     // 로딩 중일 때 로딩 컴포넌트 렌더링
     if (authState.loading) {
-        return <Loading>소비습관을 길러주는 참참참!</Loading>;
+        return <LoadingPopup>소비습관을 길러주는 참참참!</LoadingPopup>;
     }
 
     // 로딩이 끝나면 children 렌더링

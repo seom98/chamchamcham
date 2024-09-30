@@ -1,6 +1,6 @@
 import React from "react";
 import { Text12 } from "../../ui/atoms/CustomText";
-import { PosSL, PosSR } from "../../ui/molecules/CustomPosition";
+import { PosSL, PosSR } from "../../ui/atoms/CustomPosition";
 
 // 버전을 표시하는 컴포넌트
 const Version = React.memo(() => {
