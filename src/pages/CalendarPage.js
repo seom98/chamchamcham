@@ -11,7 +11,7 @@ import { BtnDate } from "../components/ui/atoms/CustomButton";
 import Loading from "../components/ui/organisms/Loading";
 import UserHeader from "../components/ui/organisms/UserHeader";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
-import { Cycle } from "../components/pages/Calendar/CalendarStyles";
+import { Cycle } from "../components/pages/calendar/CalendarStyles";
 import { useNavigate } from "react-router-dom";
 import {
     CalendarFrame,

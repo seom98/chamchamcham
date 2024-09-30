@@ -17,7 +17,7 @@ import {
 } from "../components/ui/molecules/CustomPosition";
 import PlanHeader from "../components/ui/organisms/PlanHeader";
 import { useEffect, useState } from "react";
-import Explanation from "../components/pages/PlanCreate/Explanation";
+import Explanation from "../components/pages/planCreate/Explanation";
 import { BtnAdd } from "../components/ui/atoms/CustomButton";
 import Loading from "../components/ui/organisms/Loading";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
