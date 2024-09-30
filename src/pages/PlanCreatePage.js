@@ -97,7 +97,7 @@ export default function PlanCreatePage() {
                         setLoading={setSubmitLoading}
                     />
                     <PositionRelative>
-                        <Content $padding={"4rem 2.5rem 16rem"}>
+                        <Content $padding={"4rem 1.5rem 16rem"}>
                             <Flex $align={"baseline"} $gap={"0.3rem"}>
                                 <Text20>총</Text20>
                                 <Text36 $awesome $margin={"0 0 1rem"}>

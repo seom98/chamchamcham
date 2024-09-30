@@ -65,8 +65,8 @@ export default function PlanPage() {
                     <Content
                         $padding={
                             TotalCost(1) !== "0"
-                                ? "10rem 2.5rem 11rem"
-                                : "4rem 2.5rem 11rem"
+                                ? "10rem 1.5rem 11rem"
+                                : "4rem 1.5rem 11rem"
                         }
                     >
                         {TotalCost(1) === "0" ? (

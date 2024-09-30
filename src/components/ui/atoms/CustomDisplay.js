@@ -53,7 +53,7 @@ export const FlexCC = styled.div`
 `;
 
 export const Content = styled.div`
-    padding: ${(props) => props.$padding || "4rem 2.5rem 6rem"};
+    padding: ${(props) => props.$padding || "4rem 1.5rem 6rem"};
     display: flex;
     align-items: center;
     flex-direction: column;

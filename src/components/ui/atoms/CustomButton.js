@@ -65,8 +65,8 @@ export const BtnDate = styled.button`
     letter-spacing: -0.05em;
     border-radius: 1rem;
     outline: none;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     border: none;
     font-weight: 300;
     background-color: transparent;
