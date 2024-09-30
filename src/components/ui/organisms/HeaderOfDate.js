@@ -1,5 +1,5 @@
-import { Text16, Text20 } from "../../ui/atoms/CustomText";
-import { PositionFixed } from "../../ui/atoms/CustomPosition";
+import { Text16, Text20 } from "../atoms/CustomText";
+import { PositionFixed } from "../atoms/CustomPosition";
 import styled from "styled-components";
 import { ArrowLeft01Icon } from "hugeicons-react";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +27,7 @@ const BtnOk = styled.div`
     margin-right: 1rem;
 `;
 // Date페이지에서 쓸 헤더 컴포넌트
-const DateHeader = ({ month, day }) => {
+const HeaderOfDate = ({ month, day }) => {
     const navigate = useNavigate();
     return (
         <PositionFixed>
@@ -53,4 +53,4 @@ const DateHeader = ({ month, day }) => {
     );
 };
 
-export default DateHeader;
+export default HeaderOfDate;

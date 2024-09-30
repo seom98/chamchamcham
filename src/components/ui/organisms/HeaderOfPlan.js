@@ -1,6 +1,6 @@
 import React from "react";
-import { Text16, Text20 } from "../../ui/atoms/CustomText";
-import { PositionFixed } from "../../ui/atoms/CustomPosition";
+import { Text16, Text20 } from "../atoms/CustomText";
+import { PositionFixed } from "../atoms/CustomPosition";
 import styled from "styled-components";
 import { ArrowLeft01Icon } from "hugeicons-react";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +32,7 @@ const BtnOk = styled.div`
     margin-right: 1rem;
 `;
 // Plan페이지에서 쓸 헤더 컴포넌트
-const PlanHeader = ({ itemList, moneyList, setLoading }) => {
+const HeaderOfPlan = ({ itemList, moneyList, setLoading }) => {
     const navigate = useNavigate();
 
     const { userInfo } = useGetUserInfo();
@@ -82,4 +82,4 @@ const PlanHeader = ({ itemList, moneyList, setLoading }) => {
         </PositionFixed>
     );
 };
-export default PlanHeader;
+export default HeaderOfPlan;

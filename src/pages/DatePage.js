@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import {} from "../components/ui/atoms/CustomPosition";
 import { Text12, Text16, Text30 } from "../components/ui/atoms/CustomText";
-import DateHeader from "../components/ui/organisms/DateHeader";
+import HeaderOfDate from "../components/ui/organisms/HeaderOfDate";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import LoadingPopup from "../components/ui/organisms/LoadingPopup";
 import styled from "styled-components";
@@ -81,7 +81,7 @@ export default function DatePage() {
                 <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
-                    <DateHeader day={day} month={month} />
+                    <HeaderOfDate day={day} month={month} />
                     <Content>
                         <Text12 $light>
                             {month}월 {day}일에 아낀돈

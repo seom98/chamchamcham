@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { PositionFixed } from "../components/ui/atoms/CustomPosition";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
-import UserHeader from "../components/ui/organisms/UserHeader";
+import HeaderOfUser from "../components/ui/organisms/HeaderOfUser";
 import LoadingPopup from "../components/ui/organisms/LoadingPopup";
 import { Text12, Text20, Text36 } from "../components/ui/atoms/CustomText";
 import { ArrowRight01Icon } from "hugeicons-react";
@@ -46,7 +46,7 @@ export default function PlanPage() {
                 <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
-                    <UserHeader userInfo={userInfo} />
+                    <HeaderOfUser userInfo={userInfo} />
                     {TotalCost(1) !== "0" && (
                         <PositionFixed $top={"4rem"}>
                             <Text12 $grey $light $margin={"1rem 0 0"}>

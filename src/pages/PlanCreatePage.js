@@ -15,7 +15,7 @@ import {
     PositionRelative,
     PositionFixed,
 } from "../components/ui/atoms/CustomPosition";
-import PlanHeader from "../components/ui/organisms/PlanHeader";
+import HeaderOfPlan from "../components/ui/organisms/HeaderOfPlan";
 import { useEffect, useState } from "react";
 import Explanation from "../components/pages/planCreate/Explanation";
 import { BtnAdd } from "../components/ui/atoms/CustomButton";
@@ -91,7 +91,7 @@ export default function PlanCreatePage() {
                 <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
-                    <PlanHeader
+                    <HeaderOfPlan
                         itemList={itemList}
                         moneyList={moneyList}
                         setLoading={setSubmitLoading}

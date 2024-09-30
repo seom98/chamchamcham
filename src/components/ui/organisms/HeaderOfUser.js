@@ -1,6 +1,6 @@
 import React from "react";
-import { Text16, Text20 } from "../../ui/atoms/CustomText";
-import { PositionFixed } from "../../ui/atoms/CustomPosition";
+import { Text16, Text20 } from "../atoms/CustomText";
+import { PositionFixed } from "../atoms/CustomPosition";
 import styled from "styled-components";
 
 const HeaderDisplay = styled.div`
@@ -33,7 +33,7 @@ const Level = styled.div`
     top: 7px;
 `;
 // 유저정보를 담는 헤더 컴포넌트
-const UserHeader = React.memo(({ userInfo }) => {
+const HeaderOfUser = React.memo(({ userInfo }) => {
     return (
         <PositionFixed>
             <HeaderDisplay>
@@ -49,4 +49,4 @@ const UserHeader = React.memo(({ userInfo }) => {
     );
 });
 
-export default UserHeader;
+export default HeaderOfUser;

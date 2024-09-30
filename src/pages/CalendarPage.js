@@ -9,7 +9,7 @@ import {
 } from "../components/ui/atoms/CustomText";
 import { BtnDate } from "../components/ui/atoms/CustomButton";
 import LoadingPopup from "../components/ui/organisms/LoadingPopup";
-import UserHeader from "../components/ui/organisms/UserHeader";
+import HeaderOfUser from "../components/ui/organisms/HeaderOfUser";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { Cycle } from "../components/pages/calendar/CalendarStyles";
 import { useNavigate } from "react-router-dom";
@@ -83,7 +83,7 @@ export default function CalendarPage() {
                 <LoadingPopup>정보를 불러오는 중..</LoadingPopup>
             ) : (
                 <>
-                    <UserHeader userInfo={userInfo} />
+                    <HeaderOfUser userInfo={userInfo} />
                     <Content $padding={"4rem 1.5rem 10rem"}>
                         <Flex $align={"baseline"} $gap={"0.3rem"}>
                             <Text16>{month + 1}월 동안 </Text16>
