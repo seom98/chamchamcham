@@ -13,16 +13,8 @@ export default function WelcomePage() {
             <Version />
             <PosEC>
                 <Title />
-                <BtnWhi
-                    onClick={() => setTimeout(() => navigate("/login"), 200)}
-                >
-                    로그인
-                </BtnWhi>
-                <BtnAwe
-                    onClick={() => setTimeout(() => navigate("/signup"), 200)}
-                >
-                    회원가입
-                </BtnAwe>
+                <BtnWhi onClick={() => navigate("/login")}>로그인</BtnWhi>
+                <BtnAwe onClick={() => navigate("/signup")}>회원가입</BtnAwe>
             </PosEC>
         </>
     );
