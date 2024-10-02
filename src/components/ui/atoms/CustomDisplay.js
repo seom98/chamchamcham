@@ -67,3 +67,11 @@ export const CalendarFrame = styled.div`
     gap: 0.5rem;
     margin: 1rem 0;
 `;
+
+export const FlexC = styled.div`
+    padding: 7rem 0 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;

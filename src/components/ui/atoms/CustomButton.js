@@ -117,6 +117,20 @@ const BtnWhiStyled = styled(BaseButton)`
     box-shadow: 0 2px 25px 0 var(--shadow1);
     background-color: var(--grey1);
     color: var(--grey8);
+    ${(props) =>
+        props.$blue &&
+        css`
+            background-color: var(--blue);
+            box-shadow: 0 2px 25px 0 var(--shadow1);
+            color: var(--grey1);
+        `};
+    ${(props) =>
+        props.$red &&
+        css`
+            background-color: var(--red);
+            box-shadow: 0 2px 25px 0 var(--shadow1);
+            color: var(--grey1);
+        `};
 `;
 
 // 어썸 버튼 스타일
