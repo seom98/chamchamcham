@@ -15,9 +15,7 @@ import {
     Content,
     Flex,
     FlexA,
-    FlexB,
     FlexC,
-    FlexCC,
 } from "../components/ui/atoms/CustomDisplay";
 import { Box1 } from "../components/ui/atoms/CustomBox";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "hugeicons-react";
@@ -51,12 +49,6 @@ const Slide1 = styled.div`
     align-items: center;
     height: 100%;
     font-size: 1.5rem;
-`;
-
-const Button = styled.button`
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    cursor: pointer;
 `;
 
 const Input = styled.input`
