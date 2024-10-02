@@ -4,8 +4,8 @@ import { Text20 } from "../../ui/atoms/CustomText";
 import { useCalendar } from "../../../hooks/useCalendar";
 
 // 월 이동을 하는 부분
-const MonthlyMovement = () => {
-    const { year, month, today, goToPrevMonth, goToNextMonth } = useCalendar();
+const MonthlyMovement = ({ goToPrevMonth, goToNextMonth, year, month }) => {
+    const { today } = useCalendar();
     return (
         <FlexA>
             <ArrowLeft01Icon

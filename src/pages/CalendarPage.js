@@ -7,10 +7,13 @@ import MonthlyMovement from "../components/pages/calendar/MonthlyMovement";
 import WeekFrame from "../components/pages/calendar/WeekFrame";
 import DateFrame from "../components/pages/calendar/DateFrame";
 import ElementDescription from "../components/pages/calendar/ElementDescription";
+import { useCalendar } from "../hooks/useCalendar";
 
 export default function CalendarPage() {
     // 현재 날짜 가져오기 및 상태 설정
     const { userInfo, loading } = useGetUserInfo();
+    const { dates, goToPrevMonth, goToNextMonth, year, month, monthlyData } =
+        useCalendar();
 
     return (
         <>
@@ -20,10 +23,18 @@ export default function CalendarPage() {
                 <>
                     <HeaderOfUser userInfo={userInfo} />
                     <Content $padding={"4rem 1.5rem 10rem"}>
-                        <MonthlySavingTitle />
-                        <MonthlyMovement />
+                        <MonthlySavingTitle
+                            month={month}
+                            monthlyData={monthlyData}
+                        />
+                        <MonthlyMovement
+                            goToPrevMonth={goToPrevMonth}
+                            goToNextMonth={goToNextMonth}
+                            year={year}
+                            month={month}
+                        />
                         <WeekFrame />
-                        <DateFrame />
+                        <DateFrame dates={dates} monthlyData={monthlyData} />
                         <ElementDescription />
                     </Content>
                 </>

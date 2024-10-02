@@ -4,9 +4,10 @@ import { CalendarFrame, Flex } from "../../ui/atoms/CustomDisplay";
 import { useCalendar } from "../../../hooks/useCalendar";
 
 // 날짜들이 적혀져 있는 부분
-const DateFrame = () => {
+const DateFrame = ({ dates, monthlyData }) => {
     const navigate = useNavigate();
-    const { dates, today, formatDate } = useCalendar();
+    const { today, formatDate } = useCalendar();
+
     return (
         <CalendarFrame>
             {dates.map((d, index) => {
@@ -35,9 +36,19 @@ const DateFrame = () => {
                                 d.date.getMonth() === today.getMonth() &&
                                 d.date.getDate() > today.getDate()
                             }
-                            $blue={d.date.getDate() === 3}
-                            $yellow={d.date.getDate() === 5}
-                            $red={d.date.getDate() === 7}
+                            $blue={
+                                monthlyData &&
+                                monthlyData.monthlySuccessList[index] === "blue"
+                            }
+                            $yellow={
+                                monthlyData &&
+                                monthlyData.monthlySuccessList[index] ===
+                                    "yellow"
+                            }
+                            $red={
+                                monthlyData &&
+                                monthlyData.monthlySuccessList[index] === "red"
+                            }
                         >
                             {d.date.getDate()}
                         </BtnDate>
